@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.view.fragment.SelectRecipientFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            style="@style/DefaultPadding"
+            android:clipToPadding="false">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                style="@style/TextViewBoldBig"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="어디로 돈을 보낼까요?"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_select"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:tabRippleColor="@null"
+                app:tabIndicatorGravity="stretch"
+                app:tabTextColor="@color/dark_grey"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicator="@drawable/tab_background_select_recipient"
+                android:background="@drawable/tab_layout_background_select_recipient"/>
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_select"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nav_host_fragment_remit"/>
+
+
+    </LinearLayout>
+</layout>
