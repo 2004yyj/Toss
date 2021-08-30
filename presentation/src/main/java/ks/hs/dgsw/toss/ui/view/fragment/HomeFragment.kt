@@ -1,5 +1,6 @@
 package ks.hs.dgsw.toss.ui.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentHomeBinding
+import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.factory.HomeViewModelFactory
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.HomeViewModel
@@ -39,7 +41,9 @@ class HomeFragment : Fragment() {
     private fun init() {
         viewModel.getAccounts()
         viewModel.openRemitPage.observe(viewLifecycleOwner, EventObserver {
-            // 결제 페이지로 넘어가기
+            val intent = Intent(context, RemitActivity::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         })
     }
 }

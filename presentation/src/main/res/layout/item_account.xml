@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="ks.hs.dgsw.domain.entity.Account"/>
+        <variable
+            name="account"
+            type="Account" />
     </data>
 
     <FrameLayout
@@ -65,7 +68,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toEndOf="@+id/cardView2"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="대구은행 계좌" />
+                    tools:text="대구은행 계좌"
+                    android:text="@{@string/some_bank_account(account.bankName)}"/>
 
                 <TextView
                     android:id="@+id/tv_my_balance_account"
@@ -75,10 +79,8 @@
                     android:layout_marginTop="3dp"
                     android:textSize="18sp"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardView2"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_bank_name_account"
-                    tools:text="100,000 원" />
+                    tools:text="100,000 원"
+                    android:text="@{@string/my_balance_account(account.balance)}"/>
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton

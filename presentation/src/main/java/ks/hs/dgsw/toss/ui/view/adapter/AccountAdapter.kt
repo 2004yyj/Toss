@@ -1,5 +1,6 @@
 package ks.hs.dgsw.toss.ui.view.adapter
 
+import android.content.Intent
 import android.provider.Settings.Global.getString
 import android.text.format.Formatter
 import android.view.LayoutInflater
@@ -13,21 +14,20 @@ import androidx.recyclerview.widget.RecyclerView
 import ks.hs.dgsw.domain.entity.Account
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ItemAccountBinding
+import ks.hs.dgsw.toss.ui.view.activity.MainActivity
+import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 import java.text.DecimalFormat
 
 class AccountAdapter: ListAdapter<Account, AccountAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val binding: ItemAccountBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(account: Account) = with(binding) {
-            val res = root.resources
-
-            val formatter = DecimalFormat("###,###")
-
-            tvBankNameAccount.text =
-                String.format(res.getString(R.string.some_bank_account), account.bankName)
-
-            tvMyBalanceAccount.text =
-                String.format(res.getString(R.string.my_balance_account), formatter.format(account.balance))
+            binding.account = account
+            btnRemitAccount.setOnClickListener {
+                val intent = Intent(it.context, RemitActivity::class.java)
+                it.context.startActivity(intent)
+                (it.context as MainActivity).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            }
         }
     }
 
