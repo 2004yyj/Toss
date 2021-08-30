@@ -4,11 +4,11 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/toss_dark_color</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/toss_dark_color</item>
         <!-- Status bar color. -->
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
@@ -32,7 +32,7 @@
 
     <style name="TextViewBold" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/spoqa_bold</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/toss_dark_color</item>
     </style>
 
     <style name="TextViewBoldBig" parent="TextViewBold">
@@ -81,7 +81,7 @@
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:fontFamily">@font/spoqa_regular</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/toss_dark_color</item>
         <item name="android:background">@drawable/btn_grey_main</item>
         <item name="android:paddingVertical">8dp</item>
         <item name="android:paddingHorizontal">15dp</item>
