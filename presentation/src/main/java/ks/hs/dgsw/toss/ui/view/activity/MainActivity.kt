@@ -1,17 +1,20 @@
 package ks.hs.dgsw.toss.ui.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ActivityMainBinding
+
+/**
+ *
+ * 메인 화면입니다
+ * 홈, 내 소비, 상품, 전체 프래그먼트를
+ * BottomNavigationView로 이동할 수 있습니다.
+ *
+ */
 
 class MainActivity : AppCompatActivity() {
 
