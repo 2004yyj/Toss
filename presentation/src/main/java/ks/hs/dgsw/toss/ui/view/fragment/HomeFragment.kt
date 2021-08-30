@@ -15,9 +15,16 @@ import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.factory.HomeViewModelFactory
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.HomeViewModel
 
+/**
+ *
+ * 홈 프래그먼트에서는 나의 프로필, 계좌 목록,
+ * 알림을 확인할 수 있고
+ * 송금을 진행할 수 있습니다.
+ *
+ */
+
 class HomeFragment : Fragment() {
 
-    private val navController by lazy { findNavController() }
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
 
