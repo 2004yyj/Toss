@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.view.fragment.SelectSuggestFragment"
-    style="@style/DefaultPadding">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        style="@style/TextViewBoldBig"
+    <data>
+        <import type="ks.hs.dgsw.toss.ui.viewmodel.fragment.SelectSuggestViewModel"/>
+        <variable
+            name="vm"
+            type="SelectSuggestViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="최근 보낸 계좌로" />
+        android:orientation="vertical"
+        tools:context=".ui.view.fragment.SelectSuggestFragment">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextViewBoldBig"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="최근 보낸 계좌로" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_account_user_list_select_suggest"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:type="@{1}"
+                app:submitList="@{vm.accountList}"
+                tools:listitem="@layout/item_account_user" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

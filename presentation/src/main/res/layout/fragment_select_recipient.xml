@@ -39,25 +39,52 @@
                 android:id="@+id/tab_layout_select"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 app:tabRippleColor="@null"
                 app:tabIndicatorGravity="stretch"
                 app:tabTextColor="@color/dark_grey"
                 app:tabIndicatorColor="@color/white"
                 app:tabIndicator="@drawable/tab_background_select_recipient"
-                android:background="@drawable/tab_layout_background_select_recipient"/>
+                android:background="@drawable/tab_layout_background_select_recipient">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="추천"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="계좌"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="연락처"/>
+
+            </com.google.android.material.tabs.TabLayout>
         </LinearLayout>
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/view_pager_select"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nav_host_fragment_remit"/>
+            android:layout_height="match_parent">
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager_select"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:background="@tools:sample/date/mmddyy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nav_host_fragment_remit"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/tab_layout_gradient_bottom"/>
+
+        </FrameLayout>
 
     </LinearLayout>
 </layout>

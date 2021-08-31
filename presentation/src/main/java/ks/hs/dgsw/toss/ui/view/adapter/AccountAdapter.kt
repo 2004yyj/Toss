@@ -1,10 +1,7 @@
 package ks.hs.dgsw.toss.ui.view.adapter
 
 import android.content.Intent
-import android.provider.Settings.Global.getString
-import android.text.format.Formatter
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -14,13 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 import ks.hs.dgsw.domain.entity.Account
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ItemAccountBinding
+import ks.hs.dgsw.toss.databinding.ItemAccountUserBinding
 import ks.hs.dgsw.toss.ui.view.activity.MainActivity
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
-import java.text.DecimalFormat
 
-class AccountAdapter: ListAdapter<Account, AccountAdapter.ViewHolder>(diffUtil) {
+class AccountAdapter(private val viewType: Int): ListAdapter<Account, RecyclerView.ViewHolder>(diffUtil) {
 
-    inner class ViewHolder(private val binding: ItemAccountBinding): RecyclerView.ViewHolder(binding.root) {
+    override fun getItemViewType(position: Int): Int {
+        return viewType
+    }
+
+    inner class AccountViewHolder(private val binding: ItemAccountBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(account: Account) = with(binding) {
             binding.account = account
             btnRemitAccount.setOnClickListener {
@@ -31,17 +32,40 @@ class AccountAdapter: ListAdapter<Account, AccountAdapter.ViewHolder>(diffUtil) 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemAccountBinding.inflate(LayoutInflater.from(parent.context))
-        binding.root.layoutParams = RecyclerView.LayoutParams(
-            MATCH_PARENT,
-            WRAP_CONTENT
-        )
-        return ViewHolder(binding)
+    inner class AccountUserViewHolder(private val binding: ItemAccountUserBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(account: Account) {
+            binding.account = account
+        }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        when(viewType) {
+            MY_ACCOUNT_TYPE -> {
+                val binding = ItemAccountBinding.inflate(LayoutInflater.from(parent.context))
+                binding.root.layoutParams = RecyclerView.LayoutParams(
+                    MATCH_PARENT,
+                    WRAP_CONTENT
+                )
+                return AccountViewHolder(binding)
+            }
+            OTHER_USER_ACCOUNT_TYPE -> {
+                val binding = ItemAccountUserBinding.inflate(LayoutInflater.from(parent.context))
+                binding.root.layoutParams = RecyclerView.LayoutParams(
+                    MATCH_PARENT,
+                    WRAP_CONTENT
+                )
+                return AccountUserViewHolder(binding)
+            }
+            else -> throw IndexOutOfBoundsException()
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (true) {
+            holder is AccountViewHolder -> holder.bind(getItem(position))
+            holder is AccountUserViewHolder -> holder.bind(getItem(position))
+            else -> throw IllegalArgumentException()
+        }
     }
 
     companion object {
@@ -55,5 +79,8 @@ class AccountAdapter: ListAdapter<Account, AccountAdapter.ViewHolder>(diffUtil) 
             }
 
         }
+
+        const val MY_ACCOUNT_TYPE = 0
+        const val OTHER_USER_ACCOUNT_TYPE = 1
     }
 }
