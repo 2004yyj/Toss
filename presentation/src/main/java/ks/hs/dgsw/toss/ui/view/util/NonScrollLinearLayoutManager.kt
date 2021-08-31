@@ -27,7 +27,6 @@ class NonScrollLinearLayoutManager: LinearLayoutManager {
         context,
         orientation,
         reverseLayout
-
     )
     constructor(context: Context): super(context)
 

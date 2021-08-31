@@ -4,20 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="ks.hs.dgsw.toss.ui.viewmodel.fragment.SelectAccountViewModel"/>
+        <variable
+            name="vm"
+            type="SelectAccountViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingHorizontal="30dp"
         tools:context=".ui.view.fragment.SelectAccountFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bank_list_select_account"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_bank"
-            app:type="@{1}"
-            app:submitList="@{}"
+            app:submitList="@{vm.bankList}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3" />
 
