@@ -148,6 +148,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btn_view_my_accounts_list"
                         app:submitList="@{vm.accountList}"
+                        app:type="@{0}"
                         tools:itemCount="3"
                         tools:listitem="@layout/item_account" />
 

@@ -19,6 +19,8 @@ class HomeViewModel(): ViewModel() {
     fun getAccounts() {
         accountList.clear()
         accountList.addAll(arrayListOf(Account("대구은행", "20513158980", "양윤재", 5000)))
+        accountList.addAll(arrayListOf(Account("우리은행", "50113158980", "양윤재", 5000)))
+        accountList.addAll(arrayListOf(Account("토스", "60413158980", "양윤재", 5000)))
     }
 
     fun remitPage() {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_send_money_with_account"
+    app:startDestination="@id/selectAccountFragment">
+
+    <fragment
+        android:id="@+id/selectAccountFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SelectAccountFragment"
+        android:label="fragment_select_account"
+        tools:layout="@layout/fragment_select_account" >
+        <action
+            android:id="@+id/action_selectAccountFragment_to_setAccountNumberFragment"
+            app:destination="@id/setAccountNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setAccountNumberFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SetAccountNumberFragment"
+        android:label="fragment_set_account_number"
+        tools:layout="@layout/fragment_set_account_number" />
+</navigation>
