@@ -40,11 +40,15 @@ class SelectRecipientFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         init()
-        with(requireActivity() as RemitActivity){
-            setSupportActionBar(toolbar)
-            supportActionBar?.title = ""
-            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        if (requireActivity() is RemitActivity) {
+            with(requireActivity() as RemitActivity) {
+                setSupportActionBar(toolbar)
+                supportActionBar?.title = ""
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            }
+        } else {
+            toolbar.visibility = View.GONE
         }
 
         val tabArray = resources.getStringArray(R.array.tab_array)

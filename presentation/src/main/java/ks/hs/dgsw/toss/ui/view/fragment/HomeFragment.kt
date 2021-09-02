@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import ks.hs.dgsw.toss.R
@@ -26,14 +27,14 @@ import ks.hs.dgsw.toss.ui.viewmodel.fragment.HomeViewModel
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var viewModel: HomeViewModel
+    private val factory by lazy { HomeViewModelFactory() }
+    private val viewModel by viewModels<HomeViewModel> { factory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater)
-        viewModel = ViewModelProvider(this, HomeViewModelFactory())[HomeViewModel::class.java]
         binding.vm = viewModel
         binding.lifecycleOwner = this
         return binding.root
