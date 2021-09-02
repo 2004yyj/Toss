@@ -18,7 +18,7 @@ class SelectSuggestViewModel(): ViewModel() {
 
     fun getAccounts() {
         accountList.clear()
-        for (i in 0..20) {
+        for(i in 0..10) {
             accountList.addAll(arrayListOf(Account("대구은행", "20513158980", "엄준식", 5000)))
         }
     }
