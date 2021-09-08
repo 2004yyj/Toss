@@ -8,6 +8,7 @@
         <entry key="presentation/src/main/res/drawable/bnv_background.xml" value="0.1" />
         <entry key="presentation/src/main/res/drawable/bnv_item_color.xml" value="0.21770833333333334" />
         <entry key="presentation/src/main/res/drawable/btn_bank.xml" value="0.3770833333333333" />
+        <entry key="presentation/src/main/res/drawable/btn_big_main.xml" value="0.3734375" />
         <entry key="presentation/src/main/res/drawable/btn_grey_main.xml" value="0.3770833333333333" />
         <entry key="presentation/src/main/res/drawable/btn_main.xml" value="0.3770833333333333" />
         <entry key="presentation/src/main/res/drawable/circle_ripple.xml" value="0.2109375" />
@@ -27,10 +28,12 @@
         <entry key="presentation/src/main/res/drawable/tab_layout_gradient_bottom.xml" value="0.3770833333333333" />
         <entry key="presentation/src/main/res/font/font.xml" value="0.225" />
         <entry key="presentation/src/main/res/font/spoqa.xml" value="0.225" />
+        <entry key="presentation/src/main/res/layout/activity_account.xml" value="0.26268115942028986" />
         <entry key="presentation/src/main/res/layout/activity_auth.xml" value="0.2015625" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/activity_remit.xml" value="0.33152173913043476" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.23867753623188406" />
+        <entry key="presentation/src/main/res/layout/fragment_account.xml" value="0.31476449275362317" />
         <entry key="presentation/src/main/res/layout/fragment_auth_key.xml" value="0.2513586956521739" />
         <entry key="presentation/src/main/res/layout/fragment_bottom_navigation.xml" value="0.33967391304347827" />
         <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.335" />
@@ -44,6 +47,7 @@
         <entry key="presentation/src/main/res/layout/fragment_select_suggest.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/fragment_set_account_number.xml" value="0.3229166666666667" />
         <entry key="presentation/src/main/res/layout/fragment_set_money.xml" value="0.18072916666666666" />
+        <entry key="presentation/src/main/res/layout/fragment_start.xml" value="0.26268115942028986" />
         <entry key="presentation/src/main/res/layout/item_account.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/item_account_user.xml" value="0.3229166666666667" />
         <entry key="presentation/src/main/res/layout/item_bank.xml" value="0.335" />

@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
 
         startActivity(
             Intent(
-            this, MainActivity::class.java
+            this, AuthActivity::class.java
             )
         )
         finish()

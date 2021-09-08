@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Toss">
         <activity
+            android:name=".ui.view.activity.AccountActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.view.activity.RemitActivity"
             android:exported="true" />
         <activity
