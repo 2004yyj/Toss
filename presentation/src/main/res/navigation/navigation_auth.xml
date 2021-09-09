@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_signUpFragment"
+            app:destination="@id/signUpFirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -29,4 +32,17 @@
         android:name="ks.hs.dgsw.toss.ui.view.fragment.AuthKeyFragment"
         android:label="fragment_auth_key"
         tools:layout="@layout/fragment_auth_key" />
+    <fragment
+        android:id="@+id/signUpFirstFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SignUpFirstFragment"
+        tools:layout="@layout/fragment_sign_up_first" >
+        <action
+            android:id="@+id/action_signUpFirstFragment_to_signUpSecondFragment"
+            app:destination="@id/signUpSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpSecondFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SignUpSecondFragment"
+        android:label="fragment_sign_up_second"
+        tools:layout="@layout/fragment_sign_up_second" />
 </navigation>
