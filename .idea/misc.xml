@@ -16,6 +16,7 @@
         <entry key="presentation/src/main/res/drawable/ic_diamond_shape.xml" value="0.3770833333333333" />
         <entry key="presentation/src/main/res/drawable/ic_home.xml" value="0.2109375" />
         <entry key="presentation/src/main/res/drawable/ic_launcher_background.xml" value="0.18888888888888888" />
+        <entry key="presentation/src/main/res/drawable/ic_money_transfer.xml" value="0.37395833333333334" />
         <entry key="presentation/src/main/res/drawable/ic_next.xml" value="0.3770833333333333" />
         <entry key="presentation/src/main/res/drawable/ic_ring.xml" value="0.21770833333333334" />
         <entry key="presentation/src/main/res/drawable/rectangle_ripple.xml" value="0.3770833333333333" />
@@ -47,8 +48,11 @@
         <entry key="presentation/src/main/res/layout/fragment_select_suggest.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/fragment_set_account_number.xml" value="0.3229166666666667" />
         <entry key="presentation/src/main/res/layout/fragment_set_money.xml" value="0.18072916666666666" />
+        <entry key="presentation/src/main/res/layout/fragment_sign_up.xml" value="0.2509057971014493" />
+        <entry key="presentation/src/main/res/layout/fragment_sign_up_important_info.xml" value="0.335" />
+        <entry key="presentation/src/main/res/layout/fragment_sign_up_second.xml" value="0.3578125" />
         <entry key="presentation/src/main/res/layout/fragment_start.xml" value="0.26268115942028986" />
-        <entry key="presentation/src/main/res/layout/fragment_welcome.xml" value="0.165" />
+        <entry key="presentation/src/main/res/layout/fragment_welcome.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/item_account.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/item_account_user.xml" value="0.3229166666666667" />
         <entry key="presentation/src/main/res/layout/item_bank.xml" value="0.335" />

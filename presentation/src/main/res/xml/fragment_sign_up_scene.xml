@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/widget" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/linear_layout_id_sign_up"
+            android:visibility="invisible"/>
+        <Constraint
+            android:id="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/til_email_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+
+        <Constraint
+            android:id="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="visible" />
+
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@id/showIdLayout"
+        app:motionInterpolator="easeOut" />
+    <ConstraintSet android:id="@+id/showIdLayout" >
+        <Constraint
+            android:id="@+id/linear_layout_id_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/til_email_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="visible" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showIdLayout"
+        app:constraintSetEnd="@+id/showSecurityNumLayout"
+        app:motionInterpolator="easeOut" />
+    <ConstraintSet android:id="@+id/showSecurityNumLayout" >
+        <Constraint
+            android:id="@+id/linear_layout_id_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/til_email_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="visible" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showSecurityNumLayout"
+        app:constraintSetEnd="@+id/showEmailEditText"
+        app:motionInterpolator="easeOut" />
+    <ConstraintSet android:id="@+id/showEmailEditText" >
+        <Constraint
+            android:id="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="visible" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showEmailEditText"
+        app:constraintSetEnd="@+id/end"
+        app:motionInterpolator="easeOut" />
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/widget" />
+        <Constraint
+            android:id="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="visible" />
+    </ConstraintSet>
+
+</MotionScene>

@@ -2,8 +2,8 @@ package ks.hs.dgsw.toss.ui.view.bind
 
 import android.app.Activity
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputLayout
 import ks.hs.dgsw.domain.entity.Account
 import ks.hs.dgsw.domain.entity.Bank
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
@@ -27,4 +27,9 @@ fun RecyclerView.submitList(list: List<Bank>) {
         addItemDecoration(GridLayoutSpacingDecoration((context as Activity), 3))
     }
     (adapter as BankAdapter).submitList(list)
+}
+
+@BindingAdapter("setError")
+fun TextInputLayout.setError(errorText: String) {
+    this.error = errorText
 }

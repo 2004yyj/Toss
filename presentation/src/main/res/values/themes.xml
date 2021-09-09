@@ -6,14 +6,21 @@
         <item name="colorPrimaryVariant">@color/medium_grey</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">@color/main</item>
+        <item name="colorSecondaryVariant">@color/main</item>
         <item name="colorOnSecondary">@color/toss_dark_color</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/spoqa</item>
+    </style>
+
+    <style name="DefaultTextInputEditText"
+        parent="Widget.AppCompat.EditText">
+        <item name="android:paddingVertical">15dp</item>
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="BottomNavigationView.Active"
