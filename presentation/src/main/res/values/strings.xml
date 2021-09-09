@@ -9,4 +9,8 @@
     <string name="my_balance_account">%,d 원</string>
     <string name="bank_logo">은행 로고</string>
     <string name="account">계좌</string>
+    <string name="welcome_message">간편한 금융생활,\n토스로 시작해요</string>
+    <string name="login">로그인</string>
+    <string name="dont_you_have_account">또는 계정이 없다면?</string>
+    <string name="sign_up">회원가입</string>
 </resources>
