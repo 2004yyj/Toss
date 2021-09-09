@@ -18,13 +18,13 @@
     <string name="pw">비밀번호</string>
     <string name="check_conflict">중복확인</string>
     <string name="social_security_number_first_6">주민번호 앞 6자리</string>
-    <string name="social_security_number_second_1">한 자리</string>
+    <string name="social_security_number_second_1">뒷자리 맨 앞 번호</string>
     <string name="email">이메일</string>
     <string name="next">다음</string>
     <string name="sign_up_title_input_info">정보를 입력하세요.</string>
     <string name="please_set_name">이름을 입력해 주세요.</string>
     <string name="please_set_id">아이디는 3–12자로 입력해 주세요.</string>
     <string name="please_set_birth">생년월일을 6자리로 정확히 입력해 주십시오.</string>
-    <string name="please_set_email">올바른 이메일 형식을 지켜서 입력해 주세요.</string>
-    <string name="please_set_security_code">올바르게 입력해주세요.</string>
+    <string name="please_set_email">올바른 이메일 형식으로 입력해 주세요.</string>
+    <string name="please_set_security_code">잘못된 형식입니다.</string>
 </resources>

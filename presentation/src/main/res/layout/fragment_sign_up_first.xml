@@ -60,6 +60,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:setVisible="@{vm.name.length() >= 2}"
             app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -97,7 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
+            android:gravity="top|center_horizontal"
+            app:setVisible="@{vm.id.length() >= 3 &amp;&amp; vm.id.length() &lt;= 12}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up">
@@ -105,7 +107,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_ssn_first_sign_up"
                 style="@style/Widget.Design.TextInputLayout"
-                android:layout_width="240dp"
+                android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/social_security_number_first_6"
                 app:errorEnabled="@{vm.birthError.length() != 0}"
@@ -115,6 +117,7 @@
                     android:id="@+id/et_ssn_first_sign_up"
                     style="@style/DefaultTextInputEditText"
                     android:letterSpacing="1"
+                    tools:text="040809"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -133,7 +136,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_ssn_second_sign_up"
                 style="@style/Widget.Design.TextInputLayout"
-                android:layout_width="75dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/social_security_number_second_1"
                 app:errorEnabled="@{vm.securityCodeError.length() != 0}"
@@ -144,7 +147,6 @@
                     android:inputType="number"
                     android:letterSpacing="1"
                     android:text="@={vm.securityCode}"
-                    android:gravity="center"
                     style="@style/DefaultTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -160,6 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/email"
+            app:setVisible="@{vm.birth.length() == 6 &amp;&amp; vm.securityCode.length() == 1}"
             app:errorEnabled="@{vm.email.length() != 0}"
             app:setError="@{vm.emailError}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -180,6 +183,7 @@
             android:id="@+id/btn_sign_up"
             style="@style/BigButton"
             android:text="@string/next"
+            app:setVisible="@{vm.emailError.length() == 0}"
             android:onClick="@{() -> vm.toSecondFragment()}"
             android:layout_width="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"

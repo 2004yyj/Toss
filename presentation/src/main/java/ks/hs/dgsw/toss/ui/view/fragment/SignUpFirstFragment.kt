@@ -49,21 +49,26 @@ class SignUpFirstFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         name.observe(viewLifecycleOwner) {
-            nameError.value = if (it.isEmpty())
-                resources.getString(R.string.please_set_name)
-            else if (it.length >= 2) {
-                motionLayout.transitionToState(R.id.showIdLayout)
-                ""
-            } else {
-                ""
-            }
+            nameError.value =
+                when {
+                    it.isEmpty() -> resources.getString(R.string.please_set_name)
+                    it.length >= 2 -> {
+                        if (motionLayout.currentState == R.id.start)
+                            motionLayout.transitionToState(R.id.showIdLayout)
+                        ""
+                    }
+                    else -> {
+                        ""
+                    }
+                }
         }
 
         id.observe(viewLifecycleOwner) {
             idError.value = if (it.length !in 3..12)
                 resources.getString(R.string.please_set_id)
             else {
-                motionLayout.transitionToState(R.id.showSecurityNumLayout)
+                if (motionLayout.currentState == R.id.showIdLayout)
+                    motionLayout.transitionToState(R.id.showSecurityNumLayout)
                 ""
             }
         }
@@ -71,35 +76,38 @@ class SignUpFirstFragment : Fragment() {
         birth.observe(viewLifecycleOwner) {
             birthError.value = when (it.length == 6) {
                 true -> {
+                    if (it.length + birth.value?.length!! == 7 &&
+                        motionLayout.currentState == R.id.showSecurityNumLayout) {
+                        motionLayout.transitionToState(R.id.showEmailEditText)
+                    }
                     ""
                 }
                 false -> resources.getString(R.string.please_set_birth)
             }
-
-            if (it.length + birth.value?.length!! == 7 &&
-                motionLayout.currentState == R.id.showSecurityNumLayout) {
-                motionLayout.transitionToState(R.id.showEmailEditText)
-            }
         }
 
         securityCode.observe(viewLifecycleOwner) {
-            if (it.length != 1)
-                resources.getString(R.string.please_set_security_code)
-            else if (it.length + birth.value?.length!! == 7 &&
-                motionLayout.currentState == R.id.showSecurityNumLayout) {
-                    securityCodeError.value = ""
-                    motionLayout.transitionToState(R.id.showEmailEditText)
-            }
+            securityCodeError.value =
+                if (it.length != 1)
+                    resources.getString(R.string.please_set_security_code)
+                else {
+                    if (it.length + birth.value?.length!! == 7 &&
+                        motionLayout.currentState == R.id.showSecurityNumLayout) {
+                        motionLayout.transitionToState(R.id.showEmailEditText)
+                    }
+                    ""
+                }
         }
 
         email.observe(viewLifecycleOwner) {
             val emailChk = Patterns.EMAIL_ADDRESS
-            if (!emailChk.matcher(it).matches()) {
-                emailError.value = resources.getString(R.string.please_set_email)
-            } else {
-                emailError.value = ""
-                motionLayout.transitionToState(R.id.end)
-            }
+            emailError.value =
+                if (!emailChk.matcher(it).matches()) {
+                    resources.getString(R.string.please_set_email)
+                } else {
+                    motionLayout.transitionToState(R.id.end)
+                    ""
+                }
         }
 
         isFailure.observe(viewLifecycleOwner, EventObserver {

@@ -1,6 +1,8 @@
 package ks.hs.dgsw.toss.ui.view.bind
 
 import android.app.Activity
+import android.view.View
+import android.view.View.VISIBLE
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
@@ -32,4 +34,11 @@ fun RecyclerView.submitList(list: List<Bank>) {
 @BindingAdapter("setError")
 fun TextInputLayout.setError(errorText: String) {
     this.error = errorText
+}
+
+@BindingAdapter("setVisible") // visible 설정 시 visible boolean 값이 false여도 visible하도록 설정
+fun View.setVisible(isVisibility: Boolean) {
+    if (isVisibility) {
+        visibility = VISIBLE
+    }
 }
