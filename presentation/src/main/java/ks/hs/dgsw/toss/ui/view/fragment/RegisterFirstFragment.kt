@@ -44,10 +44,11 @@ class RegisterFirstFragment : Fragment() {
 
     private fun init() {
         motionLayout = binding.motionLayoutRegister
-        motionLayout.transitionToStart()
     }
 
     private fun observe() = with(viewModel) {
+        motionLayout.transitionToStart()
+
         name.observe(viewLifecycleOwner) {
             nameError.value =
                 when {
@@ -63,7 +64,7 @@ class RegisterFirstFragment : Fragment() {
                 }
         }
 
-        id.observe(viewLifecycleOwner) {
+        nickname.observe(viewLifecycleOwner) {
             idError.value = if (it.length !in 3..12)
                 resources.getString(R.string.please_set_id)
             else {

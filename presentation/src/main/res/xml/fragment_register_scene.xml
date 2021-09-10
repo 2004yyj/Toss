@@ -9,31 +9,31 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/til_name_register"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/linear_layout_id_sign_up"
+            android:id="@+id/til_nickname_register"
             android:visibility="invisible"/>
         <Constraint
-            android:id="@+id/linear_layout_social_security_number_sign_up"
+            android:id="@+id/linear_layout_social_security_number_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/til_nickname_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="invisible" />
         <Constraint
-            android:id="@+id/til_email_sign_up"
+            android:id="@+id/til_email_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="invisible" />
 
         <Constraint
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/btn_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,34 +49,34 @@
         app:motionInterpolator="easeOut" />
     <ConstraintSet android:id="@+id/showIdLayout" >
         <Constraint
-            android:id="@+id/linear_layout_id_sign_up"
+            android:id="@+id/til_nickname_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/til_name_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="visible" />
         <Constraint
-            android:id="@+id/linear_layout_social_security_number_sign_up"
+            android:id="@+id/linear_layout_social_security_number_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/til_nickname_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="invisible" />
         <Constraint
-            android:id="@+id/til_email_sign_up"
+            android:id="@+id/til_email_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="invisible" />
         <Constraint
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/btn_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,34 +91,34 @@
         app:motionInterpolator="easeOut" />
     <ConstraintSet android:id="@+id/showSecurityNumLayout" >
         <Constraint
-            android:id="@+id/linear_layout_id_sign_up"
+            android:id="@+id/til_nickname_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/til_name_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="visible" />
         <Constraint
-            android:id="@+id/linear_layout_social_security_number_sign_up"
+            android:id="@+id/linear_layout_social_security_number_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/til_nickname_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="visible" />
         <Constraint
-            android:id="@+id/til_email_sign_up"
+            android:id="@+id/til_email_register"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_sign_up"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_register"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:visibility="invisible" />
         <Constraint
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/btn_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,7 @@
         app:motionInterpolator="easeOut" />
     <ConstraintSet android:id="@+id/showEmailEditText" >
         <Constraint
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/btn_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +149,7 @@
     <ConstraintSet android:id="@+id/end">
         <Constraint android:id="@id/widget" />
         <Constraint
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/btn_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
