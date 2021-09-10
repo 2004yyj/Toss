@@ -45,9 +45,9 @@
     </ConstraintSet>
     <Transition
         app:constraintSetStart="@+id/start"
-        app:constraintSetEnd="@id/showIdLayout"
+        app:constraintSetEnd="@id/showNickNameLayout"
         app:motionInterpolator="easeOut" />
-    <ConstraintSet android:id="@+id/showIdLayout" >
+    <ConstraintSet android:id="@+id/showNickNameLayout" >
         <Constraint
             android:id="@+id/til_nickname_register"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +86,7 @@
             android:visibility="visible" />
     </ConstraintSet>
     <Transition
-        app:constraintSetStart="@+id/showIdLayout"
+        app:constraintSetStart="@+id/showNickNameLayout"
         app:constraintSetEnd="@+id/showSecurityNumLayout"
         app:motionInterpolator="easeOut" />
     <ConstraintSet android:id="@+id/showSecurityNumLayout" >

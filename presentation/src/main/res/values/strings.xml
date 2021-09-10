@@ -27,4 +27,5 @@
     <string name="please_set_email">올바른 이메일 형식으로 입력해 주세요.</string>
     <string name="please_set_security_code">잘못된 형식입니다.</string>
     <string name="nickname">닉네임</string>
+    <string name="please_set_nickname">닉네임은 2글자 이상 입력해주세요.</string>
 </resources>

@@ -55,7 +55,7 @@ class RegisterFirstFragment : Fragment() {
                     it.isEmpty() -> resources.getString(R.string.please_set_name)
                     it.length >= 2 -> {
                         if (motionLayout.currentState == R.id.start)
-                            motionLayout.transitionToState(R.id.showIdLayout)
+                            motionLayout.transitionToState(R.id.showNickNameLayout)
                         ""
                     }
                     else -> {
@@ -65,10 +65,10 @@ class RegisterFirstFragment : Fragment() {
         }
 
         nickname.observe(viewLifecycleOwner) {
-            idError.value = if (it.length !in 3..12)
-                resources.getString(R.string.please_set_id)
+            nicknameError.value = if (it.length < 2)
+                resources.getString(R.string.please_set_nickname)
             else {
-                if (motionLayout.currentState == R.id.showIdLayout)
+                if (motionLayout.currentState == R.id.showNickNameLayout)
                     motionLayout.transitionToState(R.id.showSecurityNumLayout)
                 ""
             }

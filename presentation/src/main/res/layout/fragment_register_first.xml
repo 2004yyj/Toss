@@ -60,16 +60,16 @@
             android:layout_height="wrap_content"
             android:hint="@string/nickname"
             android:layout_marginTop="10dp"
-            app:errorEnabled="@{vm.idError.length() != 0}"
+            app:errorEnabled="@{vm.nicknameError.length() != 0}"
             app:setVisible="@{vm.name.length() >= 2}"
-            app:setError="@{vm.idError}"
+            app:setError="@{vm.nicknameError}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_name_register">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_nickname_register"
-                android:text="@={vm.id}"
+                android:text="@={vm.nickname}"
                 android:inputType="text"
                 style="@style/DefaultTextInputEditText"
                 android:layout_width="match_parent"
