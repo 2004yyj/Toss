@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ks.hs.dgsw.domain.entity.Account"/>
+        <import type="ks.hs.dgsw.domain.entity.dto.Account"/>
         <variable
             name="account"
             type="Account" />
@@ -57,26 +57,17 @@
                 android:text="@{account.name}"
                 tools:text="양윤재" />
 
-            <TextView
-                android:id="@+id/tv_bank_name_account_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toEndOf="@+id/cardView2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name_account_user"
-                android:text="@{account.bankName}"
-                tools:text="대구은행" />
 
             <TextView
                 android:id="@+id/tv_account_number_account_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="15dp"
+                android:text="@{account.account}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_bank_name_account_user"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                android:text="@{account.accountNumber}"
                 tools:text="205123410202" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

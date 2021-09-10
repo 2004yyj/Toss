@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ks.hs.dgsw.domain.entity.Bank
+import ks.hs.dgsw.domain.entity.dto.Bank
 import ks.hs.dgsw.toss.databinding.ItemBankBinding
 
 class BankAdapter: ListAdapter<Bank, BankAdapter.ViewHolder>(diffUtil) {

@@ -3,7 +3,7 @@ package ks.hs.dgsw.toss.ui.viewmodel.fragment
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ks.hs.dgsw.domain.entity.Bank
+import ks.hs.dgsw.domain.entity.dto.Bank
 import ks.hs.dgsw.toss.ui.view.util.Event
 
 class SelectAccountViewModel(): ViewModel() {

@@ -6,8 +6,8 @@ import android.view.View.VISIBLE
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
-import ks.hs.dgsw.domain.entity.Account
-import ks.hs.dgsw.domain.entity.Bank
+import ks.hs.dgsw.domain.entity.dto.Account
+import ks.hs.dgsw.domain.entity.dto.Bank
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
 import ks.hs.dgsw.toss.ui.view.adapter.BankAdapter
 import ks.hs.dgsw.toss.ui.view.decoration.GridLayoutSpacingDecoration

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ks.hs.dgsw.domain.entity.Bank"/>
+        <import type="ks.hs.dgsw.domain.entity.dto.Bank"/>
         <variable
             name="bank"
             type="Bank" />

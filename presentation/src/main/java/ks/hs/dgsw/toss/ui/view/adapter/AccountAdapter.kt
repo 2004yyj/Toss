@@ -8,7 +8,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ks.hs.dgsw.domain.entity.Account
+import ks.hs.dgsw.domain.entity.dto.Account
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ItemAccountBinding
 import ks.hs.dgsw.toss.databinding.ItemAccountUserBinding

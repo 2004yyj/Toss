@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ks.hs.dgsw.domain.entity.Account"/>
+        <import type="ks.hs.dgsw.domain.entity.dto.Account"/>
         <variable
             name="account"
             type="Account" />
@@ -68,8 +68,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toEndOf="@+id/cardView2"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="대구은행 계좌"
-                    android:text="@{@string/some_bank_account(account.bankName)}"/>
+                    tools:text="계좌1"
+                    android:text="@{account.name}"/>
 
                 <TextView
                     android:id="@+id/tv_my_balance_account"
@@ -80,7 +80,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     tools:text="100,000 원"
-                    android:text="@{@string/my_balance_account(account.balance)}"/>
+                    android:text="@{@string/my_balance_account(account.money)}"/>
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
