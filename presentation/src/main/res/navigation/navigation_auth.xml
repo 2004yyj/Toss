@@ -34,15 +34,15 @@
         tools:layout="@layout/fragment_auth_key" />
     <fragment
         android:id="@+id/signUpFirstFragment"
-        android:name="ks.hs.dgsw.toss.ui.view.fragment.SignUpFirstFragment"
-        tools:layout="@layout/fragment_sign_up_first" >
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.RegisterFirstFragment"
+        tools:layout="@layout/fragment_register_first" >
         <action
             android:id="@+id/action_signUpFirstFragment_to_signUpSecondFragment"
             app:destination="@id/signUpSecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpSecondFragment"
-        android:name="ks.hs.dgsw.toss.ui.view.fragment.SignUpSecondFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.RegisterSecondFragment"
         android:label="fragment_sign_up_second"
-        tools:layout="@layout/fragment_sign_up_second" />
+        tools:layout="@layout/fragment_register_second" />
 </navigation>

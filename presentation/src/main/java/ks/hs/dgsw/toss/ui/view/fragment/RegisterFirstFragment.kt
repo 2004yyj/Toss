@@ -12,24 +12,24 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import ks.hs.dgsw.toss.R
-import ks.hs.dgsw.toss.databinding.FragmentSignUpFirstBinding
+import ks.hs.dgsw.toss.databinding.FragmentRegisterFirstBinding
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
-import ks.hs.dgsw.toss.ui.viewmodel.activity.SignUpViewModel
-import ks.hs.dgsw.toss.ui.viewmodel.factory.SignUpViewModelFactory
+import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
+import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
 
-class SignUpFirstFragment : Fragment() {
+class RegisterFirstFragment : Fragment() {
 
     private val navController: NavController by lazy { findNavController() }
-    private val factory by lazy { SignUpViewModelFactory() }
-    private val viewModel: SignUpViewModel by activityViewModels { factory }
-    private lateinit var binding: FragmentSignUpFirstBinding
+    private val factory by lazy { RegisterViewModelFactory() }
+    private val viewModel: RegisterViewModel by activityViewModels { factory }
+    private lateinit var binding: FragmentRegisterFirstBinding
     private lateinit var motionLayout: MotionLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSignUpFirstBinding.inflate(inflater)
+        binding = FragmentRegisterFirstBinding.inflate(inflater)
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -43,7 +43,7 @@ class SignUpFirstFragment : Fragment() {
     }
 
     private fun init() {
-        motionLayout = binding.motionLayoutSignUp
+        motionLayout = binding.motionLayoutRegister
         motionLayout.transitionToStart()
     }
 

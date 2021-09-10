@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ks.hs.dgsw.toss.ui.view.util.Event
 
-class SignUpViewModel: ViewModel() {
+class RegisterViewModel: ViewModel() {
     // 실패 시 메시지를 보내는 라이브 데이터 객체
     private val _isFailure = MutableLiveData<Event<String>>()
     val isFailure: LiveData<Event<String>> = _isFailure

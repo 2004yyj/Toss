@@ -6,19 +6,19 @@
     <data>
         <variable
             name="vm"
-            type="ks.hs.dgsw.toss.ui.viewmodel.activity.SignUpViewModel" />
+            type="ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/motion_layout_sign_up"
+        android:id="@+id/motion_layout_register"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="30dp"
-        app:layoutDescription="@xml/fragment_sign_up_scene"
-        tools:context=".ui.view.fragment.SignUpFirstFragment">
+        app:layoutDescription="@xml/fragment_register_scene"
+        tools:context=".ui.view.fragment.RegisterFirstFragment">
 
         <TextView
-            android:id="@+id/tv_title_sign_up"
+            android:id="@+id/tv_title_register"
             style="@style/TextViewBoldBig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_name_sign_up"
+            android:id="@+id/til_name_register"
             style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,10 +39,10 @@
             app:setError="@{vm.nameError}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_sign_up">
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_register">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_name_sign_up"
+                android:id="@+id/et_name_register"
                 android:text="@={vm.name}"
                 android:inputType="textPersonName"
                 style="@style/DefaultTextInputEditText"
@@ -54,17 +54,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
-            android:id="@+id/linear_layout_id_sign_up"
+            android:id="@+id/linear_layout_id_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:setVisible="@{vm.name.length() >= 2}"
-            app:layout_constraintTop_toBottomOf="@+id/til_name_sign_up">
+            app:layout_constraintTop_toBottomOf="@+id/til_name_register">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_id_sign_up"
+                android:id="@+id/til_id_register"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                 app:setError="@{vm.idError}">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_id_sign_up"
+                    android:id="@+id/et_id_register"
                     android:text="@={vm.id}"
                     android:inputType="text"
                     style="@style/DefaultTextInputEditText"
@@ -84,7 +84,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_id_chk_conflict_sign_up"
+                android:id="@+id/btn_id_chk_conflict_register"
                 style="@style/RegularButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linear_layout_social_security_number_sign_up"
+            android:id="@+id/linear_layout_social_security_number_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -102,10 +102,10 @@
             app:setVisible="@{vm.id.length() >= 3 &amp;&amp; vm.id.length() &lt;= 12}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_sign_up">
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_register">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_ssn_first_sign_up"
+                android:id="@+id/til_ssn_first_register"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                 app:setError="@{vm.birthError}">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_ssn_first_sign_up"
+                    android:id="@+id/et_ssn_first_register"
                     style="@style/DefaultTextInputEditText"
                     android:letterSpacing="1"
                     tools:text="040809"
@@ -134,7 +134,7 @@
                 android:layout_marginHorizontal="10dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_ssn_second_sign_up"
+                android:id="@+id/til_ssn_second_register"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
                 app:setError="@{vm.securityCodeError}">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_ssn_second_sign_up"
+                    android:id="@+id/et_ssn_second_register"
                     android:inputType="number"
                     android:letterSpacing="1"
                     android:text="@={vm.securityCode}"
@@ -156,7 +156,7 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email_sign_up"
+            android:id="@+id/til_email_register"
             style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -167,10 +167,10 @@
             app:setError="@{vm.emailError}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_sign_up">
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_register">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email_sign_up"
+                android:id="@+id/et_email_register"
                 android:text="@={vm.email}"
                 android:inputType="textWebEmailAddress"
                 style="@style/DefaultTextInputEditText"
@@ -180,7 +180,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_sign_up"
+            android:id="@+id/btn_register"
             style="@style/BigButton"
             android:text="@string/next"
             app:setVisible="@{vm.emailError.length() == 0}"
