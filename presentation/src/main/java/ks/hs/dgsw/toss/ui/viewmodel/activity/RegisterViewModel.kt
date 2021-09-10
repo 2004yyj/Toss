@@ -17,10 +17,12 @@ class RegisterViewModel: ViewModel() {
 
     // 데이터
     val name = MutableLiveData<String>()
-    val id = MutableLiveData<String>()
+    val nickname = MutableLiveData<String>()
     val birth = MutableLiveData<String>()
     val securityCode = MutableLiveData<String>()
     val email = MutableLiveData<String>()
+
+    val id = MutableLiveData<String>()
 
     // 에러 텍스트 표시용
     val nameError = MutableLiveData("")

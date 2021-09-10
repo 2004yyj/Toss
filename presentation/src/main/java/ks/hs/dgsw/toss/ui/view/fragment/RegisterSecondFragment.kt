@@ -23,4 +23,18 @@ class RegisterSecondFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_register_second, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        observe()
+    }
+
+    private fun observe() = with(viewModel) {
+        id.observe(viewLifecycleOwner) {
+            idError.value = if (it.length !in 3..12)
+                resources.getString(R.string.please_set_id)
+            else ""
+        }
+    }
+
 }
