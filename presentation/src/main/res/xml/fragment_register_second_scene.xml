@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/widget" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_id_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/til_pw_register"
+            android:visibility="invisible"/>
+        <Constraint
+            android:id="@+id/til_pw_check_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_pw_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/til_phone_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_pw_check_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+
+        <Constraint
+            android:id="@+id/btn_next_register_second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/showPwLayout" >
+        <Constraint
+            android:id="@+id/til_pw_check_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_pw_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/til_phone_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_pw_check_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/btn_next_register_second"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/btn_next_register_second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/showPwLayout"
+        app:motionInterpolator="easeOut" />
+    <ConstraintSet android:id="@+id/showPwCheckLayout" >
+        <Constraint
+            android:id="@+id/til_phone_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/til_pw_check_register"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/btn_next_register_second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showPwLayout"
+        app:constraintSetEnd="@+id/showPwCheckLayout"
+        app:motionInterpolator="easeOut" />
+    <ConstraintSet android:id="@+id/showPhoneNumLayout" >
+        <Constraint
+            android:id="@+id/btn_next_register_second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:alpha="0"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@+id/showPwCheckLayout"
+        app:constraintSetEnd="@+id/showPhoneNumLayout"
+        app:motionInterpolator="easeOut" />
+    <ConstraintSet android:id="@+id/end" />
+    <Transition
+        app:constraintSetStart="@+id/showPhoneNumLayout"
+        app:constraintSetEnd="@+id/end"
+        app:motionInterpolator="easeOut" />
+</MotionScene>

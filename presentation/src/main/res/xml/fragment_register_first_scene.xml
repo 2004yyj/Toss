@@ -33,7 +33,7 @@
             android:visibility="invisible" />
 
         <Constraint
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_next_register_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +76,7 @@
             android:layout_marginTop="10dp"
             android:visibility="invisible" />
         <Constraint
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_next_register_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +118,7 @@
             android:layout_marginTop="10dp"
             android:visibility="invisible" />
         <Constraint
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_next_register_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,7 @@
         app:motionInterpolator="easeOut" />
     <ConstraintSet android:id="@+id/showEmailEditText" >
         <Constraint
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_next_register_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +149,7 @@
     <ConstraintSet android:id="@+id/end">
         <Constraint android:id="@id/widget" />
         <Constraint
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_next_register_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

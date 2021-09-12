@@ -43,7 +43,7 @@ class RegisterFirstFragment : Fragment() {
     }
 
     private fun init() {
-        motionLayout = binding.motionLayoutRegister
+        motionLayout = binding.motionLayoutRegisterFirst
     }
 
     private fun observe() = with(viewModel) {
@@ -77,7 +77,7 @@ class RegisterFirstFragment : Fragment() {
         birth.observe(viewLifecycleOwner) {
             birthError.value = when (it.length == 6) {
                 true -> {
-                    if (it.length + birth.value?.length!! == 7 &&
+                    if (it.isNotEmpty() && securityCode.value?.isNotEmpty() == true &&
                         motionLayout.currentState == R.id.showSecurityNumLayout) {
                         motionLayout.transitionToState(R.id.showEmailEditText)
                     }
@@ -92,7 +92,7 @@ class RegisterFirstFragment : Fragment() {
                 if (it.length != 1)
                     resources.getString(R.string.please_set_security_code)
                 else {
-                    if (it.length + birth.value?.length!! == 7 &&
+                    if (it.isNotEmpty() && birth.value?.isNotEmpty() == true &&
                         motionLayout.currentState == R.id.showSecurityNumLayout) {
                         motionLayout.transitionToState(R.id.showEmailEditText)
                     }
