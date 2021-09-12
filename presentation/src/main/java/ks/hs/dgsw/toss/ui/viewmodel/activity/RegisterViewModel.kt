@@ -31,9 +31,15 @@ class RegisterViewModel: ViewModel() {
 
     // 회원가입 2단계 프래그먼트 데이터
     val id = MutableLiveData<String>()
+    val pw = MutableLiveData<String>()
+    val pwCheck = MutableLiveData<String>()
+    val phone = MutableLiveData<String>()
 
     // 회원가입 2단계 에러 텍스트 표시용
     val idError = MutableLiveData("")
+    val pwError = MutableLiveData("")
+    val pwCheckError = MutableLiveData("")
+    val phoneError = MutableLiveData("")
 
     fun toSecondFragment() { // 1단계에서 2단계 이동 시 예외 처리
         val name = name.value

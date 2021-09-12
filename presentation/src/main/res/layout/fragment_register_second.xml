@@ -1,14 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.view.fragment.RegisterSecondFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="vm"
+            type="ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:context=".ui.view.fragment.RegisterSecondFragment">
 
-</FrameLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_register_second"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"/>
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motion_layout_register_second"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="30dp"
+            android:paddingBottom="30dp"
+            app:layoutDescription="@xml/fragment_register_second_scene">
+
+            <TextView
+                android:id="@+id/tv_title_register"
+                style="@style/TextViewBoldBig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="정보 입력이 거의 끝났어요."
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_id_register"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:hint="@string/id"
+                app:errorEnabled="@{vm.idError.length() != 0}"
+                app:setError="@{vm.idError}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_register">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_id_register"
+                    android:text="@={vm.id}"
+                    android:inputType="text"
+                    style="@style/DefaultTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <requestFocus />
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_pw_register"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pw"
+                android:layout_marginTop="10dp"
+                app:errorEnabled="@{vm.pwError.length() != 0}"
+                app:setVisible="@{vm.id.length() >= 3 &amp;&amp; vm.id.length() &lt;= 12}"
+                app:setError="@{vm.pwError}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_id_register">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_pw_register"
+                    android:text="@={vm.pw}"
+                    android:inputType="textPassword"
+                    style="@style/DefaultTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_pw_check_register"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pwCheck"
+                android:layout_marginTop="10dp"
+                app:errorEnabled="@{vm.pwCheckError.length() != 0}"
+                app:setVisible="@{vm.pw.length() >= 8 &amp;&amp; vm.pw.length() &lt;= 12}"
+                app:setError="@{vm.pwCheckError}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_pw_register">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_pw_check_register"
+                    android:text="@={vm.pwCheck}"
+                    android:inputType="textPassword"
+                    style="@style/DefaultTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_phone_register"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone"
+                android:layout_marginTop="10dp"
+                app:errorEnabled="@{vm.phoneError.length() != 0}"
+                app:setVisible="@{vm.pwCheck.length() > 0}"
+                app:setError="@{vm.phoneError}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_pw_check_register">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_phone_register"
+                    android:text="@={vm.phone}"
+                    android:inputType="phone"
+                    style="@style/DefaultTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next_register_second"
+                style="@style/BigButton"
+                android:text="@string/register"
+                android:layout_width="match_parent"
+                app:setVisible="@{vm.phone.length() > 0}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </LinearLayout>
+</layout>

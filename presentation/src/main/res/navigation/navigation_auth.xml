@@ -43,6 +43,5 @@
     <fragment
         android:id="@+id/signUpSecondFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.RegisterSecondFragment"
-        android:label="fragment_sign_up_second"
         tools:layout="@layout/fragment_register_second" />
 </navigation>
