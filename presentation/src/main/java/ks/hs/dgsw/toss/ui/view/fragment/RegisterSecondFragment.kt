@@ -12,19 +12,26 @@ import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
+import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterSecondBinding
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
+import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterSecondFragment : Fragment() {
 
+    @Inject
+    lateinit var postRegisterUseCase: PostRegisterUseCase
+
     private val navController by lazy { findNavController() }
-    private val viewModel: RegisterViewModel by activityViewModels()
+    private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: FragmentRegisterSecondBinding
 
     private lateinit var toolbar: Toolbar
@@ -36,6 +43,7 @@ class RegisterSecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterSecondBinding.inflate(inflater)
+        viewModel = ViewModelProvider(requireActivity(), RegisterViewModelFactory(postRegisterUseCase))[RegisterViewModel::class.java]
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root

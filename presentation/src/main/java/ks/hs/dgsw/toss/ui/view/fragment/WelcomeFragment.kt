@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentWelcomeBinding
+import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
 
+@AndroidEntryPoint
 class WelcomeFragment : Fragment() {
 
     private val navController: NavController by lazy { findNavController() }

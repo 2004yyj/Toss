@@ -14,7 +14,8 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_welcomeFragment_to_signUpFragment"
-            app:destination="@id/signUpFirstFragment" />
+            app:destination="@id/signUpFirstFragment"
+            app:launchSingleTop="false" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

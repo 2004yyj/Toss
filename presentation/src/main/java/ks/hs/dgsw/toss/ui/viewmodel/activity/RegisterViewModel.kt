@@ -15,8 +15,7 @@ import ks.hs.dgsw.toss.ui.view.util.Event
 import javax.inject.Inject
 import kotlin.Exception
 
-@HiltViewModel
-class RegisterViewModel @Inject constructor(
+class RegisterViewModel constructor(
     private val postRegisterUseCase: PostRegisterUseCase
 ): ViewModel() {
     // 실패 시 메시지를 보내는 라이브 데이터 객체

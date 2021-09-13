@@ -9,20 +9,28 @@ import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterFirstBinding
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
+import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterFirstFragment : Fragment() {
 
+    @Inject
+    lateinit var postRegisterUseCase: PostRegisterUseCase
+
     private val navController: NavController by lazy { findNavController() }
-    private val viewModel: RegisterViewModel by activityViewModels()
+    private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: FragmentRegisterFirstBinding
+
     private lateinit var motionLayout: MotionLayout
 
     override fun onCreateView(
@@ -30,6 +38,7 @@ class RegisterFirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterFirstBinding.inflate(inflater)
+        viewModel = ViewModelProvider(requireActivity(), RegisterViewModelFactory(postRegisterUseCase))[RegisterViewModel::class.java]
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
