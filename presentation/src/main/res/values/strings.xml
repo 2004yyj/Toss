@@ -20,7 +20,9 @@
     <string name="social_security_number_second_1">뒷자리 맨 앞 번호</string>
     <string name="email">이메일</string>
     <string name="next">다음</string>
-    <string name="register_title_input_info">정보를 입력하세요.</string>
+    <string name="register_first_title_input_info">정보를 입력하세요.</string>
+    <string name="register_second_title_input_info">정보 입력이 거의 끝났어요.</string>
+    <string name="register_title_check_input_info">입력한 정보를 확인해주세요.</string>
     <string name="please_set_name">이름을 입력해 주세요.</string>
     <string name="please_set_id">아이디는 3–12자로 입력해 주세요.</string>
     <string name="please_set_birth">생년월일을 6자리로 정확히 입력해 주십시오.</string>

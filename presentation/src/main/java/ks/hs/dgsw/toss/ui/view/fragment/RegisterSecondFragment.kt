@@ -3,7 +3,6 @@ package ks.hs.dgsw.toss.ui.view.fragment
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,21 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterSecondBinding
+import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
-import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
 
+@AndroidEntryPoint
 class RegisterSecondFragment : Fragment() {
 
     private val navController by lazy { findNavController() }
-
-    private val factory by lazy { RegisterViewModelFactory() }
-    private val viewModel: RegisterViewModel by activityViewModels { factory }
+    private val viewModel: RegisterViewModel by activityViewModels()
     private lateinit var binding: FragmentRegisterSecondBinding
 
     private lateinit var toolbar: Toolbar
@@ -62,6 +62,7 @@ class RegisterSecondFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         motionLayout.transitionToStart()
+        registerSecondTitle.value = resources.getString(R.string.register_second_title_input_info)
 
         id.observe(viewLifecycleOwner) {
             idError.value = if (it.length !in 3..12)
@@ -96,15 +97,23 @@ class RegisterSecondFragment : Fragment() {
 
         phone.observe(viewLifecycleOwner) {
             val phoneRegex = Regex("^\\d{3}-\\d{3,4}-\\d{4}\$")
-            Log.d("RegisterSecondFragment", "observe: $it, ${phoneRegex.matches(it)}")
             phoneError.value = if (!phoneRegex.matches(it)) {
                 "전화번호 형식에 맞게 입력해 주세요."
             } else {
                 if (motionLayout.currentState == R.id.showPhoneNumLayout)
                     motionLayout.transitionToState(R.id.end)
+                registerSecondTitle.value = resources.getString(R.string.register_title_check_input_info)
                 ""
             }
         }
+
+        isSuccessRegister.observe(viewLifecycleOwner, EventObserver {
+            Log.d("RegisterSecondFragment", "observe: $it")
+        })
+
+        isFailure.observe(viewLifecycleOwner, EventObserver {
+            Log.d("RegisterSecondFragment", "observe: $it")
+        })
     }
 
     override fun onDestroy() {

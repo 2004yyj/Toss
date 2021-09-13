@@ -2,26 +2,26 @@ package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterFirstBinding
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
-import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
 
+@AndroidEntryPoint
 class RegisterFirstFragment : Fragment() {
 
     private val navController: NavController by lazy { findNavController() }
-    private val factory by lazy { RegisterViewModelFactory() }
-    private val viewModel: RegisterViewModel by activityViewModels { factory }
+    private val viewModel: RegisterViewModel by activityViewModels()
     private lateinit var binding: FragmentRegisterFirstBinding
     private lateinit var motionLayout: MotionLayout
 
@@ -48,6 +48,7 @@ class RegisterFirstFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         motionLayout.transitionToStart()
+        registerFirstTitle.value = resources.getString(R.string.register_first_title_input_info)
 
         name.observe(viewLifecycleOwner) {
             nameError.value =
@@ -107,6 +108,7 @@ class RegisterFirstFragment : Fragment() {
                     resources.getString(R.string.please_set_email)
                 } else {
                     motionLayout.transitionToState(R.id.end)
+                    registerFirstTitle.value = resources.getString(R.string.register_title_check_input_info)
                     ""
                 }
         }

@@ -1,19 +1,38 @@
 package ks.hs.dgsw.toss.ui.viewmodel.activity
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import ks.hs.dgsw.domain.entity.request.Register
+import ks.hs.dgsw.domain.usecase.user.PostLoginUseCase
+import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.ui.view.util.Event
+import javax.inject.Inject
+import kotlin.Exception
 
-class RegisterViewModel: ViewModel() {
+@HiltViewModel
+class RegisterViewModel @Inject constructor(
+    private val postRegisterUseCase: PostRegisterUseCase
+): ViewModel() {
     // 실패 시 메시지를 보내는 라이브 데이터 객체
     private val _isFailure = MutableLiveData<Event<String>>()
     val isFailure: LiveData<Event<String>> = _isFailure
 
+    // 성공 시 데이터를 보내는 라이브 데이터 객체
+    private val _isSuccessRegister = MutableLiveData<Event<String>>()
+    val isSuccessRegister: LiveData<Event<String>> = _isSuccessRegister
+
     // 성공 시 1단계->2단계로 프래그먼트를 전환하는 라이브 데이터 객체
     private val _navigateToSecondFragment = MutableLiveData<Event<String>>()
     val navigateToSecondFragment: LiveData<Event<String>> = _navigateToSecondFragment
+
+    // 회원가입 1단계 프래그먼트 타이틀
+    val registerFirstTitle = MutableLiveData<String>()
 
     // 회원가입 1단계 프래그먼트 데이터
     val name = MutableLiveData<String>()
@@ -28,6 +47,9 @@ class RegisterViewModel: ViewModel() {
     val birthError = MutableLiveData("")
     val securityCodeError = MutableLiveData("")
     val emailError = MutableLiveData("")
+
+    // 회원가입 2단계 프래그먼트 타이틀
+    val registerSecondTitle = MutableLiveData<String>()
 
     // 회원가입 2단계 프래그먼트 데이터
     val id = MutableLiveData<String>()
@@ -62,6 +84,35 @@ class RegisterViewModel: ViewModel() {
             _navigateToSecondFragment.value = Event("toSignUpSecondFragment")
         } else {
             _isFailure.value = Event("입력하지 않은 값이나 잘못된 값이 없는지 확인해 주세요.")
+        }
+    }
+
+    fun toFinishFragment() {
+        val name = name.value!!
+        val nickname = nickname.value!!
+        val birth = birth.value!!
+        val email = email.value!!
+        val id = id.value?:""
+        val pw = pw.value?:""
+        val pwCheck = pwCheck.value?:""
+        val phone = phone.value?:""
+
+        viewModelScope.launch {
+            if (id.isNotEmpty() && pw.isNotEmpty() && pw == pwCheck && phone.isNotEmpty() &&
+            (idError.value?:"").isEmpty() && (pwError.value?:"").isEmpty() && (phoneError.value?:"").isEmpty()) {
+                val unformattedPhoneNumber = phone.replace("-", "")
+                val register = Register(id, pw, nickname, unformattedPhoneNumber, birth)
+                try {
+                    postRegisterUseCase.buildParamsUseCase(
+                        PostRegisterUseCase.Params(register)
+                    )
+                    _isSuccessRegister.value = Event(
+                        "toSuccessRegister"
+                    )
+                } catch (e: Throwable) {
+                    _isFailure.value = Event(e.message?:"")
+                }
+            }
         }
     }
 }

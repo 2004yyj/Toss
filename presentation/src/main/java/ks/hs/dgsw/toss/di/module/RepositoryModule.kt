@@ -15,6 +15,6 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Singleton
     @Provides
-    fun provideUserRepository(userDataSource: UserDataSource) =
+    fun provideUserRepository(userDataSource: UserDataSource): UserRepository =
         UserRepositoryImpl(userDataSource)
 }
