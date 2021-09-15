@@ -34,4 +34,5 @@
     <string name="phone">전화번호</string>
     <string name="please_set_pw">비밀번호는 영어, 숫자, 특수문자를 포함하여 8-12자이어야 합니다.</string>
     <string name="password_is_not_equal">비밀번호가 맞지 않습니다.</string>
+    <string name="setting_pin_number">간편인증번호 설정</string>
 </resources>

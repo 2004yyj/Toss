@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.fragment.AuthKeyFragment">
+    tools:context=".ui.view.fragment.PinFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

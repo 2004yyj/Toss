@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import ks.hs.dgsw.toss.R
 
-class AuthKeyFragment : Fragment() {
+class PinFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_auth_key, container, false)
+        return inflater.inflate(R.layout.fragment_pin, container, false)
     }
 
 }

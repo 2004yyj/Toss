@@ -30,19 +30,37 @@
     </fragment>
     <fragment
         android:id="@+id/authKeyFragment"
-        android:name="ks.hs.dgsw.toss.ui.view.fragment.AuthKeyFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.PinFragment"
         android:label="fragment_auth_key"
-        tools:layout="@layout/fragment_auth_key" />
+        tools:layout="@layout/fragment_pin" />
     <fragment
         android:id="@+id/signUpFirstFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.RegisterFirstFragment"
         tools:layout="@layout/fragment_register_first" >
         <action
             android:id="@+id/action_signUpFirstFragment_to_signUpSecondFragment"
-            app:destination="@id/signUpSecondFragment" />
+            app:destination="@id/registerSecondFragment" />
     </fragment>
     <fragment
-        android:id="@+id/signUpSecondFragment"
+        android:id="@+id/registerSecondFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.RegisterSecondFragment"
-        tools:layout="@layout/fragment_register_second" />
+        tools:layout="@layout/fragment_register_second" >
+        <action
+            android:id="@+id/action_registerSecondFragment_to_registerFinishFragment"
+            app:destination="@id/registerFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFinishFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.RegisterFinishFragment"
+        android:label="fragment_register_finish"
+        tools:layout="@layout/fragment_register_finish" >
+        <action
+            android:id="@+id/action_registerFinishFragment_to_setPinFragment"
+            app:destination="@id/setPinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setPinFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SetPinFragment"
+        android:label="SetPinFragment"
+        tools:layout="@layout/fragment_set_pin"/>
 </navigation>
