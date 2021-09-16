@@ -7,7 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import ks.hs.dgsw.domain.entity.request.Register
 import ks.hs.dgsw.domain.usecase.user.PostLoginUseCase
 import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
@@ -102,14 +105,14 @@ class RegisterViewModel constructor(
                 val unformattedPhoneNumber = phone.replace("-", "")
                 val register = Register(id, pw, nickname, unformattedPhoneNumber, birth)
                 try {
-                    postRegisterUseCase.buildParamsUseCase(
-                        PostRegisterUseCase.Params(register)
-                    )
-                    _isSuccessRegister.value = Event(
-                        "toSuccessRegister"
-                    )
+                    withTimeout(10000) {
+                        postRegisterUseCase.buildParamsUseCase(PostRegisterUseCase.Params(register))
+                        _isSuccessRegister.value = Event("toSuccessRegister")
+                    }
                 } catch (e: Throwable) {
                     _isFailure.value = Event(e.message?:"")
+                } catch (e: TimeoutCancellationException) {
+                    _isFailure.value = Event("시간이 초과되었습니다.")
                 }
             }
         }
