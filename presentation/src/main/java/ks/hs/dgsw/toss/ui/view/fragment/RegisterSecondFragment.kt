@@ -115,7 +115,10 @@ class RegisterSecondFragment : Fragment() {
         }
 
         isSuccessRegister.observe(viewLifecycleOwner, EventObserver {
-            navController.navigate(R.id.action_registerSecondFragment_to_registerFinishFragment)
+            val bundle = Bundle()
+            bundle.putString("id", id.value?:"")
+            bundle.putString("pw", pw.value?:"")
+            navController.navigate(R.id.action_registerSecondFragment_to_registerFinishFragment, bundle)
         })
 
         isFailure.observe(viewLifecycleOwner, EventObserver {
