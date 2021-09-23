@@ -32,7 +32,8 @@
             app:bar_height="2dp"
             app:bar_inactive_color="@color/toss_dark_color"
             app:height="40dp"
-
+            app:hide_otp_drawable="@drawable/pin_bullet"
+            app:hide_otp="true"
             app:layout_constraintBottom_toTopOf="@+id/btn_finish_set_pin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
