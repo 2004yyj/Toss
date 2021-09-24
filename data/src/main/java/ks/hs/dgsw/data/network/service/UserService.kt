@@ -11,16 +11,16 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface UserService {
-    @POST("/api/user/register")
+    @POST("/user/register")
     suspend fun postRegister(
         @Body register: Register
     ): retrofit2.Response<Response<Any?>>
 
-    @POST("/api/user/login")
+    @POST("/user/login")
     suspend fun postLogin(
         @Body login: Login
     ): retrofit2.Response<TokenResponse>
 
-    @GET("/api/user")
+    @GET("/user")
     suspend fun getMyInfo(): retrofit2.Response<Response<UserData>>
 }

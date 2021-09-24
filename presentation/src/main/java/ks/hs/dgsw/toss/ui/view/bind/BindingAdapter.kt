@@ -1,5 +1,6 @@
 package ks.hs.dgsw.toss.ui.view.bind
 
+import `in`.aabhasjindal.otptextview.OtpTextView
 import android.app.Activity
 import android.telephony.PhoneNumberUtils
 import android.util.Log
@@ -7,6 +8,8 @@ import android.view.View
 import android.view.View.VISIBLE
 import android.widget.EditText
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import ks.hs.dgsw.domain.entity.dto.Account
@@ -44,4 +47,24 @@ fun View.setVisible(isVisibility: Boolean) {
     if (isVisibility) {
         visibility = VISIBLE
     }
+}
+
+@BindingAdapter("value")
+fun OtpTextView.setViewBinding(value: String?) {
+    val old = this.otp
+    if (old != value && !value.isNullOrBlank()) {
+        this.setOTP(value)
+    }
+}
+
+@BindingAdapter("valueAttrChanged")
+fun OtpTextView.onValueAttrChanged(listener: InverseBindingListener?) {
+    this.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+        listener?.onChange()
+    }
+}
+
+@InverseBindingAdapter(attribute = "value", event = "valueAttrChanged")
+fun bindingValue(otpTextView: OtpTextView): String {
+    return otpTextView.otp?:""
 }

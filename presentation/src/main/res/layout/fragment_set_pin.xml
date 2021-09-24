@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="ks.hs.dgsw.toss.ui.viewmodel.fragment.PinViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,6 +40,7 @@
             app:height="40dp"
             app:hide_otp_drawable="@drawable/pin_bullet"
             app:hide_otp="true"
+            app:value="@={vm.password}"
             app:layout_constraintBottom_toTopOf="@+id/btn_finish_set_pin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +51,7 @@
             android:id="@+id/btn_finish_set_pin"
             style="@style/BigButton"
             android:text="완료"
+            android:onClick="@{() -> vm.postPasswordRegister()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

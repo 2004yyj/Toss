@@ -1,6 +1,7 @@
 package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +10,17 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import ks.hs.dgsw.domain.usecase.user.PostLoginUseCase
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterFinishBinding
+import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.token
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.LoginViewModel
 import ks.hs.dgsw.toss.ui.viewmodel.factory.LoginViewModelFactory
 import javax.inject.Inject
 
-@HiltAndroidApp
+@AndroidEntryPoint
 class RegisterFinishFragment : Fragment() {
 
     @Inject
@@ -50,9 +53,8 @@ class RegisterFinishFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            val bundle = Bundle()
-            bundle.putString("token", it)
-            navController.navigate(R.id.action_registerFinishFragment_to_setPinFragment, bundle)
+            token = it
+            navController.navigate(R.id.action_registerFinishFragment_to_setPinFragment)
         }
 
         isFailure.observe(viewLifecycleOwner) {
@@ -65,14 +67,16 @@ class RegisterFinishFragment : Fragment() {
             with(viewModel) {
                 id.value = this@RegisterFinishFragment.id
                 pw.value = this@RegisterFinishFragment.pw
+                Log.d("RegisterFinishFragment", "listener: $id")
+                Log.d("RegisterFinishFragment", "listener: $pw")
                 login()
             }
         }
     }
 
     private fun init() {
-        id = arguments?.get("id") as String
-        pw = arguments?.get("pw") as String
+        id = arguments?.getString("id")?:""
+        pw = arguments?.getString("pw")?:""
         btnSetPin = binding.btnSetPinFinish
     }
 }
