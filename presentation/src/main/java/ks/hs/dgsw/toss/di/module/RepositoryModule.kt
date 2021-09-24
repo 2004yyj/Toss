@@ -5,8 +5,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ks.hs.dgsw.data.datasource.PasswordDataSource
 import ks.hs.dgsw.data.datasource.UserDataSource
+import ks.hs.dgsw.data.repository.PasswordRepositoryImpl
 import ks.hs.dgsw.data.repository.UserRepositoryImpl
+import ks.hs.dgsw.domain.repository.PasswordRepository
 import ks.hs.dgsw.domain.repository.UserRepository
 import javax.inject.Singleton
 
@@ -17,4 +20,9 @@ object RepositoryModule {
     @Provides
     fun provideUserRepository(userDataSource: UserDataSource): UserRepository =
         UserRepositoryImpl(userDataSource)
+
+    @Singleton
+    @Provides
+    fun providePasswordRepository(passwordDataSource: PasswordDataSource): PasswordRepository =
+        PasswordRepositoryImpl(passwordDataSource)
 }
