@@ -1,5 +1,6 @@
 package ks.hs.dgsw.data.base
 
+import android.util.Log
 import com.google.gson.Gson
 import ks.hs.dgsw.domain.entity.response.Response
 import ks.hs.dgsw.domain.entity.response.TokenResponse
@@ -25,6 +26,7 @@ abstract class BaseRemote<SV> {
     private fun <T> checkError(response: retrofit2.Response<T>) {
         if (!response.isSuccessful) {
             val gson = Gson()
+            Log.d("BaseRemote", "checkError: ${response.code()}")
             val errorBody = gson.fromJson(response.errorBody()!!.charStream(), Response::class.java)
             throw Throwable(errorBody.message)
         }
