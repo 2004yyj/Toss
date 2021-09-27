@@ -1,6 +1,7 @@
 package ks.hs.dgsw.domain.usecase.password
 
 import ks.hs.dgsw.domain.base.ParamsUseCase
+import ks.hs.dgsw.domain.entity.request.Password
 import ks.hs.dgsw.domain.repository.PasswordRepository
 import javax.inject.Inject
 
@@ -9,10 +10,10 @@ class PostPasswordLoginUseCase @Inject constructor(
 ): ParamsUseCase<PostPasswordLoginUseCase.Params, String>() {
 
     override suspend fun buildParamsUseCase(params: Params): String {
-        return passwordRepository.postPasswordLogin(params.pw)
+        return passwordRepository.postPasswordLogin(params.password)
     }
 
     data class Params(
-        val pw: String
+        val password: Password
     )
 }

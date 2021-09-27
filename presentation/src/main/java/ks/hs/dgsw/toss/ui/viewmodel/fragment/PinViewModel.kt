@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import ks.hs.dgsw.domain.entity.request.Password
 import ks.hs.dgsw.domain.usecase.password.PostPasswordLoginUseCase
 import ks.hs.dgsw.domain.usecase.password.PostPasswordRegisterUseCase
 
@@ -26,10 +27,11 @@ class PinViewModel(
 
     fun postPasswordRegister() {
         val password = password.value?:""
+        val passwordBody = Password(password)
 
         if (password.isNotEmpty()) {
             viewModelScope.launch {
-                val params = PostPasswordRegisterUseCase.Params(password)
+                val params = PostPasswordRegisterUseCase.Params(passwordBody)
 
                 try {
                     _isRegisterSuccess.value =
@@ -45,10 +47,11 @@ class PinViewModel(
 
     fun postPasswordLogin() {
         val password = password.value?:""
+        val passwordBody = Password(password)
 
         if (password.isNotEmpty()) {
             viewModelScope.launch {
-                val params = PostPasswordLoginUseCase.Params(password)
+                val params = PostPasswordLoginUseCase.Params(passwordBody)
 
                 try {
                     _isLoginSuccess.value =
