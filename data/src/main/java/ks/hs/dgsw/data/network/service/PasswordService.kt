@@ -1,11 +1,10 @@
 package ks.hs.dgsw.data.network.service
 
+import ks.hs.dgsw.data.entity.TokenData
 import ks.hs.dgsw.domain.entity.request.Password
 import ks.hs.dgsw.domain.entity.response.Response
-import ks.hs.dgsw.domain.entity.response.TokenResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
-import retrofit2.http.Query
 
 interface PasswordService {
     @POST("/password")
@@ -16,5 +15,5 @@ interface PasswordService {
     @POST("/password/login")
     suspend fun postPasswordLogin(
         @Body password: Password
-    ): retrofit2.Response<TokenResponse>
+    ): retrofit2.Response<Response<TokenData>>
 }

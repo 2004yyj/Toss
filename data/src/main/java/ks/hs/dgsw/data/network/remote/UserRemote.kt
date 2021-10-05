@@ -1,6 +1,7 @@
 package ks.hs.dgsw.data.network.remote
 
 import ks.hs.dgsw.data.base.BaseRemote
+import ks.hs.dgsw.data.entity.TokenData
 import ks.hs.dgsw.data.entity.UserData
 import ks.hs.dgsw.data.network.service.UserService
 import ks.hs.dgsw.domain.entity.request.Login
@@ -14,8 +15,8 @@ class UserRemote @Inject constructor(
         return getMessage(service.postRegister(register))
     }
 
-    suspend fun postLogin(login: Login): String {
-        return getTokenResponse(service.postLogin(login))
+    suspend fun postLogin(login: Login): TokenData {
+        return getResponse(service.postLogin(login))
     }
 
     suspend fun getMyInfo(): UserData {

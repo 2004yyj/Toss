@@ -53,7 +53,7 @@ class RegisterFinishFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner) {
-            token = it
+            token = it.token
             navController.navigate(R.id.action_registerFinishFragment_to_setPinFragment)
         }
 

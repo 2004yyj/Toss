@@ -1,6 +1,8 @@
 package ks.hs.dgsw.data.repository
 
 import ks.hs.dgsw.data.datasource.UserDataSource
+import ks.hs.dgsw.data.entity.TokenData
+import ks.hs.dgsw.domain.entity.dto.Token
 import ks.hs.dgsw.domain.entity.dto.User
 import ks.hs.dgsw.domain.entity.request.Login
 import ks.hs.dgsw.domain.entity.request.Register
@@ -14,7 +16,7 @@ class UserRepositoryImpl @Inject constructor(
         return userDataSource.postRegister(register)
     }
 
-    override suspend fun postLogin(login: Login): String {
+    override suspend fun postLogin(login: Login): Token {
         return userDataSource.postLogin(login)
     }
 

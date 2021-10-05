@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
+import ks.hs.dgsw.domain.entity.dto.Token
 import ks.hs.dgsw.domain.entity.request.Login
 import ks.hs.dgsw.domain.usecase.user.PostLoginUseCase
 import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.token
@@ -15,8 +16,8 @@ class LoginViewModel(
     private val postLoginUseCase: PostLoginUseCase
 ): ViewModel() {
 
-    private val _isSuccess = MutableLiveData<String>()
-    val isSuccess: LiveData<String> = _isSuccess
+    private val _isSuccess = MutableLiveData<Token>()
+    val isSuccess: LiveData<Token> = _isSuccess
 
     private val _isFailure = MutableLiveData<String>()
     val isFailure: LiveData<String> = _isFailure

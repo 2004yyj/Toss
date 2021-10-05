@@ -66,7 +66,7 @@ class SetPinFragment : Fragment() {
         }
 
         isLoginSuccess.observe(viewLifecycleOwner) {
-            token = it
+            token = it.token
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
