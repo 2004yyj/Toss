@@ -14,7 +14,7 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_welcomeFragment_to_signUpFragment"
-            app:destination="@id/signUpFirstFragment"
+            app:destination="@id/registerFirstFragment"
             app:launchSingleTop="false" />
     </fragment>
     <fragment
@@ -34,7 +34,7 @@
         android:label="fragment_auth_key"
         tools:layout="@layout/fragment_pin" />
     <fragment
-        android:id="@+id/signUpFirstFragment"
+        android:id="@+id/registerFirstFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.RegisterFirstFragment"
         tools:layout="@layout/fragment_register_first" >
         <action
@@ -47,6 +47,8 @@
         tools:layout="@layout/fragment_register_second" >
         <action
             android:id="@+id/action_registerSecondFragment_to_registerFinishFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/registerFirstFragment"
             app:destination="@id/registerFinishFragment" />
     </fragment>
     <fragment
