@@ -2,6 +2,7 @@ package ks.hs.dgsw.data.network.remote
 
 import ks.hs.dgsw.data.base.BaseRemote
 import ks.hs.dgsw.data.entity.LoginTokenData
+import ks.hs.dgsw.data.entity.PasswordLoginTokenData
 import ks.hs.dgsw.data.network.service.PasswordService
 import ks.hs.dgsw.domain.entity.request.PasswordLogin
 import ks.hs.dgsw.domain.entity.request.PasswordRegister
@@ -14,7 +15,7 @@ class PasswordRemote @Inject constructor(
         return getMessage(service.postPasswordRegister(passwordLogin))
     }
 
-    suspend fun postPasswordLogin(passwordLogin: PasswordLogin): LoginTokenData {
+    suspend fun postPasswordLogin(passwordLogin: PasswordLogin): PasswordLoginTokenData {
         return getResponse(service.postPasswordLogin(passwordLogin))
     }
 }

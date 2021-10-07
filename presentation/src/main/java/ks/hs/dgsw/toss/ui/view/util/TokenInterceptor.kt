@@ -4,17 +4,22 @@ import android.util.Log
 import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.loginToken
 import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.registerToken
 import okhttp3.Interceptor
+import okhttp3.Request
 import okhttp3.Response
 
 class TokenInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val request = if (loginToken.isNullOrEmpty()) {
-            chain.request()
+        val request: Request
+        if (!registerToken.isNullOrEmpty() || loginToken.isNullOrEmpty()) {
+            Log.d("TokenInterceptor", "intercept: it is register token")
+            request = chain.request()
                 .newBuilder()
                 .addHeader("authorization", registerToken ?: "")
                 .build()
+            registerToken = null
         } else {
-            chain.request()
+            Log.d("TokenInterceptor", "intercept: it is login token")
+            request = chain.request()
                 .newBuilder()
                 .addHeader("authorization", loginToken ?: "")
                 .build()

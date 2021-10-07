@@ -2,6 +2,7 @@ package ks.hs.dgsw.data.repository
 
 import ks.hs.dgsw.data.datasource.PasswordDataSource
 import ks.hs.dgsw.domain.entity.dto.LoginToken
+import ks.hs.dgsw.domain.entity.dto.PasswordLoginToken
 import ks.hs.dgsw.domain.entity.request.PasswordLogin
 import ks.hs.dgsw.domain.entity.request.PasswordRegister
 import ks.hs.dgsw.domain.repository.PasswordRepository
@@ -14,7 +15,7 @@ class PasswordRepositoryImpl @Inject constructor(
         return passwordDataSource.postPasswordRegister(passwordLogin)
     }
 
-    override suspend fun postPasswordLogin(passwordLogin: PasswordLogin): LoginToken {
+    override suspend fun postPasswordLogin(passwordLogin: PasswordLogin): PasswordLoginToken {
         return passwordDataSource.postPasswordLogin(passwordLogin)
     }
 }

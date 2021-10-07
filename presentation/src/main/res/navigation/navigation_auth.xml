@@ -11,27 +11,28 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/howToLoginFragment" />
         <action
             android:id="@+id/action_welcomeFragment_to_signUpFragment"
             app:destination="@id/registerFirstFragment"
             app:launchSingleTop="false" />
     </fragment>
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="ks.hs.dgsw.toss.ui.view.fragment.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:id="@+id/howToLoginFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.HowToLoginFragment"
+        android:label="fragment_how_to_login"
+        tools:layout="@layout/fragment_how_to_login" >
         <action
-            android:id="@+id/action_loginFragment_to_authKeyFragment"
-            app:destination="@id/authKeyFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right" />
+            android:id="@+id/action_howToLoginFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+        <action
+            android:id="@+id/action_howToLoginFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/authKeyFragment"
+        android:id="@+id/pinFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.PinFragment"
-        android:label="fragment_auth_key"
+        android:label="fragment_pin"
         tools:layout="@layout/fragment_pin" />
     <fragment
         android:id="@+id/registerFirstFragment"
@@ -65,4 +66,9 @@
         android:name="ks.hs.dgsw.toss.ui.view.fragment.SetPinFragment"
         android:label="SetPinFragment"
         tools:layout="@layout/fragment_set_pin"/>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
