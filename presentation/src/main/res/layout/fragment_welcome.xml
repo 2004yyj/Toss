@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:text="@string/welcome_message"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/btn_login_welcome"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -34,20 +34,39 @@
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/lottie_start_animation" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login_welcome"
-            style="@style/BigButton"
-            android:text="@string/login"
-            android:layout_marginBottom="10dp"
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_pin_login_welcome"
+                style="@style/BigButton"
+                android:text="간편인증번호로 로그인"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_id_pw_login_welcome"
+                style="@style/BigButton"
+                android:text="아이디/비밀번호로 로그인"
+                app:layout_constraintBottom_toTopOf="@+id/btn_pin_login_how_to_login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -62,7 +81,7 @@
                 android:id="@+id/btn_sign_up_welcome"
                 style="@style/TextButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/register"
                 android:textStyle="bold"
                 android:textColor="@color/main" />

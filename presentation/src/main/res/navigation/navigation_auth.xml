@@ -10,23 +10,14 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/howToLoginFragment" />
-        <action
             android:id="@+id/action_welcomeFragment_to_signUpFragment"
             app:destination="@id/registerFirstFragment"
             app:launchSingleTop="false" />
-    </fragment>
-    <fragment
-        android:id="@+id/howToLoginFragment"
-        android:name="ks.hs.dgsw.toss.ui.view.fragment.HowToLoginFragment"
-        android:label="fragment_how_to_login"
-        tools:layout="@layout/fragment_how_to_login" >
         <action
-            android:id="@+id/action_howToLoginFragment_to_pinFragment"
+            android:id="@+id/action_welcomeFragment_to_pinFragment"
             app:destination="@id/pinFragment" />
         <action
-            android:id="@+id/action_howToLoginFragment_to_loginFragment"
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
