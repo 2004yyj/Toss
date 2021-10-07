@@ -1,6 +1,6 @@
 package ks.hs.dgsw.domain.entity.dto
 
-data class Token(
+data class LoginToken(
     val simpleId: String,
     val token: String
 )

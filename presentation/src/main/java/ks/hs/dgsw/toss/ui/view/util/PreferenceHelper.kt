@@ -8,11 +8,27 @@ object PreferenceHelper {
     private lateinit var sharedPreferences: SharedPreferences
     fun init(context: Context) { sharedPreferences = context.getSharedPreferences("AuthInfo", MODE_PRIVATE) }
 
-    var token: String
-        get() = sharedPreferences.getString("token", "")?:""
+    var loginToken: String?
+        get() = sharedPreferences.getString("loginToken", "")
         set(value) {
             val edit = sharedPreferences.edit()
-            edit.putString("token", value)
+            edit.putString("loginToken", value)
+            edit.apply()
+        }
+
+    var registerToken: String?
+        get() = sharedPreferences.getString("registerToken", "")
+        set(value) {
+            val edit = sharedPreferences.edit()
+            edit.putString("registerToken", value)
+            edit.apply()
+        }
+
+    var passwordLoginId: String?
+        get() = sharedPreferences.getString("passwordLoginId", "")
+        set(value) {
+            val edit = sharedPreferences.edit()
+            edit.putString("passwordLoginId", value)
             edit.apply()
         }
 }

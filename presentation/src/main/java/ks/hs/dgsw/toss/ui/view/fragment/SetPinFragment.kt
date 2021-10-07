@@ -2,24 +2,24 @@ package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
-import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import ks.hs.dgsw.domain.usecase.password.PostPasswordLoginUseCase
 import ks.hs.dgsw.domain.usecase.password.PostPasswordRegisterUseCase
-import ks.hs.dgsw.toss.R
+import ks.hs.dgsw.domain.usecase.user.PostLoginUseCase
 import ks.hs.dgsw.toss.databinding.FragmentSetPinBinding
 import ks.hs.dgsw.toss.ui.view.activity.MainActivity
-import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.token
+import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper
+import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.loginToken
+import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.passwordLoginId
+import ks.hs.dgsw.toss.ui.viewmodel.factory.LoginViewModelFactory
 import ks.hs.dgsw.toss.ui.viewmodel.factory.PinViewModelFactory
+import ks.hs.dgsw.toss.ui.viewmodel.fragment.LoginViewModel
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.PinViewModel
 import javax.inject.Inject
 
@@ -32,8 +32,12 @@ class SetPinFragment : Fragment() {
     @Inject
     lateinit var postPasswordLoginUseCase: PostPasswordLoginUseCase
 
+    @Inject
+    lateinit var postLoginUseCase: PostLoginUseCase
+
     private lateinit var binding: FragmentSetPinBinding
-    private lateinit var viewModel: PinViewModel
+    private lateinit var pinViewModel: PinViewModel
+    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,10 +45,12 @@ class SetPinFragment : Fragment() {
     ): View {
         binding = FragmentSetPinBinding.inflate(inflater)
 
-        val factory = PinViewModelFactory(postPasswordRegisterUseCase, postPasswordLoginUseCase)
-        viewModel = ViewModelProvider(this, factory)[PinViewModel::class.java]
+        val pinViewModelFactory = PinViewModelFactory(postPasswordRegisterUseCase, postPasswordLoginUseCase)
+        val loginViewModelFactory = LoginViewModelFactory(postLoginUseCase)
+        pinViewModel = ViewModelProvider(this, pinViewModelFactory)[PinViewModel::class.java]
+        loginViewModel = ViewModelProvider(this, loginViewModelFactory)[LoginViewModel::class.java]
 
-        binding.vm = viewModel
+        binding.vm = pinViewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
@@ -56,17 +62,22 @@ class SetPinFragment : Fragment() {
         observe()
     }
 
-    private fun observe() = with(viewModel) {
+    private fun observe() = with(pinViewModel) {
+
         isFailure.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
 
         isRegisterSuccess.observe(viewLifecycleOwner) {
-            postPasswordLogin()
+            loginViewModel.id.value = requireArguments().getString("id", "")
+            loginViewModel.pw.value = requireArguments().getString("pw", "")
+            loginViewModel.login()
         }
 
-        isLoginSuccess.observe(viewLifecycleOwner) {
-            token = it.token
+        loginViewModel.isSuccess.observe(viewLifecycleOwner) {
+            loginToken = it.token
+            passwordLoginId = it.simpleId
+
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
             requireActivity().finish()

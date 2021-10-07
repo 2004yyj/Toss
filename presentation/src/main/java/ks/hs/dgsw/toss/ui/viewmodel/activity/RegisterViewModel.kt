@@ -1,22 +1,17 @@
 package ks.hs.dgsw.toss.ui.viewmodel.activity
 
-import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
+import ks.hs.dgsw.domain.entity.dto.RegisterToken
 import ks.hs.dgsw.domain.entity.request.Register
-import ks.hs.dgsw.domain.usecase.user.PostLoginUseCase
 import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.ui.view.util.Event
-import javax.inject.Inject
-import kotlin.Exception
 
 class RegisterViewModel constructor(
     private val postRegisterUseCase: PostRegisterUseCase
@@ -26,8 +21,8 @@ class RegisterViewModel constructor(
     val isFailure: LiveData<Event<String>> = _isFailure
 
     // 성공 시 데이터를 보내는 라이브 데이터 객체
-    private val _isSuccessRegister = MutableLiveData<Event<String>>()
-    val isSuccessRegister: LiveData<Event<String>> = _isSuccessRegister
+    private val _isSuccess = MutableLiveData<Event<RegisterToken>>()
+    val isSuccess: LiveData<Event<RegisterToken>> = _isSuccess
 
     // 성공 시 1단계->2단계로 프래그먼트를 전환하는 라이브 데이터 객체
     private val _navigateToSecondFragment = MutableLiveData<Event<String>>()
@@ -90,14 +85,12 @@ class RegisterViewModel constructor(
     }
 
     fun toFinishFragment() {
-        val name = name.value!!
-        val nickname = nickname.value!!
-        val birth = birth.value!!
-        val email = email.value!!
         val id = id.value?:""
         val pw = pw.value?:""
-        val pwCheck = pwCheck.value?:""
+        val nickname = nickname.value?:""
         val phone = phone.value?:""
+        val birth = birth.value?:""
+        val pwCheck = pwCheck.value?:""
 
         viewModelScope.launch {
             if (id.isNotEmpty() && pw.isNotEmpty() && pw == pwCheck && phone.isNotEmpty() &&
@@ -106,8 +99,8 @@ class RegisterViewModel constructor(
                 val register = Register(id, pw, nickname, unformattedPhoneNumber, birth)
                 try {
                     withTimeout(10000) {
-                        postRegisterUseCase.buildParamsUseCase(PostRegisterUseCase.Params(register))
-                        _isSuccessRegister.value = Event("toSuccessRegister")
+                        val registerToken = postRegisterUseCase.buildParamsUseCase(PostRegisterUseCase.Params(register))
+                        _isSuccess.value = Event(registerToken)
                     }
                 } catch (e: Throwable) {
                     _isFailure.value = Event(e.message?:"")

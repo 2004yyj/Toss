@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ks.hs.dgsw.domain.entity.dto.Token
-import ks.hs.dgsw.domain.entity.request.Password
+import ks.hs.dgsw.domain.entity.dto.LoginToken
+import ks.hs.dgsw.domain.entity.request.PasswordLogin
+import ks.hs.dgsw.domain.entity.request.PasswordRegister
 import ks.hs.dgsw.domain.usecase.password.PostPasswordLoginUseCase
 import ks.hs.dgsw.domain.usecase.password.PostPasswordRegisterUseCase
 
@@ -15,6 +16,7 @@ class PinViewModel(
     private val postPasswordLoginUseCase: PostPasswordLoginUseCase
 ): ViewModel() {
 
+    val uuid = MutableLiveData<String>()
     val password = MutableLiveData<String>()
 
     private val _isFailure = MutableLiveData<String>()
@@ -23,12 +25,12 @@ class PinViewModel(
     private val _isRegisterSuccess = MutableLiveData<String>()
     val isRegisterSuccess: LiveData<String> = _isRegisterSuccess
 
-    private val _isLoginSuccess = MutableLiveData<Token>()
-    val isLoginSuccess: LiveData<Token> = _isLoginSuccess
+    private val _isLoginSuccess = MutableLiveData<LoginToken>()
+    val isLoginSuccess: LiveData<LoginToken> = _isLoginSuccess
 
     fun postPasswordRegister() {
         val password = password.value?:""
-        val passwordBody = Password(password)
+        val passwordBody = PasswordRegister(password)
 
         if (password.isNotEmpty()) {
             viewModelScope.launch {
@@ -47,8 +49,9 @@ class PinViewModel(
     }
 
     fun postPasswordLogin() {
+        val uuid = uuid.value?:""
         val password = password.value?:""
-        val passwordBody = Password(password)
+        val passwordBody = PasswordLogin(uuid, password)
 
         if (password.isNotEmpty()) {
             viewModelScope.launch {

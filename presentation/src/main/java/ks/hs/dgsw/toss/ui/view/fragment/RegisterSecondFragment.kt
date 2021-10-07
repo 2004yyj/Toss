@@ -2,6 +2,7 @@ package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,8 @@ import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterSecondBinding
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
+import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper
+import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.registerToken
 import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
 import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
 import javax.inject.Inject
@@ -114,7 +117,9 @@ class RegisterSecondFragment : Fragment() {
             }
         }
 
-        isSuccessRegister.observe(viewLifecycleOwner, EventObserver {
+        isSuccess.observe(viewLifecycleOwner, EventObserver {
+            registerToken = it.token
+            Log.d("RegisterSecondFragment", "observe: $registerToken")
             val bundle = Bundle()
             bundle.putString("id", id.value?:"")
             bundle.putString("pw", pw.value?:"")
@@ -125,10 +130,4 @@ class RegisterSecondFragment : Fragment() {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModelStore.clear()
-    }
-
 }

@@ -1,6 +1,6 @@
 package ks.hs.dgsw.data.entity
 
-data class TokenData(
+data class LoginTokenData(
     val simpleId: String,
     val token: String
 )

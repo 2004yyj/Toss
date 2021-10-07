@@ -1,6 +1,7 @@
 package ks.hs.dgsw.data.network.service
 
-import ks.hs.dgsw.data.entity.TokenData
+import ks.hs.dgsw.data.entity.LoginTokenData
+import ks.hs.dgsw.data.entity.RegisterTokenData
 import ks.hs.dgsw.data.entity.UserData
 import ks.hs.dgsw.domain.entity.request.Login
 import ks.hs.dgsw.domain.entity.request.Register
@@ -13,12 +14,12 @@ interface UserService {
     @POST("/user/register")
     suspend fun postRegister(
         @Body register: Register
-    ): retrofit2.Response<Response<Any?>>
+    ): retrofit2.Response<Response<RegisterTokenData>>
 
     @POST("/user/login")
     suspend fun postLogin(
         @Body login: Login
-    ): retrofit2.Response<Response<TokenData>>
+    ): retrofit2.Response<Response<LoginTokenData>>
 
     @GET("/user")
     suspend fun getMyInfo(): retrofit2.Response<Response<UserData>>
