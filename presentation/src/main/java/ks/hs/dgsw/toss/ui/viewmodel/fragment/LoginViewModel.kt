@@ -15,6 +15,8 @@ class LoginViewModel(
     private val postLoginUseCase: PostLoginUseCase
 ): ViewModel() {
 
+    val loginTitle = MutableLiveData<String>()
+
     private val _isSuccess = MutableLiveData<LoginToken>()
     val isSuccess: LiveData<LoginToken> = _isSuccess
 
@@ -23,6 +25,9 @@ class LoginViewModel(
 
     val id = MutableLiveData<String>()
     val pw = MutableLiveData<String>()
+
+    val idError = MutableLiveData("")
+    val pwError = MutableLiveData("")
 
     fun login() {
         val id = id.value?:""

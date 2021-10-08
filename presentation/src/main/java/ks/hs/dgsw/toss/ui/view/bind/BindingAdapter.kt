@@ -2,11 +2,8 @@ package ks.hs.dgsw.toss.ui.view.bind
 
 import `in`.aabhasjindal.otptextview.OtpTextView
 import android.app.Activity
-import android.telephony.PhoneNumberUtils
-import android.util.Log
 import android.view.View
 import android.view.View.VISIBLE
-import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
