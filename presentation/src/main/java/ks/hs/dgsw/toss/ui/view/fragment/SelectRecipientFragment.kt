@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentSelectRecipientBinding
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
@@ -20,6 +21,7 @@ import ks.hs.dgsw.toss.ui.view.adapter.RemitViewPagerAdapter
  * 또는 계좌, 토스 계정 이라는 탭이 존재합니다.
  */
 
+@AndroidEntryPoint
 class SelectRecipientFragment : Fragment() {
 
     private lateinit var binding: FragmentSelectRecipientBinding

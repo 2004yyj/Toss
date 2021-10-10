@@ -6,7 +6,6 @@ import ks.hs.dgsw.domain.entity.dto.User
 fun UserData.toEntity() =
     User(
         id = this.id,
-        pw = this.pw,
         nick = this.nick,
         phone = this.phone,
         birth = this.birth,
@@ -16,7 +15,6 @@ fun UserData.toEntity() =
 fun User.toData() =
     UserData(
         id = this.id,
-        pw = this.pw,
         nick = this.nick,
         phone = this.phone,
         birth = this.birth,

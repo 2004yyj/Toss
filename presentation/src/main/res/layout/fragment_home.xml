@@ -91,7 +91,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
-                            android:text="양윤재"
+                            android:text="@{vm.nick}"
+                            tools:text="양윤재"
                             app:layout_constraintStart_toEndOf="@+id/cardView"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -148,6 +149,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btn_view_my_accounts_list"
                         app:submitList="@{vm.accountList}"
+                        android:overScrollMode="never"
                         app:type="@{0}"
                         tools:itemCount="3"
                         tools:listitem="@layout/item_account" />

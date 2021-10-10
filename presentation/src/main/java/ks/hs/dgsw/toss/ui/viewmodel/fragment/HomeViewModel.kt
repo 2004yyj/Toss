@@ -3,21 +3,31 @@ package ks.hs.dgsw.toss.ui.viewmodel.fragment
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import ks.hs.dgsw.domain.entity.dto.Account
+import ks.hs.dgsw.domain.usecase.user.GetMyInfoUseCase
 import ks.hs.dgsw.toss.ui.view.util.Event
+import javax.inject.Inject
 
-class HomeViewModel(): ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val getMyInfoUseCase: GetMyInfoUseCase
+): ViewModel() {
+    val nick = MutableLiveData<String>()
     val accountList = ObservableArrayList<Account>()
 
     private val _openRemitPage = MutableLiveData<Event<String>>()
     val openRemitPage = _openRemitPage
 
     fun getUserInfo() {
-
-    }
-
-    fun getAccounts() {
-
+        viewModelScope.launch {
+            getMyInfoUseCase.buildUseCase().apply {
+                accountList.addAll(account)
+                this@HomeViewModel.nick.value = nick
+            }
+        }
     }
 
     fun remitPage() {

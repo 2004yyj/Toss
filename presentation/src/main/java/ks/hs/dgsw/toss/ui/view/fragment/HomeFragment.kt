@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentHomeBinding
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
@@ -24,11 +25,11 @@ import ks.hs.dgsw.toss.ui.viewmodel.fragment.HomeViewModel
  *
  */
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val factory by lazy { HomeViewModelFactory() }
-    private val viewModel by viewModels<HomeViewModel> { factory }
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +48,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
-        viewModel.getAccounts()
+        viewModel.getUserInfo()
         viewModel.openRemitPage.observe(viewLifecycleOwner, EventObserver {
             val intent = Intent(context, RemitActivity::class.java)
             startActivity(intent)

@@ -4,7 +4,6 @@ import ks.hs.dgsw.domain.entity.dto.Account
 
 data class UserData(
     val id: String,
-    val pw: String,
     val nick: String,
     val phone: String,
     val birth: String,
