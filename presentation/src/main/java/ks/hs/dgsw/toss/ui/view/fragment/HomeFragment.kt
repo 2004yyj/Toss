@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentHomeBinding
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
+import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.factory.HomeViewModelFactory
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.HomeViewModel
@@ -30,6 +31,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
+    private lateinit var accountAdapter: AccountAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,14 +47,27 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         init()
+        initRecyclerView()
+        observe()
     }
 
-    private fun init() {
-        viewModel.getUserInfo()
+    private fun observe() {
         viewModel.openRemitPage.observe(viewLifecycleOwner, EventObserver {
             val intent = Intent(context, RemitActivity::class.java)
             startActivity(intent)
             requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         })
+        viewModel.accountList.observe(viewLifecycleOwner) {
+            accountAdapter.submitList(it)
+        }
+    }
+
+    private fun initRecyclerView() = with(binding) {
+        accountAdapter = AccountAdapter()
+        rvSummarizedAccountList.adapter = accountAdapter
+    }
+
+    private fun init() {
+        viewModel.getUserInfo()
     }
 }

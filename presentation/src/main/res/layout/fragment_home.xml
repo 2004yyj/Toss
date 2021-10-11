@@ -148,9 +148,10 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btn_view_my_accounts_list"
-                        app:submitList="@{vm.accountList}"
                         android:overScrollMode="never"
-                        app:type="@{0}"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="vertical"
                         tools:itemCount="3"
                         tools:listitem="@layout/item_account" />
 

@@ -15,29 +15,24 @@ import ks.hs.dgsw.toss.databinding.ItemAccountUserBinding
 import ks.hs.dgsw.toss.ui.view.activity.MainActivity
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 
-class AccountAdapter: ListAdapter<Account, AccountAdapter.AccountViewHolder>(diffUtil) {
+class UserAccountAdapter(): ListAdapter<Account, UserAccountAdapter.AccountUserViewHolder>(diffUtil) {
 
-    inner class AccountViewHolder(private val binding: ItemAccountBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(account: Account) = with(binding) {
+    inner class AccountUserViewHolder(private val binding: ItemAccountUserBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(account: Account) {
             binding.account = account
-            btnRemitAccount.setOnClickListener {
-                val intent = Intent(it.context, RemitActivity::class.java)
-                it.context.startActivity(intent)
-                (it.context as MainActivity).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
-        val binding = ItemAccountBinding.inflate(LayoutInflater.from(parent.context))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountUserViewHolder {
+        val binding = ItemAccountUserBinding.inflate(LayoutInflater.from(parent.context))
         binding.root.layoutParams = RecyclerView.LayoutParams(
             MATCH_PARENT,
             WRAP_CONTENT
         )
-        return AccountViewHolder(binding)
+        return AccountUserViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: AccountViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AccountUserViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 

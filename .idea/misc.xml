@@ -38,7 +38,7 @@
         <entry key="presentation/src/main/res/layout/fragment_account.xml" value="0.31476449275362317" />
         <entry key="presentation/src/main/res/layout/fragment_auth_key.xml" value="0.2513586956521739" />
         <entry key="presentation/src/main/res/layout/fragment_bottom_navigation.xml" value="0.33967391304347827" />
-        <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.335" />
+        <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/fragment_how_to_login.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/fragment_lobby.xml" value="0.33152173913043476" />
         <entry key="presentation/src/main/res/layout/fragment_login.xml" value="0.18309859154929578" />

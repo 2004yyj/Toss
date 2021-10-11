@@ -16,7 +16,7 @@ class HomeViewModel @Inject constructor(
     private val getMyInfoUseCase: GetMyInfoUseCase
 ): ViewModel() {
     val nick = MutableLiveData<String>()
-    val accountList = ObservableArrayList<Account>()
+    val accountList = MutableLiveData(ArrayList<Account>())
 
     private val _openRemitPage = MutableLiveData<Event<String>>()
     val openRemitPage = _openRemitPage
@@ -24,7 +24,8 @@ class HomeViewModel @Inject constructor(
     fun getUserInfo() {
         viewModelScope.launch {
             getMyInfoUseCase.buildUseCase().apply {
-                accountList.addAll(account)
+                accountList.value!!.clear()
+                accountList.value!!.addAll(account)
                 this@HomeViewModel.nick.value = nick
             }
         }

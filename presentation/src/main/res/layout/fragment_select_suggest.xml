@@ -34,8 +34,10 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:type="@{1}"
-                app:submitList="@{vm.accountList}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
                 tools:listitem="@layout/item_account_user" />
 
         </LinearLayout>
