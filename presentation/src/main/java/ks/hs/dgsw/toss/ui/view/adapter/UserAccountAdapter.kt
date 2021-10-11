@@ -1,6 +1,5 @@
 package ks.hs.dgsw.toss.ui.view.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -9,11 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ks.hs.dgsw.domain.entity.dto.Account
-import ks.hs.dgsw.toss.R
-import ks.hs.dgsw.toss.databinding.ItemAccountBinding
 import ks.hs.dgsw.toss.databinding.ItemAccountUserBinding
-import ks.hs.dgsw.toss.ui.view.activity.MainActivity
-import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 
 class UserAccountAdapter(): ListAdapter<Account, UserAccountAdapter.AccountUserViewHolder>(diffUtil) {
 

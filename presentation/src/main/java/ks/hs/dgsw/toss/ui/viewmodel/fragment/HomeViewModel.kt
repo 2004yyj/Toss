@@ -25,7 +25,13 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             getMyInfoUseCase.buildUseCase().apply {
                 accountList.value!!.clear()
-                accountList.value!!.addAll(account)
+                accountList.value!!.addAll(
+                    if (account.size <= 2) {
+                        account
+                    } else {
+                        account.subList(0, 2)
+                    }
+                )
                 this@HomeViewModel.nick.value = nick
             }
         }
