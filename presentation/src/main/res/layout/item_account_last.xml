@@ -4,15 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
+        android:id="@+id/btn_add_account_last"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_account_last"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?selectableItemBackground"
-            tools:ignore="SpeakableTextPresentCheck" />
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:paddingStart="27dp"
@@ -29,9 +24,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_add_account_last"
+                android:id="@+id/floatingActionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="false"
                 android:src="@drawable/ic_add"
                 app:backgroundTint="@color/white_grey"
                 app:cardElevation="0dp"
@@ -46,14 +42,14 @@
 
             <TextView
                 android:id="@+id/tv_bank_name_account_last"
+                style="@style/TextViewRegularMiddle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="계좌 만들기"
-                android:textSize="18sp"
                 android:layout_marginStart="20dp"
-                style="@style/TextViewRegularMiddle"
+                android:text="계좌 추가하기"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/fab_add_account_last"
+                app:layout_constraintStart_toEndOf="@+id/floatingActionButton"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

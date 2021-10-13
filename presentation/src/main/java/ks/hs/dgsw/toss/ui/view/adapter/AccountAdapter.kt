@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ import ks.hs.dgsw.domain.entity.dto.Account
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ItemAccountBinding
 import ks.hs.dgsw.toss.databinding.ItemAccountLastBinding
+import ks.hs.dgsw.toss.ui.view.activity.AccountActivity
 import ks.hs.dgsw.toss.ui.view.activity.MainActivity
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 
@@ -44,7 +46,8 @@ class AccountAdapter: ListAdapter<Account, RecyclerView.ViewHolder>(diffUtil) {
     inner class AccountLastViewHolder(private val binding: ItemAccountLastBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind() = with(binding) {
             btnAddAccountLast.setOnClickListener {
-
+                val intent = Intent(it.context, AccountActivity::class.java)
+                it.context.startActivity(intent)
             }
         }
     }
