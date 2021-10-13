@@ -40,7 +40,6 @@ class PinViewModel @Inject constructor(
     fun setKeyNumber(number: String) {
         if (password.value?.length?.plus(1) ?: 0  <= 6) {
             password.value = password.value!! + number
-            Log.d("TAG", "setKeyNumber: ${password.value}")
         }
     }
 

@@ -21,6 +21,7 @@
         <entry key="presentation/src/main/res/drawable/ic_launcher_background.xml" value="0.18888888888888888" />
         <entry key="presentation/src/main/res/drawable/ic_money_transfer.xml" value="0.37395833333333334" />
         <entry key="presentation/src/main/res/drawable/ic_next.xml" value="0.3770833333333333" />
+        <entry key="presentation/src/main/res/drawable/ic_refresh.xml" value="0.2140625" />
         <entry key="presentation/src/main/res/drawable/ic_ring.xml" value="0.21770833333333334" />
         <entry key="presentation/src/main/res/drawable/pin_bullet.xml" value="0.20572916666666666" />
         <entry key="presentation/src/main/res/drawable/rectangle_ripple.xml" value="0.3770833333333333" />
@@ -34,7 +35,9 @@
         <entry key="presentation/src/main/res/font/font.xml" value="0.225" />
         <entry key="presentation/src/main/res/font/spoqa.xml" value="0.225" />
         <entry key="presentation/src/main/res/layout/activity_account.xml" value="0.26268115942028986" />
+        <entry key="presentation/src/main/res/layout/activity_add_account.xml" value="0.19947916666666668" />
         <entry key="presentation/src/main/res/layout/activity_auth.xml" value="0.2015625" />
+        <entry key="presentation/src/main/res/layout/activity_connect_account.xml" value="0.19947916666666668" />
         <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.16558441558441558" />
         <entry key="presentation/src/main/res/layout/activity_remit.xml" value="0.33152173913043476" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.23867753623188406" />
@@ -66,6 +69,7 @@
         <entry key="presentation/src/main/res/layout/fragment_start.xml" value="0.26268115942028986" />
         <entry key="presentation/src/main/res/layout/fragment_welcome.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/item_account.xml" value="0.4148397976391231" />
+        <entry key="presentation/src/main/res/layout/item_account_empty_second.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/item_account_last.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/item_account_last_item.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/item_account_user.xml" value="0.3229166666666667" />
