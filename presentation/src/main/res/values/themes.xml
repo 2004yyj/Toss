@@ -16,6 +16,13 @@
         <item name="android:fontFamily">@font/spoqa</item>
     </style>
 
+    <style name="SecurityKeyPadButton" parent="TextAppearance.AppCompat.Button">
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:fontFamily">@font/spoqa</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
     <style name="DefaultTextInputEditText"
         parent="Widget.AppCompat.EditText">
         <item name="android:paddingVertical">15dp</item>

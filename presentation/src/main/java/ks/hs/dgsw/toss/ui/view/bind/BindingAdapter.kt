@@ -2,6 +2,7 @@ package ks.hs.dgsw.toss.ui.view.bind
 
 import `in`.aabhasjindal.otptextview.OtpTextView
 import android.app.Activity
+import android.util.Log
 import android.view.View
 import android.view.View.VISIBLE
 import androidx.databinding.BindingAdapter
@@ -31,7 +32,7 @@ fun View.setVisible(isVisibility: Boolean) {
 @BindingAdapter("value")
 fun OtpTextView.setViewBinding(value: String?) {
     val old = this.otp
-    if (old != value && !value.isNullOrBlank()) {
+    if (old != value && value != null) {
         this.setOTP(value)
     }
 }

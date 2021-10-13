@@ -38,23 +38,163 @@
             app:bar_height="2dp"
             app:bar_inactive_color="@color/toss_dark_color"
             app:height="40dp"
-            app:hide_otp_drawable="@drawable/pin_bullet"
             app:hide_otp="true"
-            app:value="@={vm.password}"
-            app:layout_constraintBottom_toTopOf="@+id/btn_finish_set_pin"
+            app:hide_otp_drawable="@drawable/pin_bullet"
+            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:length="6" />
+            app:layout_constraintVertical_bias="0.507"
+            app:length="6"
+            app:value="@={vm.password}" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_finish_set_pin"
-            style="@style/BigButton"
-            android:text="완료"
-            android:onClick="@{() -> vm.postPasswordRegister()}"
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/key_7"
+                    android:onClick="@{() -> vm.setKeyNumber(key7.getText().toString())}"
+                    android:text="@{vm.keyPadArray[7]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="7"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/key_8"
+                    android:onClick="@{() -> vm.setKeyNumber(key8.getText().toString())}"
+                    android:text="@{vm.keyPadArray[8]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="8"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/key_9"
+                    android:onClick="@{() -> vm.setKeyNumber(key9.getText().toString())}"
+                    android:text="@{vm.keyPadArray[9]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="9"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/key_4"
+                    android:onClick="@{() -> vm.setKeyNumber(key4.getText().toString())}"
+                    android:text="@{vm.keyPadArray[4]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="4"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/key_5"
+                    android:onClick="@{() -> vm.setKeyNumber(key5.getText().toString())}"
+                    android:text="@{vm.keyPadArray[5]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="5"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/key_6"
+                    android:onClick="@{() -> vm.setKeyNumber(key6.getText().toString())}"
+                    android:text="@{vm.keyPadArray[6]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="6"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    android:id="@+id/key_1"
+                    android:onClick="@{() -> vm.setKeyNumber(key1.getText().toString())}"
+                    android:text="@{vm.keyPadArray[1]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="1"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/key_2"
+                    android:onClick="@{() -> vm.setKeyNumber(key2.getText().toString())}"
+                    android:text="@{vm.keyPadArray[2]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="2"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/key_3"
+                    android:onClick="@{() -> vm.setKeyNumber(key3.getText().toString())}"
+                    android:text="@{vm.keyPadArray[3]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="3"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    style="@style/SecurityKeyPadButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> vm.postPasswordRegister()}"
+                    android:text="설정하기"
+                    android:textColor="@color/main"
+                    android:letterSpacing="0"
+                    android:textSize="18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/key_0"
+                    android:onClick="@{() -> vm.setKeyNumber(key0.getText().toString())}"
+                    android:text="@{vm.keyPadArray[0]}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SecurityKeyPadButton"
+                    tools:text="0"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
+                    android:id="@+id/backspace"
+                    android:onClick="@{() -> vm.backspaceNumber()}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/SecurityKeyPadButton"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    tools:ignore="SpeakableTextPresentCheck"/>
+
+            </TableRow>
+
+        </TableLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
