@@ -18,23 +18,7 @@ class RemitActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finishActivity()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finishActivity()
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun finishActivity() {
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            finish()
-            overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
-        }
+        finish()
+        overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
     }
 }

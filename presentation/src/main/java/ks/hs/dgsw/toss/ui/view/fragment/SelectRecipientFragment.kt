@@ -43,11 +43,9 @@ class SelectRecipientFragment : Fragment() {
 
         init()
         if (requireActivity() is RemitActivity) {
-            with(requireActivity() as RemitActivity) {
-                setSupportActionBar(toolbar)
-                supportActionBar?.title = ""
-                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
-                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            toolbar.setNavigationOnClickListener {
+                requireActivity().finish()
+                requireActivity().overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
             }
         } else {
             toolbar.visibility = View.GONE
