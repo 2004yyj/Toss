@@ -1,11 +1,14 @@
 package ks.hs.dgsw.toss.ui.view.adapter
 
+import android.app.Activity
+import android.content.ContextWrapper
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -38,7 +41,7 @@ class AccountAdapter: ListAdapter<Account, RecyclerView.ViewHolder>(diffUtil) {
             btnRemitAccount.setOnClickListener {
                 val intent = Intent(it.context, RemitActivity::class.java)
                 it.context.startActivity(intent)
-                (it.context as MainActivity).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                ((it.context as ContextWrapper).baseContext as MainActivity).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
         }
     }
@@ -48,6 +51,7 @@ class AccountAdapter: ListAdapter<Account, RecyclerView.ViewHolder>(diffUtil) {
             btnAddAccountLast.setOnClickListener {
                 val intent = Intent(it.context, AccountActivity::class.java)
                 it.context.startActivity(intent)
+                ((it.context as ContextWrapper).baseContext as MainActivity).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
         }
     }
