@@ -58,7 +58,12 @@ class HomeFragment : Fragment() {
             requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         })
         viewModel.accountList.observe(viewLifecycleOwner) {
-            accountAdapter.submitList(it)
+            accountAdapter.submitList(
+                if (it.size <= 2) {
+                    it
+                } else {
+                    it.subList(0, 2)
+                })
         }
     }
 
