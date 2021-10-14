@@ -58,8 +58,10 @@ class RegisterSecondFragment : Fragment() {
 
         (requireActivity() as AppCompatActivity).apply {
             setSupportActionBar(toolbar)
-            supportActionBar?.title = ""
             NavigationUI.setupWithNavController(toolbar, navController)
+            supportActionBar?.title = ""
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         }
     }
 
