@@ -88,7 +88,7 @@
             app:setVisible="@{vm.nickname.length() >= 2}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_register">
+            app:layout_constraintTop_toBottomOf="@id/til_nickname_register">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_ssn_first_register"
