@@ -16,7 +16,8 @@
     <string name="name">이름</string>
     <string name="pw">비밀번호</string>
     <string name="check_conflict">중복확인</string>
-    <string name="social_security_number_first_6">주민번호 앞 6자리</string>
+    <string name="social_security_number_first_6">주민번호 앞자리</string>
+    <string name="social_security_number_second_6">주민번호 뒷자리</string>
     <string name="social_security_number_second_1">뒷자리 맨 앞 번호</string>
     <string name="email">이메일</string>
     <string name="next">다음</string>
@@ -35,4 +36,5 @@
     <string name="please_set_pw">비밀번호는 영어, 숫자, 특수문자를 포함하여 8-12자이어야 합니다.</string>
     <string name="password_is_not_equal">비밀번호가 맞지 않습니다.</string>
     <string name="setting_pin_number">간편인증번호 설정</string>
+    <string name="please_set_security_number">주민번호 뒷자리를 정확히 입력해 주세요.</string>
 </resources>

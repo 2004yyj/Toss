@@ -38,21 +38,22 @@
         <entry key="presentation/src/main/res/layout/activity_add_account.xml" value="0.19947916666666668" />
         <entry key="presentation/src/main/res/layout/activity_auth.xml" value="0.2015625" />
         <entry key="presentation/src/main/res/layout/activity_connect_account.xml" value="0.19947916666666668" />
-        <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.16558441558441558" />
+        <entry key="presentation/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/activity_remit.xml" value="0.33152173913043476" />
         <entry key="presentation/src/main/res/layout/activity_splash.xml" value="0.23867753623188406" />
         <entry key="presentation/src/main/res/layout/fragment_account.xml" value="0.31476449275362317" />
+        <entry key="presentation/src/main/res/layout/fragment_add_account_first.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/fragment_auth_key.xml" value="0.2513586956521739" />
         <entry key="presentation/src/main/res/layout/fragment_bottom_navigation.xml" value="0.33967391304347827" />
-        <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.165" />
+        <entry key="presentation/src/main/res/layout/fragment_home.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/fragment_how_to_login.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/fragment_lobby.xml" value="0.33152173913043476" />
         <entry key="presentation/src/main/res/layout/fragment_login.xml" value="0.18309859154929578" />
         <entry key="presentation/src/main/res/layout/fragment_pin.xml" value="0.335" />
         <entry key="presentation/src/main/res/layout/fragment_register_check.xml" value="0.32518115942028986" />
         <entry key="presentation/src/main/res/layout/fragment_register_finish.xml" value="0.25" />
-        <entry key="presentation/src/main/res/layout/fragment_register_first.xml" value="0.21481481481481482" />
-        <entry key="presentation/src/main/res/layout/fragment_register_second.xml" value="0.1728395061728395" />
+        <entry key="presentation/src/main/res/layout/fragment_register_first.xml" value="0.25" />
+        <entry key="presentation/src/main/res/layout/fragment_register_second.xml" value="0.1" />
         <entry key="presentation/src/main/res/layout/fragment_remit.xml" value="0.34375" />
         <entry key="presentation/src/main/res/layout/fragment_remit_select.xml" value="0.33152173913043476" />
         <entry key="presentation/src/main/res/layout/fragment_select_account.xml" value="0.3229166666666667" />
