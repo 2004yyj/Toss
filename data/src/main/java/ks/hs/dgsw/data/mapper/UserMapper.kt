@@ -9,7 +9,7 @@ fun UserData.toEntity() =
         nick = this.nick,
         phone = this.phone,
         birth = this.birth,
-        account = this.account
+        name = this.name
     )
 
 fun User.toData() =
@@ -18,5 +18,5 @@ fun User.toData() =
         nick = this.nick,
         phone = this.phone,
         birth = this.birth,
-        account = this.account
+        name = this.name
     )
