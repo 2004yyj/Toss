@@ -21,4 +21,8 @@ class AccountRepositoryImpl @Inject constructor(
     override suspend fun getAccountsByPhoneNumber(phone: String): List<Account> {
         return accountDataSource.getAccountsByPhoneNumber(phone)
     }
+
+    override suspend fun getAccountByAccountNumber(account: String): Account {
+        return accountDataSource.getAccountByAccountNumber(account)
+    }
 }

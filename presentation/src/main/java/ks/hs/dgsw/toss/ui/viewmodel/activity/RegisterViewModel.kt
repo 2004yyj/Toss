@@ -1,5 +1,6 @@
 package ks.hs.dgsw.toss.ui.viewmodel.activity
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -61,6 +62,7 @@ class RegisterViewModel constructor(
     val phoneError = MutableLiveData("")
 
     fun toSecondFragment() { // 1단계에서 2단계 이동 시 예외 처리
+        val regex = Regex("^[1-4]$")
         val name = name.value
         val nickname = nickname.value
         val birth = birth.value
@@ -71,7 +73,7 @@ class RegisterViewModel constructor(
 
         val nameAuthChk = name != null && name.isNotEmpty()
         val nicknameAuthChk = nickname != null && nickname.length >= 2
-        val birthAuthChk = birth != null && birth.length == 6
+        val birthAuthChk = birth != null && birth.length == 6 && regex.matches(securityCode?:"")
         val securityCodeAuthChk = securityCode != null && securityCode.isNotEmpty()
         val emailAuthChk = email != null && emailChecker.matcher(email).matches()
 
@@ -88,15 +90,23 @@ class RegisterViewModel constructor(
         val id = id.value?:""
         val pw = pw.value?:""
         val nickname = nickname.value?:""
+        val name = name.value?:""
         val phone = phone.value?:""
-        val birth = birth.value?:""
+        val securityCode = securityCode.value?:""
         val pwCheck = pwCheck.value?:""
+        var birth = birth.value?:""
 
         viewModelScope.launch {
             if (id.isNotEmpty() && pw.isNotEmpty() && pw == pwCheck && phone.isNotEmpty() &&
             (idError.value?:"").isEmpty() && (pwError.value?:"").isEmpty() && (phoneError.value?:"").isEmpty()) {
+                birth = if (securityCode == "1" || securityCode == "2") {
+                    "19$birth"
+                } else {
+                    "20$birth"
+                }
+
                 val unformattedPhoneNumber = phone.replace("-", "")
-                val register = Register(id, pw, nickname, unformattedPhoneNumber, birth)
+                val register = Register(id, pw, nickname, name, unformattedPhoneNumber, birth)
                 try {
                     withTimeout(10000) {
                         val registerToken = postRegisterUseCase.buildParamsUseCase(PostRegisterUseCase.Params(register))

@@ -21,4 +21,8 @@ class AccountRemote @Inject constructor(
     suspend fun getAccountsByPhoneNumber(phone: String): List<AccountData> {
         return getResponse(service.getAccountsByPhoneNumber(phone))
     }
+
+    suspend fun getAccountByAccountNumber(account: String): AccountData {
+        return getResponse(service.getAccountByAccountNumber(account))
+    }
 }

@@ -23,4 +23,9 @@ interface AccountService {
     suspend fun getAccountsByPhoneNumber(
         @Path("phone") phone: String
     ): retrofit2.Response<Response<List<AccountData>>>
+
+    @GET("/account/acount/{account}")
+    suspend fun getAccountByAccountNumber(
+        @Path("account") account: String
+    ): retrofit2.Response<Response<AccountData>>
 }

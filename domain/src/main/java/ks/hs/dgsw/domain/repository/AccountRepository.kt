@@ -8,4 +8,5 @@ interface AccountRepository {
     suspend fun postAccount(postAccount: PostAccount): AccountNumber
     suspend fun getAccountsByToken(): List<Account>
     suspend fun getAccountsByPhoneNumber(phone: String): List<Account>
+    suspend fun getAccountByAccountNumber(account: String): Account
 }

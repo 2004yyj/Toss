@@ -26,4 +26,8 @@ class AccountDataSource @Inject constructor(
             it.toEntity()
         }
     }
+
+    suspend fun getAccountByAccountNumber(account: String): Account {
+        return remote.getAccountByAccountNumber(account).toEntity()
+    }
 }

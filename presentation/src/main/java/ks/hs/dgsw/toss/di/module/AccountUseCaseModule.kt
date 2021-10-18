@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ks.hs.dgsw.domain.repository.AccountRepository
+import ks.hs.dgsw.domain.usecase.account.GetAccountByAccountNumberUseCase
 import ks.hs.dgsw.domain.usecase.account.GetAccountsByPhoneNumberUseCase
 import ks.hs.dgsw.domain.usecase.account.GetAccountsByTokenUseCase
 import ks.hs.dgsw.domain.usecase.account.PostAccountUseCase
@@ -27,4 +28,9 @@ object AccountUseCaseModule {
     @Provides
     fun providesGetAccountsByPhoneNumberUseCase(accountRepository: AccountRepository) =
         GetAccountsByPhoneNumberUseCase(accountRepository)
+
+    @Singleton
+    @Provides
+    fun providesGetAccountByAccountNumber(accountRepository: AccountRepository) =
+        GetAccountByAccountNumberUseCase(accountRepository)
 }

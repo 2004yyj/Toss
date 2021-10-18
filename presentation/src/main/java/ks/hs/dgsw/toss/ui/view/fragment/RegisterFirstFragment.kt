@@ -98,8 +98,9 @@ class RegisterFirstFragment : Fragment() {
         }
 
         securityCode.observe(viewLifecycleOwner) {
+            val regex = Regex("^[1-4]$")
             securityCodeError.value =
-                if (it.length != 1)
+                if (it.length != 1 || !regex.matches(it))
                     resources.getString(R.string.please_set_security_code)
                 else {
                     if (it.isNotEmpty() && birth.value?.isNotEmpty() == true &&
