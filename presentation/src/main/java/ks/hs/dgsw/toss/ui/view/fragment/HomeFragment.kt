@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -65,6 +66,9 @@ class HomeFragment : Fragment() {
                     it.subList(0, 2)
                 })
         }
+        viewModel.isFailure.observe(viewLifecycleOwner, EventObserver {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun initRecyclerView() = with(binding) {

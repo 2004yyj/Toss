@@ -1,5 +1,6 @@
 package ks.hs.dgsw.toss.ui.viewmodel.fragment
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,14 +21,21 @@ class HomeViewModel @Inject constructor(
     val accountList = MutableLiveData(ArrayList<Account>())
 
     private val _openRemitPage = MutableLiveData<Event<String>>()
-    val openRemitPage = _openRemitPage
+    val openRemitPage: LiveData<Event<String>> = _openRemitPage
+
+    private val _isFailure = MutableLiveData<Event<String>>()
+    val isFailure: LiveData<Event<String>> = _isFailure
 
     fun getUserInfo() {
         viewModelScope.launch {
-            getMyInfoUseCase.buildUseCase().apply {
-                accountList.value!!.clear()
-                accountList.value!!.addAll(getAccountsByTokenUseCase.buildUseCase())
-                this@HomeViewModel.name.value = name
+            try {
+                getMyInfoUseCase.buildUseCase().apply {
+                    accountList.value!!.clear()
+                    accountList.value!!.addAll(getAccountsByTokenUseCase.buildUseCase())
+                    this@HomeViewModel.name.value = name
+                }
+            } catch (e: Throwable) {
+                _isFailure.value = Event(e.message?:"")
             }
         }
     }
