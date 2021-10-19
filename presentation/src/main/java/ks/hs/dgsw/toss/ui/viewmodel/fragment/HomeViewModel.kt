@@ -1,5 +1,6 @@
 package ks.hs.dgsw.toss.ui.viewmodel.fragment
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,9 +31,11 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 getMyInfoUseCase.buildUseCase().apply {
-                    accountList.value!!.clear()
-                    accountList.value!!.addAll(getAccountsByTokenUseCase.buildUseCase())
                     this@HomeViewModel.name.value = name
+                }
+                getAccountsByTokenUseCase.buildUseCase().apply {
+                    accountList.value!!.clear()
+                    accountList.value!!.addAll(this)
                 }
             } catch (e: Throwable) {
                 _isFailure.value = Event(e.message?:"")
