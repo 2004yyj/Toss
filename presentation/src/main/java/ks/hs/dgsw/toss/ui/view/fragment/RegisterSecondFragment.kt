@@ -51,6 +51,11 @@ class RegisterSecondFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroy() {
+        binding.lifecycleOwner = null
+        super.onDestroy()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
