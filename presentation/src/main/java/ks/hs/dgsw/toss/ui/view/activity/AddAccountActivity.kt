@@ -13,10 +13,4 @@ class AddAccountActivity : AppCompatActivity() {
 
         viewModelStore.clear()
     }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-        overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
-    }
 }

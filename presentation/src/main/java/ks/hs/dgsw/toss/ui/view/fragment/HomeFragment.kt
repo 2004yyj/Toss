@@ -49,9 +49,8 @@ class HomeFragment : Fragment() {
         super.onDestroy()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onResume() {
+        super.onResume()
         init()
         initRecyclerView()
         observe()

@@ -8,5 +8,23 @@
         android:id="@+id/addAccountFirstFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.AddAccountFirstFragment"
         android:label="fragment_add_account_first"
-        tools:layout="@layout/fragment_add_account_first" />
+        tools:layout="@layout/fragment_add_account_first" >
+        <action
+            android:id="@+id/action_addAccountFirstFragment_to_addAccountSecondFragment"
+            app:destination="@id/addAccountSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAccountSecondFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.AddAccountSecondFragment"
+        android:label="AddAccountSecondFragment"
+        tools:layout="@layout/fragment_add_account_second">
+        <action
+            android:id="@+id/action_addAccountSecondFragment_to_addAccountSuccessFragment"
+            app:destination="@id/addAccountSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAccountSuccessFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.AddAccountSuccessFragment"
+        android:label="fragment_add_account_success"
+        tools:layout="@layout/fragment_add_account_success" />
 </navigation>

@@ -2,24 +2,26 @@ package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentAddAccountFirstBinding
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
-import ks.hs.dgsw.toss.ui.viewmodel.fragment.AddAccountFirstViewModel
+import ks.hs.dgsw.toss.ui.viewmodel.fragment.AddAccountViewModel
 
 @AndroidEntryPoint
 class AddAccountFirstFragment : Fragment() {
 
     private lateinit var binding: FragmentAddAccountFirstBinding
-    private val viewModel: AddAccountFirstViewModel by viewModels()
+    private val viewModel: AddAccountViewModel by activityViewModels()
+    private val navController by lazy { findNavController() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +46,7 @@ class AddAccountFirstFragment : Fragment() {
 
     private fun observe() = with(viewModel) {
         isSuccess.observe(viewLifecycleOwner, EventObserver {
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            navController.navigate(R.id.action_addAccountFirstFragment_to_addAccountSecondFragment)
         })
 
         isFailure.observe(viewLifecycleOwner, EventObserver {
@@ -98,9 +100,21 @@ class AddAccountFirstFragment : Fragment() {
         etPhoneRegister.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
 
         toolbarAddAccountFirst.setNavigationOnClickListener {
-            requireActivity().finish()
+            finishActivity()
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finishActivity()
+            }
+        })
     }
+
+    private fun finishActivity() {
+        requireActivity().finish()
+        requireActivity().overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
+    }
+
 
 
 }

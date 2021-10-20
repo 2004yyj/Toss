@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="ks.hs.dgsw.toss.ui.viewmodel.fragment.AddAccountFirstViewModel" />
+            type="ks.hs.dgsw.toss.ui.viewmodel.fragment.AddAccountViewModel" />
     </data>
 
     <LinearLayout
