@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
                 }
                 getAccountsByTokenUseCase.buildUseCase().apply {
                     accountList.value!!.clear()
-                    accountList.value!!.addAll(this)
+                    accountList.value!!.addAll(accounts)
                 }
             } catch (e: Throwable) {
                 _isFailure.value = Event(e.message?:"")
