@@ -73,6 +73,7 @@
         <entry key="presentation/src/main/res/layout/fragment_start.xml" value="0.26268115942028986" />
         <entry key="presentation/src/main/res/layout/fragment_welcome.xml" value="0.25" />
         <entry key="presentation/src/main/res/layout/item_account.xml" value="0.4148397976391231" />
+        <entry key="presentation/src/main/res/layout/item_account_empty_first.xml" value="0.22418478260869565" />
         <entry key="presentation/src/main/res/layout/item_account_empty_second.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/item_account_last.xml" value="0.375" />
         <entry key="presentation/src/main/res/layout/item_account_last_item.xml" value="0.25" />

@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentHomeBinding
+import ks.hs.dgsw.toss.ui.view.activity.AddAccountActivity
+import ks.hs.dgsw.toss.ui.view.activity.ConnectAccountActivity
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
@@ -49,11 +51,30 @@ class HomeFragment : Fragment() {
         super.onDestroy()
     }
 
-    override fun onResume() {
-        super.onResume()
-        init()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         initRecyclerView()
         observe()
+        listener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        init()
+    }
+
+    private fun listener() = with(binding) {
+        fabAddAccountList.setOnClickListener {
+            val intent = Intent(requireActivity(), AddAccountActivity::class.java)
+            requireActivity().startActivity(intent)
+        }
+
+        fabConnectAccountList.setOnClickListener {
+            val intent = Intent(requireActivity(), ConnectAccountActivity::class.java)
+            requireActivity().startActivity(intent)
+        }
     }
 
     private fun observe() {

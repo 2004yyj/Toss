@@ -19,7 +19,7 @@ class HomeViewModel @Inject constructor(
     private val getAccountsByTokenUseCase: GetAccountsByTokenUseCase,
 ): ViewModel() {
     val name = MutableLiveData<String>()
-    val accountList = MutableLiveData(ArrayList<Account>())
+    val accountList = MutableLiveData<ArrayList<Account>>()
 
     private val _openRemitPage = MutableLiveData<Event<String>>()
     val openRemitPage: LiveData<Event<String>> = _openRemitPage
@@ -34,8 +34,7 @@ class HomeViewModel @Inject constructor(
                     this@HomeViewModel.name.value = name
                 }
                 getAccountsByTokenUseCase.buildUseCase().apply {
-                    accountList.value!!.clear()
-                    accountList.value!!.addAll(accounts)
+                    accountList.value = ArrayList(accounts)
                 }
             } catch (e: Throwable) {
                 _isFailure.value = Event(e.message?:"")
