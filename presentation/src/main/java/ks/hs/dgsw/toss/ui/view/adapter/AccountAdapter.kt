@@ -1,8 +1,6 @@
 package ks.hs.dgsw.toss.ui.view.adapter
 
-import android.content.ContextWrapper
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -22,9 +20,14 @@ class AccountAdapter: ListAdapter<Account, AccountAdapter.ViewHolder>(diffUtil) 
         fun bind(account: Account) = with(binding) {
             binding.account = account
             btnRemitAccount.setOnClickListener {
-                val intent = Intent(it.context, RemitActivity::class.java)
-                it.context.startActivity(intent)
-                ((it.context as ContextWrapper).baseContext as AppCompatActivity).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                with(it.context as AppCompatActivity) {
+                    val intent = Intent(this, RemitActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(
+                        R.anim.slide_in_right,
+                        R.anim.slide_out_left
+                    )
+                }
             }
         }
     }

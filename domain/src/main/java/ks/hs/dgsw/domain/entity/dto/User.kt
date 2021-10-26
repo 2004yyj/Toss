@@ -6,5 +6,5 @@ data class User(
     val phone: String,
     val birth: String,
     val name: String,
-    val account: List<Account>
+    val account: List<Account>?
 )

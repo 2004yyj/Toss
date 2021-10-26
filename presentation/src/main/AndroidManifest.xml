@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Toss"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.view.activity.AccountListDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.view.activity.ConnectAccountActivity"
             android:exported="true" />
         <activity

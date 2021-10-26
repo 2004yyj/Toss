@@ -6,7 +6,7 @@ import ks.hs.dgsw.domain.entity.dto.Account
 fun AccountData.toEntity(): Account {
     return Account(
         this.idx,
-        this.user.toEntity(),
+        this.user?.toEntity(),
         this.userId,
         this.account,
         this.name,
@@ -19,7 +19,7 @@ fun AccountData.toEntity(): Account {
 fun Account.toData(): AccountData {
     return AccountData(
         this.idx,
-        this.user.toData(),
+        this.user?.toData(),
         this.userId,
         this.account,
         this.name,

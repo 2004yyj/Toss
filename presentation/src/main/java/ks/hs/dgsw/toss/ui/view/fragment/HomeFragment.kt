@@ -2,23 +2,23 @@ package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentHomeBinding
+import ks.hs.dgsw.toss.ui.view.activity.AccountListDetailActivity
 import ks.hs.dgsw.toss.ui.view.activity.AddAccountActivity
 import ks.hs.dgsw.toss.ui.view.activity.ConnectAccountActivity
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
-import ks.hs.dgsw.toss.ui.viewmodel.factory.HomeViewModelFactory
+import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.loginToken
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.HomeViewModel
 
 /**
@@ -40,7 +40,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater)
+        val baseInflater = LayoutInflater.from(requireActivity())
+        binding = FragmentHomeBinding.inflate(baseInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -54,6 +55,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("LoginToken", "observe: $loginToken")
         initRecyclerView()
         observe()
         listener()
@@ -66,14 +68,37 @@ class HomeFragment : Fragment() {
     }
 
     private fun listener() = with(binding) {
-        fabAddAccountList.setOnClickListener {
-            val intent = Intent(requireActivity(), AddAccountActivity::class.java)
-            requireActivity().startActivity(intent)
+        btnAddAccount.setOnClickListener {
+            with(requireActivity()) {
+                val intent = Intent(this, AddAccountActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                )
+            }
         }
 
-        fabConnectAccountList.setOnClickListener {
-            val intent = Intent(requireActivity(), ConnectAccountActivity::class.java)
-            requireActivity().startActivity(intent)
+        btnConnectAccount.setOnClickListener {
+            with(requireActivity()) {
+                val intent = Intent(this, ConnectAccountActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                )
+            }
+        }
+
+        btnViewMyAccountsList.setOnClickListener {
+            with(requireActivity()) {
+                val intent = Intent(this, AccountListDetailActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                )
+            }
         }
     }
 

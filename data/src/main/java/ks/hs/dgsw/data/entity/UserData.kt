@@ -6,5 +6,5 @@ data class UserData(
     val phone: String,
     val birth: String,
     val name: String,
-    val account: List<AccountData>
+    val account: List<AccountData>?
 )
