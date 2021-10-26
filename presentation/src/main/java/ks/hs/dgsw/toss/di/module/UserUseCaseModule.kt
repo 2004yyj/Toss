@@ -4,13 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ks.hs.dgsw.domain.repository.PasswordRepository
 import ks.hs.dgsw.domain.repository.UserRepository
-import ks.hs.dgsw.domain.usecase.password.PostPasswordLoginUseCase
-import ks.hs.dgsw.domain.usecase.password.PostPasswordRegisterUseCase
-import ks.hs.dgsw.domain.usecase.user.GetMyInfoUseCase
-import ks.hs.dgsw.domain.usecase.user.PostLoginUseCase
-import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
+import ks.hs.dgsw.domain.usecase.user.*
 import javax.inject.Singleton
 
 @Module
@@ -30,4 +25,19 @@ object UserUseCaseModule {
     @Provides
     fun provideGetMyInfoUseCase(userRepository: UserRepository) =
         GetMyInfoUseCase(userRepository)
+
+    @Singleton
+    @Provides
+    fun provideGetInfoByBirthAndNameUseCase(userRepository: UserRepository) =
+        GetInfoByBirthAndNameUseCase(userRepository)
+
+    @Singleton
+    @Provides
+    fun provideGetCheckIdUseCase(userRepository: UserRepository) =
+        GetCheckIdUseCase(userRepository)
+
+    @Singleton
+    @Provides
+    fun provideGetCheckNickUseCase(userRepository: UserRepository) =
+        GetCheckNickUseCase(userRepository)
 }

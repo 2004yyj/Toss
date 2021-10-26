@@ -54,30 +54,47 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_nickname_register"
-            style="@style/Widget.Design.TextInputLayout"
+        <LinearLayout
+            android:id="@+id/linear_layout_nickname_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nickname"
             android:layout_marginTop="10dp"
-            app:errorEnabled="@{vm.nicknameError.length() != 0}"
-            app:setVisible="@{vm.name.length() >= 2}"
-            app:setError="@{vm.nicknameError}"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_name_register">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_nickname_register"
-                android:text="@={vm.nickname}"
-                android:inputType="textPersonName"
-                style="@style/DefaultTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_layout_nickname_register"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="2.7"
+                android:hint="@string/nickname"
+                app:errorEnabled="@{vm.nicknameError.length() != 0}"
+                app:setError="@{vm.nicknameError}"
+                app:setVisible="@{vm.name.length() >= 2}">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nickname_register"
+                    style="@style/DefaultTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="@={vm.nickname}" />
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:letterSpacing="0"
+                android:onClick="@{() -> vm.chkNicknameExist()}"
+                android:text="@string/exist_check" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_layout_social_security_number_register"
@@ -85,10 +102,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="top|center_horizontal"
-            app:setVisible="@{vm.nickname.length() >= 2}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_nickname_register">
+            app:layout_constraintTop_toBottomOf="@id/linear_layout_nickname_register">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_ssn_first_register"
@@ -150,7 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/email"
-            app:setVisible="@{vm.birth.length() >= 0 &amp;&amp; vm.securityCode.length() >= 0}"
+            app:setVisible="@{vm.birth.length() == 6 &amp;&amp; vm.securityCode.length() == 1}"
             app:errorEnabled="@{vm.email.length() != 0}"
             app:setError="@{vm.emailError}"
             app:layout_constraintEnd_toEndOf="parent"

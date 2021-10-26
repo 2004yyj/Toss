@@ -14,9 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ks.hs.dgsw.domain.entity.dto.Account
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ItemAccountBinding
-import ks.hs.dgsw.toss.ui.view.activity.AddAccountActivity
-import ks.hs.dgsw.toss.ui.view.activity.ConnectAccountActivity
-import ks.hs.dgsw.toss.ui.view.activity.MainActivity
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 
 class AccountAdapter: ListAdapter<Account, AccountAdapter.ViewHolder>(diffUtil) {

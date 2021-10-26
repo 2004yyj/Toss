@@ -25,7 +25,7 @@
     <string name="register_second_title_input_info">정보 입력이 거의 끝났어요.</string>
     <string name="register_title_check_input_info">입력한 정보를 확인해주세요.</string>
     <string name="please_set_name">이름을 입력해 주세요.</string>
-    <string name="please_set_id">아이디는 3–12자로 입력해 주세요.</string>
+    <string name="please_set_id">아이디는 길이 3–12자 이내로, 문자와 숫자가 포함되어야 합니다.</string>
     <string name="please_set_birth">생년월일을 6자리로 정확히 입력해 주십시오.</string>
     <string name="please_set_email">올바른 이메일 형식으로 입력해 주세요.</string>
     <string name="please_set_security_code">잘못된 형식입니다.</string>
@@ -37,4 +37,5 @@
     <string name="password_is_not_equal">비밀번호가 맞지 않습니다.</string>
     <string name="setting_pin_number">간편인증번호 설정</string>
     <string name="please_set_security_number">주민번호 뒷자리를 정확히 입력해 주세요.</string>
+    <string name="exist_check">중복체크</string>
 </resources>

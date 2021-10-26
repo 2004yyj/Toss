@@ -23,4 +23,19 @@ class UserRemote @Inject constructor(
     suspend fun getMyInfo(): UserData {
         return getResponse(service.getMyInfo())
     }
+
+    suspend fun getInfoByBirthAndName(
+        birth: String,
+        name: String
+    ): UserData {
+        return getResponse(service.getInfoByBirthAndName(birth, name))
+    }
+
+    suspend fun getCheckId(id: String): Boolean {
+        return getResponse(service.getCheckId(id))
+    }
+
+    suspend fun getCheckNick(nick: String): Boolean {
+        return getResponse(service.getCheckNick(nick))
+    }
 }

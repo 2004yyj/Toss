@@ -1,6 +1,7 @@
 package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import ks.hs.dgsw.domain.usecase.user.GetCheckIdUseCase
+import ks.hs.dgsw.domain.usecase.user.GetCheckNickUseCase
 import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterFirstBinding
+import ks.hs.dgsw.toss.ui.view.bind.setVisible
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
 import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
@@ -26,6 +30,10 @@ class RegisterFirstFragment : Fragment() {
 
     @Inject
     lateinit var postRegisterUseCase: PostRegisterUseCase
+    @Inject
+    lateinit var getCheckIdUseCase: GetCheckIdUseCase
+    @Inject
+    lateinit var getCheckNickUseCase: GetCheckNickUseCase
 
     private val navController: NavController by lazy { findNavController() }
     private lateinit var viewModel: RegisterViewModel
@@ -38,7 +46,9 @@ class RegisterFirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterFirstBinding.inflate(inflater)
-        viewModel = ViewModelProvider(requireActivity(), RegisterViewModelFactory(postRegisterUseCase))[RegisterViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), RegisterViewModelFactory(
+            postRegisterUseCase, getCheckIdUseCase, getCheckNickUseCase
+        ))[RegisterViewModel::class.java]
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -80,35 +90,41 @@ class RegisterFirstFragment : Fragment() {
         }
 
         nickname.observe(viewLifecycleOwner) {
-            nicknameError.value = if (it.length < 2)
-                resources.getString(R.string.please_set_nickname)
-            else {
-                if (motionLayout.currentState == R.id.showNickNameLayout)
-                    motionLayout.transitionToState(R.id.showSecurityNumLayout)
-                ""
-            }
+            val isNotExist = isNotExistNickname.value?.peekContent()?:false
+            if (isNotExist) binding.btnNextRegisterFirst.isEnabled = false
+            nicknameError.value =
+                if (it.length < 2) resources.getString(R.string.please_set_nickname) else ""
         }
 
-        birth.observe(viewLifecycleOwner) {
-            birthError.value = when (it.length == 6) {
-                true -> {
-                    if (it.isNotEmpty() && securityCode.value?.isNotEmpty() == true &&
-                        motionLayout.currentState == R.id.showSecurityNumLayout) {
-                        motionLayout.transitionToState(R.id.showEmailEditText)
-                    }
-                    ""
+        isNotExistNickname.observe(viewLifecycleOwner, EventObserver { isNot ->
+            nicknameError.value = if (isNot) {
+                binding.btnNextRegisterFirst.isEnabled = true
+                Toast.makeText(context, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show()
+                if (motionLayout.currentState == R.id.showNickNameLayout) {
+                    motionLayout.transitionToState(R.id.showSecurityNumLayout)
+                    binding.linearLayoutNicknameRegister.setVisible(isNot)
                 }
-                false -> resources.getString(R.string.please_set_birth)
+                ""
+            } else {
+                "중복된 닉네임입니다. 다시 입력해주세요."
+            }
+        })
+
+        birth.observe(viewLifecycleOwner) {
+            birthError.value = if (it.length != 6) {
+                resources.getString(R.string.please_set_birth)
+            } else {
+                ""
             }
         }
 
         securityCode.observe(viewLifecycleOwner) {
             val regex = Regex("^[1-4]$")
             securityCodeError.value =
-                if (it.length != 1 || !regex.matches(it))
+                if (!regex.matches(it))
                     resources.getString(R.string.please_set_security_code)
                 else {
-                    if (it.isNotEmpty() && birth.value?.isNotEmpty() == true &&
+                    if (it.isNotEmpty() && birth.value?.length?:0 == 6 &&
                         motionLayout.currentState == R.id.showSecurityNumLayout) {
                         motionLayout.transitionToState(R.id.showEmailEditText)
                     }

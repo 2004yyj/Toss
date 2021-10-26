@@ -23,4 +23,16 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun getMyInfo(): User {
         return userDataSource.getMyInfo()
     }
+
+    override suspend fun getInfoByBirthAndName(birth: String, name: String): User {
+        return userDataSource.getInfoByBirthAndName(birth, name)
+    }
+
+    override suspend fun getCheckId(id: String): Boolean {
+        return userDataSource.getCheckId(id)
+    }
+
+    override suspend fun getCheckNick(nick: String): Boolean {
+        return userDataSource.getCheckNick(nick)
+    }
 }

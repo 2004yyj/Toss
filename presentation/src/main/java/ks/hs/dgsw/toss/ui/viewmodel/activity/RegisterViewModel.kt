@@ -11,11 +11,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 import ks.hs.dgsw.domain.entity.dto.RegisterToken
 import ks.hs.dgsw.domain.entity.request.Register
+import ks.hs.dgsw.domain.usecase.user.GetCheckIdUseCase
+import ks.hs.dgsw.domain.usecase.user.GetCheckNickUseCase
 import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.ui.view.util.Event
 
 class RegisterViewModel constructor(
-    private val postRegisterUseCase: PostRegisterUseCase
+    private val postRegisterUseCase: PostRegisterUseCase,
+    private val getCheckIdUseCase: GetCheckIdUseCase,
+    private val getCheckNickUseCase: GetCheckNickUseCase
 ): ViewModel() {
     // 실패 시 메시지를 보내는 라이브 데이터 객체
     private val _isFailure = MutableLiveData<Event<String>>()
@@ -61,6 +65,12 @@ class RegisterViewModel constructor(
     val pwCheckError = MutableLiveData("")
     val phoneError = MutableLiveData("")
 
+    private val _isNotExistNickname = MutableLiveData<Event<Boolean>>()
+    val isNotExistNickname: LiveData<Event<Boolean>> = _isNotExistNickname
+
+    private val _isNotExistId = MutableLiveData<Event<Boolean>>()
+    val isNotExistId: LiveData<Event<Boolean>> = _isNotExistId
+
     fun toSecondFragment() { // 1단계에서 2단계 이동 시 예외 처리
         val regex = Regex("^[1-4]$")
         val name = name.value
@@ -83,6 +93,36 @@ class RegisterViewModel constructor(
             _navigateToSecondFragment.value = Event("toSignUpSecondFragment")
         } else {
             _isFailure.value = Event("입력하지 않은 값이나 잘못된 값이 없는지 확인해 주세요.")
+        }
+    }
+
+    fun chkNicknameExist() {
+        val nickname = nickname.value?:""
+
+        if (nickname.isNotEmpty()) {
+            viewModelScope.launch {
+                val params = GetCheckNickUseCase.Params(nickname)
+                val exist = Event(getCheckNickUseCase.buildParamsUseCase(params))
+                _isNotExistNickname.value = exist
+            }
+        } else {
+            _isFailure.value = Event("닉네임이 비어 있습니다.")
+        }
+    }
+
+    fun chkIdExist() {
+        val id = id.value?:""
+
+        if (id.length !in 3..12) {
+            _isFailure.value = Event("아이디는 3-12 이내로 입력해주세요.")
+        } else if (id.isNotEmpty()) {
+            viewModelScope.launch {
+                val params = GetCheckIdUseCase.Params(id)
+                val exist = Event(getCheckIdUseCase.buildParamsUseCase(params))
+                _isNotExistId.value = exist
+            }
+        } else {
+            _isFailure.value = Event("아이디가 비어 있습니다.")
         }
     }
 

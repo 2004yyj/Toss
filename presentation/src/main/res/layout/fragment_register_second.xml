@@ -38,31 +38,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_id_register"
-                style="@style/Widget.Design.TextInputLayout"
+            <LinearLayout
+                android:id="@+id/linear_layout_id_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="30dp"
-                android:hint="@string/id"
-                app:errorEnabled="@{vm.idError.length() != 0}"
-                app:setError="@{vm.idError}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_register">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_id_register"
-                    android:text="@={vm.id}"
-                    android:inputType="text"
-                    style="@style/DefaultTextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_id_register"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_weight="2.7"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:hint="@string/id"
+                    app:errorEnabled="@{vm.idError.length() != 0}"
+                    app:setError="@{vm.idError}">
 
-                    <requestFocus />
-                </com.google.android.material.textfield.TextInputEditText>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_id_register"
+                        android:text="@={vm.id}"
+                        android:inputType="text"
+                        style="@style/DefaultTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        <requestFocus />
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:letterSpacing="0"
+                    android:onClick="@{() -> vm.chkIdExist()}"
+                    android:text="@string/exist_check" />
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_pw_register"
@@ -72,20 +90,19 @@
                 android:hint="@string/pw"
                 android:layout_marginTop="10dp"
                 app:errorEnabled="@{vm.pwError.length() != 0}"
-                app:setVisible="@{vm.id.length() >= 3 &amp;&amp; vm.id.length() &lt;= 12}"
                 app:setError="@{vm.pwError}"
                 app:passwordToggleEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_id_register">
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_id_register">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_pw_register"
-                    android:text="@={vm.pw}"
-                    android:inputType="textPassword"
                     style="@style/DefaultTextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:text="@={vm.pw}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

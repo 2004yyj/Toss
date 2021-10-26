@@ -10,4 +10,7 @@ interface UserRepository {
     suspend fun postRegister(register: Register): RegisterToken
     suspend fun postLogin(login: Login): LoginToken
     suspend fun getMyInfo(): User
+    suspend fun getInfoByBirthAndName(birth: String, name: String): User
+    suspend fun getCheckId(id: String): Boolean
+    suspend fun getCheckNick(nick: String): Boolean
 }

@@ -9,7 +9,10 @@ fun UserData.toEntity() =
         nick = this.nick,
         phone = this.phone,
         birth = this.birth,
-        name = this.name
+        name = this.name,
+        account = this.account.map {
+            it.toEntity()
+        }
     )
 
 fun User.toData() =
@@ -18,5 +21,8 @@ fun User.toData() =
         nick = this.nick,
         phone = this.phone,
         birth = this.birth,
-        name = this.name
+        name = this.name,
+        account = this.account.map {
+            it.toData()
+        }
     )

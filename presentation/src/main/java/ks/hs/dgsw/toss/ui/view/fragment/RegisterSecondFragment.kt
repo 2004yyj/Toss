@@ -16,9 +16,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
+import ks.hs.dgsw.domain.usecase.user.GetCheckIdUseCase
+import ks.hs.dgsw.domain.usecase.user.GetCheckNickUseCase
 import ks.hs.dgsw.domain.usecase.user.PostRegisterUseCase
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterSecondBinding
+import ks.hs.dgsw.toss.ui.view.bind.setVisible
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper
 import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.registerToken
@@ -31,6 +34,10 @@ class RegisterSecondFragment : Fragment() {
 
     @Inject
     lateinit var postRegisterUseCase: PostRegisterUseCase
+    @Inject
+    lateinit var getCheckIdUseCase: GetCheckIdUseCase
+    @Inject
+    lateinit var getCheckNickUseCase: GetCheckNickUseCase
 
     private val navController by lazy { findNavController() }
     private lateinit var viewModel: RegisterViewModel
@@ -45,7 +52,9 @@ class RegisterSecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegisterSecondBinding.inflate(inflater)
-        viewModel = ViewModelProvider(requireActivity(), RegisterViewModelFactory(postRegisterUseCase))[RegisterViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity(), RegisterViewModelFactory(
+            postRegisterUseCase, getCheckIdUseCase, getCheckNickUseCase
+        ))[RegisterViewModel::class.java]
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -82,14 +91,27 @@ class RegisterSecondFragment : Fragment() {
         registerSecondTitle.value = resources.getString(R.string.register_second_title_input_info)
 
         id.observe(viewLifecycleOwner) {
-            idError.value = if (it.length !in 3..12)
-                resources.getString(R.string.please_set_id)
-            else {
-                if (motionLayout.currentState == R.id.start)
-                    motionLayout.transitionToState(R.id.showPwLayout)
-                ""
-            }
+            val idRegex = Regex("^(?=.*[0-9]+)[a-z][a-z0-9]{3,12}\$")
+            val isNotExist = isNotExistId.value?.peekContent() ?: false
+            if (isNotExist) binding.btnNextRegisterSecond.isEnabled = false
+            idError.value =
+                if (!idRegex.matches(it))
+                    resources.getString(R.string.please_set_id) else ""
         }
+
+        isNotExistId.observe(viewLifecycleOwner, EventObserver { isNot ->
+            idError.value = if (isNot) {
+                binding.btnNextRegisterSecond.isEnabled = true
+                Toast.makeText(context, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show()
+                if (motionLayout.currentState == R.id.start) {
+                    motionLayout.transitionToState(R.id.showPwLayout)
+                    binding.etPwRegister.setVisible(true)
+                }
+                ""
+            } else {
+                "중복된 아이디입니다. 다시 입력해주세요."
+            }
+        })
 
         pw.observe(viewLifecycleOwner) {
             val pwRegex = Regex("^.*(?=^.{8,12}\$)(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#\$%^&+=]).*\$")

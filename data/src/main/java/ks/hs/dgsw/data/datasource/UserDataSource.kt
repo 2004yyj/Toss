@@ -25,4 +25,19 @@ class UserDataSource @Inject constructor(
     suspend fun getMyInfo(): User {
         return remote.getMyInfo().toEntity()
     }
+
+    suspend fun getInfoByBirthAndName(
+        birth: String,
+        name: String
+    ): User {
+        return remote.getInfoByBirthAndName(birth, name).toEntity()
+    }
+
+    suspend fun getCheckId(id: String): Boolean {
+        return remote.getCheckId(id)
+    }
+
+    suspend fun getCheckNick(nick: String): Boolean {
+        return remote.getCheckNick(nick)
+    }
 }

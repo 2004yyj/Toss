@@ -3,11 +3,28 @@
     android:color="@color/main_dark"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@android:id/background">
+    <item android:id="@android:id/mask">
         <shape android:shape="rectangle">
-            <solid android:color="@color/main"/>
+            <solid android:color="@color/black"/>
             <corners android:radius="10dp"/>
         </shape>
+    </item>
+
+    <item android:id="@android:id/background">
+        <selector>
+            <item android:state_enabled="true">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/main"/>
+                    <corners android:radius="10dp"/>
+                </shape>
+            </item>
+            <item android:state_enabled="false">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/grey"/>
+                    <corners android:radius="10dp"/>
+                </shape>
+            </item>
+        </selector>
     </item>
 
 </ripple>
