@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentSelectSuggestBinding
-import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
 import ks.hs.dgsw.toss.ui.view.adapter.UserAccountAdapter
-import ks.hs.dgsw.toss.ui.view.decoration.GridLayoutSpacingDecoration
 import ks.hs.dgsw.toss.ui.viewmodel.factory.SelectSuggestViewModelFactory
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.SelectSuggestViewModel
 
@@ -30,12 +29,26 @@ class SelectSuggestFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        backPressedListener()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         init()
         initRecyclerView()
         observe()
+    }
+
+    private fun backPressedListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                requireActivity().finish()
+                requireActivity().overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
+            }
+        })
     }
 
     private fun initRecyclerView() = with(binding) {

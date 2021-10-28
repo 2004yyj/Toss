@@ -6,9 +6,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ks.hs.dgsw.data.datasource.AccountDataSource
 import ks.hs.dgsw.data.datasource.PasswordDataSource
+import ks.hs.dgsw.data.datasource.TransferDataSource
 import ks.hs.dgsw.data.datasource.UserDataSource
 import ks.hs.dgsw.data.network.remote.AccountRemote
 import ks.hs.dgsw.data.network.remote.PasswordRemote
+import ks.hs.dgsw.data.network.remote.TransferRemote
 import ks.hs.dgsw.data.network.remote.UserRemote
 import javax.inject.Singleton
 
@@ -29,4 +31,9 @@ object DataSourceModule {
     @Provides
     fun provideAccountDataSource(remote: AccountRemote) =
         AccountDataSource(remote)
+
+    @Singleton
+    @Provides
+    fun provideTransferDataSource(remote: TransferRemote) =
+        TransferDataSource(remote)
 }

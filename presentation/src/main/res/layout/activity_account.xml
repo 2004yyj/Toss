@@ -40,24 +40,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="총 계좌 잔액"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="25dp"/>
+                    android:text="총 계좌 잔액" />
 
                 <TextView
+                    style="@style/TextViewBoldBig"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextViewBoldBig"
                     android:layout_marginStart="25dp"
-                    android:textSize="30sp"
                     android:text="@{@string/my_balance_account(vm.totalMoney)}"
+                    android:textSize="30sp"
                     tools:text="5,000 원" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginTop="30dp"
+                    android:orientation="vertical"
                     android:visibility="@{vm.accountList.size() > 0 ? View.VISIBLE : View.GONE}">
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -74,22 +74,22 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
-                        android:background="@color/grey"
-                        android:layout_marginTop="30dp"/>
+                        android:layout_marginTop="30dp"
+                        android:background="@color/grey" />
 
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btn_add_account"
-                    android:background="?selectableItemBackground"
-                    android:clickable="true"
-                    android:paddingStart="27dp"
-                    android:paddingEnd="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
                     android:clipToPadding="false"
-                    android:paddingVertical="20dp"
                     android:elevation="2dp"
+                    android:paddingVertical="20dp"
+                    android:paddingStart="27dp"
+                    android:paddingEnd="30dp"
                     android:stateListAnimator="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -128,15 +128,15 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btn_connect_account"
-                    android:background="?selectableItemBackground"
-                    android:clickable="true"
-                    android:paddingStart="27dp"
-                    android:paddingEnd="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
                     android:clipToPadding="false"
-                    android:paddingVertical="20dp"
                     android:elevation="2dp"
+                    android:paddingVertical="20dp"
+                    android:paddingStart="27dp"
+                    android:paddingEnd="30dp"
                     android:stateListAnimator="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

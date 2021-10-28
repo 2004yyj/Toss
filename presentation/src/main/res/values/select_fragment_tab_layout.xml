@@ -3,6 +3,5 @@
     <string-array name="tab_array">
         <item>추천</item>
         <item>계좌</item>
-        <item>연락처</item>
     </string-array>
 </resources>

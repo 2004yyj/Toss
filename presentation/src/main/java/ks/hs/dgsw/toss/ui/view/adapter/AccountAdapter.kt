@@ -22,6 +22,7 @@ class AccountAdapter: ListAdapter<Account, AccountAdapter.ViewHolder>(diffUtil) 
             btnRemitAccount.setOnClickListener {
                 with(it.context as AppCompatActivity) {
                     val intent = Intent(this, RemitActivity::class.java)
+                    intent.putExtra("accountNumber", account.account)
                     startActivity(intent)
                     overridePendingTransition(
                         R.anim.slide_in_right,

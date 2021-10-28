@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentSelectAccountBinding
 import ks.hs.dgsw.toss.ui.view.adapter.BankAdapter
@@ -17,8 +20,7 @@ import ks.hs.dgsw.toss.ui.viewmodel.fragment.SelectAccountViewModel
 class SelectAccountFragment : Fragment() {
 
     private lateinit var binding: FragmentSelectAccountBinding
-    private val factory by lazy { SelectAccountViewModelFactory() }
-    private val viewModel by viewModels<SelectAccountViewModel> { factory }
+    private val viewModel: SelectAccountViewModel by activityViewModels()
     private lateinit var bankAdapter: BankAdapter
 
     override fun onCreateView(
@@ -38,6 +40,20 @@ class SelectAccountFragment : Fragment() {
         observe()
     }
 
+    override fun onResume() {
+        super.onResume()
+        backPressedListener()
+    }
+
+    private fun backPressedListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                requireActivity().finish()
+                requireActivity().overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
+            }
+        })
+    }
+
     private fun observe() {
         viewModel.bankList.observe(viewLifecycleOwner) {
             bankAdapter.submitList(it)
@@ -50,8 +66,9 @@ class SelectAccountFragment : Fragment() {
         rvBankListSelectAccount.addItemDecoration(GridLayoutSpacingDecoration(requireActivity(), 3))
     }
 
-    private fun init() {
-        viewModel.getBanks()
+    private fun init() = with(viewModel) {
+        accountNumber.value = arguments?.getString("accountNumber")
+        getBanks()
     }
 
     companion object {

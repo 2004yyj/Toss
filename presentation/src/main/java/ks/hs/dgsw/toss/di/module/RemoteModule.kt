@@ -6,9 +6,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ks.hs.dgsw.data.network.remote.AccountRemote
 import ks.hs.dgsw.data.network.remote.PasswordRemote
+import ks.hs.dgsw.data.network.remote.TransferRemote
 import ks.hs.dgsw.data.network.remote.UserRemote
 import ks.hs.dgsw.data.network.service.AccountService
 import ks.hs.dgsw.data.network.service.PasswordService
+import ks.hs.dgsw.data.network.service.TransferService
 import ks.hs.dgsw.data.network.service.UserService
 import javax.inject.Singleton
 
@@ -29,4 +31,9 @@ object RemoteModule {
     @Provides
     fun provideAccountRemote(service: AccountService) =
         AccountRemote(service)
+
+    @Singleton
+    @Provides
+    fun provideTransferRemote(service: TransferService) =
+        TransferRemote(service)
 }

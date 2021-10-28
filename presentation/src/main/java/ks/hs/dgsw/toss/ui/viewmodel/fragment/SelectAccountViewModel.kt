@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import ks.hs.dgsw.domain.entity.dto.Bank
 import ks.hs.dgsw.toss.ui.view.util.Event
 
-class SelectAccountViewModel(): ViewModel() {
+class SelectAccountViewModel: ViewModel() {
+    val accountNumber = MutableLiveData<String>()
     val bankList = MutableLiveData(ArrayList<Bank>())
 
     private val _openSetAccountNumberPage = MutableLiveData<Event<String>>()
@@ -14,7 +15,7 @@ class SelectAccountViewModel(): ViewModel() {
 
     fun getBanks() {
         bankList.value!!.clear()
-        bankList.value!!.addAll(arrayListOf(Bank("토스"), Bank("대구은행"), Bank("카카오뱅크")))
+        bankList.value!!.addAll(arrayListOf(Bank("토스"), Bank("신한은행"), Bank("카카오뱅크")))
     }
 
     fun remitPage() {
