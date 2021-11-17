@@ -6,6 +6,7 @@
     <string name="see_my_profile">내 프로필 보기</string>
     <string name="remit">송금</string>
     <string name="my_balance_account">%,d 원</string>
+    <string name="send_limit_account">1일 최대 %,d원</string>
     <string name="bank_logo">은행 로고</string>
     <string name="account">계좌</string>
     <string name="welcome_message">간편한 금융생활,\n토스로 시작해요</string>
