@@ -4,7 +4,7 @@ import ks.hs.dgsw.data.base.BaseDataSource
 import ks.hs.dgsw.data.mapper.toEntity
 import ks.hs.dgsw.data.network.remote.AccountRemote
 import ks.hs.dgsw.domain.entity.dto.Account
-import ks.hs.dgsw.domain.entity.dto.AccountNumber
+import ks.hs.dgsw.domain.entity.dto.PostAccountResponse
 import ks.hs.dgsw.domain.entity.dto.BaseAccount
 import ks.hs.dgsw.domain.entity.request.PostAccount
 import javax.inject.Inject
@@ -12,7 +12,7 @@ import javax.inject.Inject
 class AccountDataSource @Inject constructor(
     override val remote: AccountRemote
 ): BaseDataSource<AccountRemote>() {
-    suspend fun postAccount(postAccount: PostAccount): AccountNumber {
+    suspend fun postAccount(postAccount: PostAccount): PostAccountResponse {
         return remote.postAccount(postAccount).toEntity()
     }
 

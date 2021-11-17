@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -44,14 +45,15 @@ class AddAccountSecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.isSuccessAddAccount.observe(viewLifecycleOwner, EventObserver {
-            navController.navigate(R.id.action_addAccountSecondFragment_to_addAccountSuccessFragment)
+            val bundle = bundleOf("limit" to it.limit, "type" to it.type)
+            navController.navigate(R.id.action_addAccountSecondFragment_to_addAccountSuccessFragment, bundle)
         })
 
         viewModel.isFailure.observe(viewLifecycleOwner, EventObserver {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
 
-        binding.toolbarAddAccountFirst.setNavigationOnClickListener {
+        binding.toolbarAccountPassword.setNavigationOnClickListener {
             navController.navigateUp()
         }
 

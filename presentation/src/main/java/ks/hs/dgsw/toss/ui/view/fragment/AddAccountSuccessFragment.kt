@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.navigation.NavDestination
+import androidx.navigation.fragment.findNavController
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentAddAccountSuccessBinding
 
@@ -18,6 +20,8 @@ class AddAccountSuccessFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAddAccountSuccessBinding.inflate(inflater)
+        binding.type = requireArguments().getString("type", "")
+        binding.limit = requireArguments().getInt("limit", 0)
         return binding.root
     }
 
@@ -26,7 +30,9 @@ class AddAccountSuccessFragment : Fragment() {
 
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                finishActivity()
+                if (findNavController().currentDestination?.arguments?.isNotEmpty() == true) {
+                    finishActivity()
+                }
             }
         })
 

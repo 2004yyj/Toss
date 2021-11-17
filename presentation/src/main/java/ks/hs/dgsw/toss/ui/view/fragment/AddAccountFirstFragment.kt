@@ -99,7 +99,7 @@ class AddAccountFirstFragment : Fragment() {
         vm = viewModel
         etPhoneRegister.addTextChangedListener(PhoneNumberFormattingTextWatcher("KR"))
 
-        toolbarAddAccountFirst.setNavigationOnClickListener {
+        toolbarAccountPassword.setNavigationOnClickListener {
             finishActivity()
         }
 

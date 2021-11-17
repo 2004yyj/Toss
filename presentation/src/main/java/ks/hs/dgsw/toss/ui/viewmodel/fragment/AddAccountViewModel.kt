@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import ks.hs.dgsw.domain.entity.dto.PostAccountResponse
 import ks.hs.dgsw.domain.entity.request.PostAccount
 import ks.hs.dgsw.domain.usecase.account.PostAccountUseCase
 import ks.hs.dgsw.domain.usecase.user.GetMyInfoUseCase
@@ -38,8 +39,8 @@ class AddAccountViewModel @Inject constructor(
     private val _isSuccess = MutableLiveData<Event<String>>()
     val isSuccess: LiveData<Event<String>> = _isSuccess
 
-    private val _isSuccessAddAccount = MutableLiveData<Event<String>>()
-    val isSuccessAddAccount: LiveData<Event<String>> = _isSuccessAddAccount
+    private val _isSuccessAddAccount = MutableLiveData<Event<PostAccountResponse>>()
+    val isSuccessAddAccount: LiveData<Event<PostAccountResponse>> = _isSuccessAddAccount
 
     private val _isFailure = MutableLiveData<Event<String>>()
     val isFailure: LiveData<Event<String>> = _isFailure
@@ -103,7 +104,7 @@ class AddAccountViewModel @Inject constructor(
                 val params = PostAccountUseCase.Params(postAccountBody)
                 try {
                     _isSuccessAddAccount.value =
-                        Event(postAccountUseCase.buildParamsUseCase(params).account)
+                        Event(postAccountUseCase.buildParamsUseCase(params))
                 } catch (e: Throwable) {
                     _isFailure.value = Event(e.message ?: "")
                 }

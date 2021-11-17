@@ -1,7 +1,7 @@
 package ks.hs.dgsw.data.network.service
 
 import ks.hs.dgsw.data.entity.AccountData
-import ks.hs.dgsw.data.entity.AccountNumberData
+import ks.hs.dgsw.data.entity.PostAccountResponseData
 import ks.hs.dgsw.data.entity.BaseAccountData
 import ks.hs.dgsw.domain.entity.request.PostAccount
 import ks.hs.dgsw.domain.entity.response.Response
@@ -14,7 +14,7 @@ interface AccountService {
     @POST("/account")
     suspend fun postAccount(
         @Body postAccount: PostAccount
-    ): retrofit2.Response<Response<AccountNumberData>>
+    ): retrofit2.Response<Response<PostAccountResponseData>>
 
     @GET("/account")
     suspend fun getAccountsByToken(): retrofit2.Response<Response<BaseAccountData>>
