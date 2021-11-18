@@ -6,5 +6,6 @@ data class UserData(
     val phone: String,
     val birth: String,
     val name: String,
+    val profileImage: String,
     val account: List<AccountData>?
 )

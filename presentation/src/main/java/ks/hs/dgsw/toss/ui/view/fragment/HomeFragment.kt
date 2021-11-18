@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentHomeBinding
@@ -119,6 +120,11 @@ class HomeFragment : Fragment() {
         viewModel.isFailure.observe(viewLifecycleOwner, EventObserver {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
+
+        viewModel.profileImage.observe(viewLifecycleOwner) {
+            Log.d("HomeFragment", it)
+            binding.ivProfileImageMain.load(it)
+        }
     }
 
     private fun initRecyclerView() = with(binding) {

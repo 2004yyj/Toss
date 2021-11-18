@@ -19,6 +19,7 @@ class HomeViewModel @Inject constructor(
 ): ViewModel() {
     val name = MutableLiveData<String>()
     val accountList = MutableLiveData<ArrayList<Account>>()
+    val profileImage = MutableLiveData<String>()
 
     private val _openRemitPage = MutableLiveData<Event<String>>()
     val openRemitPage: LiveData<Event<String>> = _openRemitPage
@@ -31,7 +32,8 @@ class HomeViewModel @Inject constructor(
             try {
                 getMyInfoUseCase.buildUseCase().apply {
                     this@HomeViewModel.name.value = name
-                    this@HomeViewModel.accountList.value = ArrayList(account)
+                    this@HomeViewModel.profileImage.value = profileImage
+                    if (account != null) this@HomeViewModel.accountList.value = ArrayList(account!!.toMutableList())
                 }
             } catch (e: Throwable) {
                 _isFailure.value = Event(e.message?:"")

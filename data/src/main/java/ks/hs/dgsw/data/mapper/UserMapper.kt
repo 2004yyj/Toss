@@ -12,6 +12,7 @@ fun UserData.toEntity(): User {
             phone = this.phone,
             birth = this.birth,
             name = this.name,
+            profileImage = this.profileImage,
             account = ArrayList()
         )
     } else {
@@ -21,6 +22,7 @@ fun UserData.toEntity(): User {
             phone = this.phone,
             birth = this.birth,
             name = this.name,
+            profileImage = this.profileImage,
             account = this.account.map {
                 it.toEntity()
             }
@@ -36,6 +38,7 @@ fun User.toData(): UserData {
             phone = this.phone,
             birth = this.birth,
             name = this.name,
+            profileImage = this.profileImage,
             account = ArrayList()
         )
     } else {
@@ -45,6 +48,7 @@ fun User.toData(): UserData {
             phone = this.phone,
             birth = this.birth,
             name = this.name,
+            profileImage = this.profileImage,
             account = this.account!!.map {
                 it.toData()
             }
