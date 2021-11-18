@@ -6,5 +6,6 @@ data class Register(
     val nick: String,
     val name: String,
     val phone: String,
-    val birth: String
+    val birth: String,
+    val profileImage: String
 )

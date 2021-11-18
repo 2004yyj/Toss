@@ -144,9 +144,9 @@
     </ConstraintSet>
     <Transition
         app:constraintSetStart="@+id/showEmailEditText"
-        app:constraintSetEnd="@+id/end"
+        app:constraintSetEnd="@+id/showPhoneNumberLayout"
         app:motionInterpolator="easeOut" />
-    <ConstraintSet android:id="@+id/end">
+    <ConstraintSet android:id="@+id/showPhoneNumberLayout">
         <Constraint android:id="@id/widget" />
         <Constraint
             android:id="@+id/btn_next_register_first"

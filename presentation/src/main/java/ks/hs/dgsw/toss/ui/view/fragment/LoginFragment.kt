@@ -70,7 +70,7 @@ class LoginFragment : Fragment() {
                 "비밀번호를 입력해주세요."
             } else {
                 if (motionLayout.currentState == R.id.showPwLayout) {
-                    motionLayout.transitionToState(R.id.end)
+                    motionLayout.transitionToState(R.id.showPhoneNumberLayout)
                     viewModel.loginTitle.value = "입력한 값이 맞는지 확인해주세요."
                 }
                 ""

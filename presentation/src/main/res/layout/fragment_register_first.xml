@@ -9,191 +9,203 @@
             type="ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel" />
     </data>
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/motion_layout_register_first"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="30dp"
-        android:paddingBottom="30dp"
-        app:layoutDescription="@xml/fragment_register_first_scene"
+        android:orientation="vertical"
         tools:context=".ui.view.fragment.RegisterFirstFragment">
 
-        <TextView
-            android:id="@+id/tv_title_register"
-            style="@style/TextViewBoldBig"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?actionBarSize"
-            android:text="@{vm.registerFirstTitle}"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_name_register"
-            style="@style/Widget.Design.TextInputLayout"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_register_first"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:hint="@string/name"
-            app:errorEnabled="@{vm.nameError.length() != 0}"
-            app:setError="@{vm.nameError}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_register">
+            app:navigationIcon="@drawable/ic_back"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_name_register"
-                android:text="@={vm.name}"
-                android:inputType="textPersonName"
-                style="@style/DefaultTextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <requestFocus/>
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_layout_nickname_register"
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motion_layout_register_first"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/til_name_register">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_layout_nickname_register"
-                style="@style/Widget.Design.TextInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="2.7"
-                android:hint="@string/nickname"
-                app:errorEnabled="@{vm.nicknameError.length() != 0}"
-                app:setError="@{vm.nicknameError}"
-                app:setVisible="@{vm.name.length() >= 2}">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_nickname_register"
-                    style="@style/DefaultTextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="@={vm.nickname}" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:letterSpacing="0"
-                android:onClick="@{() -> vm.chkNicknameExist()}"
-                android:text="@string/exist_check" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_layout_social_security_number_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="top|center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_layout_nickname_register">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_ssn_first_register"
-                style="@style/Widget.Design.TextInputLayout"
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/social_security_number_first_6"
-                app:errorEnabled="@{vm.birthError.length() != 0}"
-                app:setError="@{vm.birthError}">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_ssn_first_register"
-                    style="@style/DefaultTextInputEditText"
-                    android:letterSpacing="1"
-                    android:maxLength="6"
-                    tools:text="040809"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:text="@={vm.birth}" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent"
+            android:paddingHorizontal="30dp"
+            android:paddingBottom="30dp"
+            app:layoutDescription="@xml/fragment_register_first_scene">
 
             <TextView
+                android:id="@+id/tv_title_register"
+                style="@style/TextViewBoldBig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="-"
-                android:textSize="30sp"
-                android:layout_marginHorizontal="10dp"/>
+                android:text="@{vm.registerFirstTitle}"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_ssn_second_register"
+                android:id="@+id/til_name_register"
                 style="@style/Widget.Design.TextInputLayout"
-                android:layout_width="130dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/social_security_number_second_1"
-                app:errorEnabled="@{vm.securityCodeError.length() != 0}"
-                app:setError="@{vm.securityCodeError}">
+                android:layout_marginTop="30dp"
+                android:hint="@string/name"
+                app:errorEnabled="@{vm.nameError.length() != 0}"
+                app:setError="@{vm.nameError}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_register">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_ssn_second_register"
-                    android:inputType="number"
-                    android:letterSpacing="1"
-                    android:maxLength="1"
-                    android:text="@={vm.securityCode}"
+                    android:id="@+id/et_name_register"
+                    android:text="@={vm.name}"
+                    android:inputType="textPersonName"
+                    style="@style/DefaultTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <requestFocus/>
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_nickname_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_name_register">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_layout_nickname_register"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="2.7"
+                    android:hint="@string/nickname"
+                    app:errorEnabled="@{vm.nicknameError.length() != 0}"
+                    app:setError="@{vm.nicknameError}"
+                    app:setVisible="@{vm.name.length() >= 2}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_nickname_register"
+                        style="@style/DefaultTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="@={vm.nickname}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:letterSpacing="0"
+                    android:onClick="@{() -> vm.chkNicknameExist()}"
+                    android:text="@string/exist_check" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_social_security_number_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="top|center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linear_layout_nickname_register">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_ssn_first_register"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/social_security_number_first_6"
+                    app:errorEnabled="@{vm.birthError.length() != 0}"
+                    app:setError="@{vm.birthError}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ssn_first_register"
+                        style="@style/DefaultTextInputEditText"
+                        android:letterSpacing="1"
+                        android:maxLength="6"
+                        tools:text="040809"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="@={vm.birth}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textSize="30sp"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_ssn_second_register"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/social_security_number_second_1"
+                    app:errorEnabled="@{vm.securityCodeError.length() != 0}"
+                    app:setError="@{vm.securityCodeError}">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_ssn_second_register"
+                        android:inputType="number"
+                        android:letterSpacing="1"
+                        android:maxLength="1"
+                        android:text="@={vm.securityCode}"
+                        style="@style/DefaultTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email_register"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/email"
+                app:setVisible="@{vm.birth.length() == 6 &amp;&amp; vm.securityCode.length() == 1}"
+                app:errorEnabled="@{vm.email.length() != 0}"
+                app:setError="@{vm.emailError}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_register">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email_register"
+                    android:text="@={vm.email}"
+                    android:inputType="textWebEmailAddress"
                     style="@style/DefaultTextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email_register"
-            style="@style/Widget.Design.TextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/email"
-            app:setVisible="@{vm.birth.length() == 6 &amp;&amp; vm.securityCode.length() == 1}"
-            app:errorEnabled="@{vm.email.length() != 0}"
-            app:setError="@{vm.emailError}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_social_security_number_register">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email_register"
-                android:text="@={vm.email}"
-                android:inputType="textWebEmailAddress"
-                style="@style/DefaultTextInputEditText"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next_register_first"
+                style="@style/BigButton"
+                android:text="@string/next"
+                app:setVisible="@{vm.emailError.length() == 0}"
+                android:onClick="@{() -> vm.toSecondFragment()}"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_next_register_first"
-            style="@style/BigButton"
-            android:text="@string/next"
-            app:setVisible="@{vm.emailError.length() == 0}"
-            android:onClick="@{() -> vm.toSecondFragment()}"
-            android:layout_width="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </LinearLayout>
 </layout>

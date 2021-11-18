@@ -53,11 +53,21 @@ class AddAccountFirstFragment : Fragment() {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
 
+             accountName.observe(viewLifecycleOwner) {
+            accountNameError.value = if (it.isEmpty()) {
+                "계좌 이름을 입력해 주세요."
+            } else {
+                if (binding.motionLayoutAddAccount.currentState == R.id.start)
+                    binding.motionLayoutAddAccount.transitionToState(R.id.showNameLayout)
+                ""
+            }
+        }
+
         name.observe(viewLifecycleOwner) {
             nameError.value = if (it.isEmpty()) {
                 resources.getString(R.string.please_set_name)
             } else {
-                if (binding.motionLayoutAddAccount.currentState == R.id.start)
+                if (binding.motionLayoutAddAccount.currentState == R.id.showNameLayout)
                     binding.motionLayoutAddAccount.transitionToState(R.id.showSecurityNumsLayout)
                 ""
             }

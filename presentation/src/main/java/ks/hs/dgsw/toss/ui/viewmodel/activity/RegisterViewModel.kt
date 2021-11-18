@@ -21,6 +21,8 @@ class RegisterViewModel constructor(
     private val getCheckIdUseCase: GetCheckIdUseCase,
     private val getCheckNickUseCase: GetCheckNickUseCase
 ): ViewModel() {
+    var profileImage: String = ""
+
     // 실패 시 메시지를 보내는 라이브 데이터 객체
     private val _isFailure = MutableLiveData<Event<String>>()
     val isFailure: LiveData<Event<String>> = _isFailure
@@ -146,7 +148,7 @@ class RegisterViewModel constructor(
                 }
 
                 val unformattedPhoneNumber = phone.replace("-", "")
-                val register = Register(id, pw, nickname, name, unformattedPhoneNumber, birth)
+                val register = Register(id, pw, nickname, name, unformattedPhoneNumber, birth, profileImage)
                 try {
                     withTimeout(10000) {
                         val registerToken = postRegisterUseCase.buildParamsUseCase(PostRegisterUseCase.Params(register))

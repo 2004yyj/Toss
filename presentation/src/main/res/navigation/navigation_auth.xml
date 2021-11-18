@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_signUpFragment"
-            app:destination="@id/registerFirstFragment"
+            app:destination="@id/uploadProfileImageFragment"
             app:launchSingleTop="false" />
         <action
             android:id="@+id/action_welcomeFragment_to_pinFragment"
@@ -62,4 +62,13 @@
         android:name="ks.hs.dgsw.toss.ui.view.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/uploadProfileImageFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.UploadProfileImageFragment"
+        android:label="fragment_upload_profile_image"
+        tools:layout="@layout/fragment_upload_profile_image" >
+        <action
+            android:id="@+id/action_uploadProfileImageFragment_to_registerFirstFragment"
+            app:destination="@id/registerFirstFragment" />
+    </fragment>
 </navigation>

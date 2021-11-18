@@ -24,6 +24,9 @@ class AddAccountViewModel @Inject constructor(
     val password = MutableLiveData("")
     init { keyPadArray.value?.shuffle() }
 
+    val accountName = MutableLiveData<String>()
+    val accountNameError = MutableLiveData("")
+
     val name = MutableLiveData<String>()
     val nameError = MutableLiveData("")
 
@@ -60,13 +63,14 @@ class AddAccountViewModel @Inject constructor(
     }
 
     fun checkIsItValidate() {
+        val accountName = accountName.value?:""
         val name = name.value?:""
         var securityNumberFirst = securityNumberFirst.value?:""
         val securityNumberSecond = securityNumberSecond.value?:""
         val phone = (phone.value?:"").replace("-", "")
 
         viewModelScope.launch {
-            if (name.isNotEmpty() && securityNumberFirst.isNotEmpty() &&
+            if (accountName.isNotEmpty() && name.isNotEmpty() && securityNumberFirst.isNotEmpty() &&
                 securityNumberSecond.isNotEmpty() && phone.isNotEmpty()) {
                     val user = getMyInfoUseCase.buildUseCase()
                     securityNumberFirst =
@@ -87,6 +91,7 @@ class AddAccountViewModel @Inject constructor(
     }
 
     fun postAccount() {
+        val accountName = accountName.value ?: ""
         val name = name.value ?: ""
         val securityNumberSecond = securityNumberSecond.value ?: ""
         val securityNumberFirst =
@@ -98,7 +103,7 @@ class AddAccountViewModel @Inject constructor(
         val password = password.value ?: ""
 
         if (password.isNotEmpty()) {
-            val postAccountBody = PostAccount(name, securityNumberFirst, password)
+            val postAccountBody = PostAccount(accountName, securityNumberFirst, password)
             Log.d("AddAccountViewModel", "postAccount: $postAccountBody")
             viewModelScope.launch {
                 val params = PostAccountUseCase.Params(postAccountBody)

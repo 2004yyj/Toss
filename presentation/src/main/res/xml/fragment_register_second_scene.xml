@@ -118,9 +118,9 @@
         app:constraintSetStart="@+id/showPwCheckLayout"
         app:constraintSetEnd="@+id/showPhoneNumLayout"
         app:motionInterpolator="easeOut" />
-    <ConstraintSet android:id="@+id/end" />
+    <ConstraintSet android:id="@+id/showPhoneNumberLayout" />
     <Transition
         app:constraintSetStart="@+id/showPhoneNumLayout"
-        app:constraintSetEnd="@+id/end"
+        app:constraintSetEnd="@+id/showPhoneNumberLayout"
         app:motionInterpolator="easeOut" />
 </MotionScene>

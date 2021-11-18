@@ -23,7 +23,6 @@ import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentRegisterSecondBinding
 import ks.hs.dgsw.toss.ui.view.bind.setVisible
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
-import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper
 import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.registerToken
 import ks.hs.dgsw.toss.ui.viewmodel.activity.RegisterViewModel
 import ks.hs.dgsw.toss.ui.viewmodel.factory.RegisterViewModelFactory
@@ -140,7 +139,7 @@ class RegisterSecondFragment : Fragment() {
                 "전화번호 형식에 맞게 입력해 주세요."
             } else {
                 if (motionLayout.currentState == R.id.showPhoneNumLayout)
-                    motionLayout.transitionToState(R.id.end)
+                    motionLayout.transitionToState(R.id.showPhoneNumberLayout)
                 registerSecondTitle.value = resources.getString(R.string.register_title_check_input_info)
                 ""
             }

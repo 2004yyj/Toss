@@ -1,18 +1,18 @@
 package ks.hs.dgsw.toss.ui.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.domain.usecase.user.GetCheckIdUseCase
 import ks.hs.dgsw.domain.usecase.user.GetCheckNickUseCase
@@ -64,10 +64,20 @@ class RegisterFirstFragment : Fragment() {
 
         init()
         observe()
+        with(binding) {
+            (requireActivity() as AppCompatActivity).apply {
+                setSupportActionBar(toolbarRegisterFirst)
+                NavigationUI.setupWithNavController(toolbarRegisterFirst, navController)
+                supportActionBar?.title = ""
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+            }
+        }
     }
 
     private fun init() {
         motionLayout = binding.motionLayoutRegisterFirst
+        viewModel.profileImage = requireArguments().getString("profileImage", "")
     }
 
     private fun observe() = with(viewModel) {
@@ -138,7 +148,7 @@ class RegisterFirstFragment : Fragment() {
                 if (!emailChk.matcher(it).matches()) {
                     resources.getString(R.string.please_set_email)
                 } else {
-                    motionLayout.transitionToState(R.id.end)
+                    motionLayout.transitionToState(R.id.showPhoneNumberLayout)
                     registerFirstTitle.value = resources.getString(R.string.register_title_check_input_info)
                     ""
                 }
