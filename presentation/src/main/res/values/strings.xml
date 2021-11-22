@@ -39,4 +39,5 @@
     <string name="setting_pin_number">간편인증번호 설정</string>
     <string name="please_set_security_number">주민번호 뒷자리를 정확히 입력해 주세요.</string>
     <string name="exist_check">중복체크</string>
+    <string name="account_name">계좌 이름</string>
 </resources>

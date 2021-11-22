@@ -43,31 +43,57 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_name_add_account"
+                android:id="@+id/til_account_name_add_account"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:hint="@string/name"
-                app:errorEnabled="@{vm.nameError.length() != 0}"
-                app:setError="@{vm.nameError}"
+                android:hint="@string/account_name"
+                app:errorEnabled="@{vm.accountNameError.length() != 0}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_add_account">
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_add_account"
+                app:setError="@{vm.accountNameError}">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_name_add_account"
-                    android:text="@={vm.name}"
-                    android:inputType="textPersonName"
+                    android:id="@+id/et_account_name_add_account"
                     style="@style/DefaultTextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="@={vm.accountName}">
 
                     <requestFocus />
                 </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name_add_account"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/name"
+                app:errorEnabled="@{vm.nameError.length() != 0}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_account_name_add_account"
+                app:setError="@{vm.nameError}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_name_add_account"
+                    style="@style/DefaultTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="@={vm.name}">
+
+                    <requestFocus />
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:id="@+id/linear_layout_social_security_number_add_account"
@@ -164,7 +190,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_next_add_account_first"
+                android:id="@+id/btn_next_upload"
                 style="@style/BigButton"
                 android:text="@string/next"
                 app:setVisible="@{vm.phoneError.length() == 0}"
