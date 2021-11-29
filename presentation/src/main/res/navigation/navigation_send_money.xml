@@ -3,13 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_send_money"
-    app:startDestination="@id/accountPasswordFragment">
+    app:startDestination="@id/setMoneyFragment">
 
+    <fragment
+        android:id="@+id/setAccountFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SetSenderAccountFragment"
+        android:label="AccountPasswordFragment"
+        tools:layout="@layout/fragment_set_sender_account">
+        <action
+            android:id="@+id/action_setAccountFragment_to_setMoneyFragment"
+            app:destination="@id/setMoneyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/setMoneyFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SetMoneyFragment"
+        android:label="fragment_set_money"
+        tools:layout="@layout/fragment_set_money" >
+        <action
+            android:id="@+id/action_setMoneyFragment_to_checkMoneyInformationFragment"
+            app:destination="@id/checkMoneyInformationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/accountPasswordFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.AccountPasswordFragment"
         android:label="AccountPasswordFragment"
-        tools:layout="@layout/fragment_account_password"/>
+        tools:layout="@layout/fragment_account_password">
+        <action
+            android:id="@+id/action_accountPasswordFragment_to_sendMoneyFinishFragment"
+            app:destination="@id/sendMoneyFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkMoneyInformationFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.CheckMoneyInformationFragment"
+        android:label="fragment_check_money_information"
+        tools:layout="@layout/fragment_check_money_information" >
+        <action
+            android:id="@+id/action_checkMoneyInformationFragment_to_accountPasswordFragment"
+            app:destination="@id/accountPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendMoneyFinishFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.SendMoneyFinishFragment"
+        android:label="fragment_send_money_finish"
+        tools:layout="@layout/fragment_send_money_finish" />
 
 
 </navigation>

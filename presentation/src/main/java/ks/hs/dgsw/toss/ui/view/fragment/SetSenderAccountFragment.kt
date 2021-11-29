@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 
+@AndroidEntryPoint
 class SetSenderAccountFragment : Fragment() {
 
     override fun onCreateView(
@@ -16,4 +18,5 @@ class SetSenderAccountFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_set_sender_account, container, false)
     }
+
 }

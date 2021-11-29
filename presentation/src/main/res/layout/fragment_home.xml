@@ -82,7 +82,7 @@
                                 android:id="@+id/iv_profile_image_main"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:src="@color/medium_grey" />
+                                android:background="@color/medium_grey" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -179,7 +179,7 @@
                             android:layout_height="wrap_content"
                             android:clipToPadding="false"
                             android:paddingVertical="20dp"
-                            android:elevation="2dp"
+                            android:elevation="0dp"
                             android:stateListAnimator="@null"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -193,9 +193,10 @@
                                 android:clickable="false"
                                 android:src="@drawable/ic_add"
                                 app:backgroundTint="@color/white_grey"
-                                app:cardElevation="0dp"
                                 app:elevation="0dp"
                                 app:fabCustomSize="40dp"
+                                app:rippleColor="@color/transparent"
+                                android:stateListAnimator="@null"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -226,7 +227,7 @@
                             android:layout_height="wrap_content"
                             android:clipToPadding="false"
                             android:paddingVertical="20dp"
-                            android:elevation="2dp"
+                            android:elevation="0dp"
                             android:stateListAnimator="@null"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -240,9 +241,10 @@
                                 android:clickable="false"
                                 android:src="@drawable/ic_refresh"
                                 app:backgroundTint="@color/white_grey"
-                                app:cardElevation="0dp"
                                 app:elevation="0dp"
                                 app:fabCustomSize="40dp"
+                                app:rippleColor="@color/transparent"
+                                android:stateListAnimator="@null"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"

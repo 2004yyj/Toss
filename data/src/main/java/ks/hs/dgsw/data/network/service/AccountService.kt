@@ -19,12 +19,12 @@ interface AccountService {
     @GET("/account")
     suspend fun getAccountsByToken(): retrofit2.Response<Response<BaseAccountData>>
 
-    @GET("/account/{phone}")
+    @GET("/account/get/{phone}")
     suspend fun getAccountsByPhoneNumber(
         @Path("phone") phone: String
     ): retrofit2.Response<Response<BaseAccountData>>
 
-    @GET("/account/acount/{account}")
+    @GET("/account/{account}")
     suspend fun getAccountByAccountNumber(
         @Path("account") account: String
     ): retrofit2.Response<Response<AccountData>>

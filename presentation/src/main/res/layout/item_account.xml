@@ -62,14 +62,28 @@
                 app:layout_constraintStart_toEndOf="@+id/cardView2"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tv_bank_name_account"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toEndOf="@+id/cardView2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="계좌1"
-                    android:text="@{account.name}"/>
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_bank_name_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="계좌1"
+                        android:text="@{account.name}"/>
+
+                    <TextView
+                        android:id="@+id/tv_account_number_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="1234314123421"
+                        android:layout_marginStart="3dp"
+                        android:text="@{account.account}"/>
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_my_balance_account"

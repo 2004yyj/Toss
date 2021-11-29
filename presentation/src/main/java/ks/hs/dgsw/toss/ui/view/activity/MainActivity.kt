@@ -30,6 +30,5 @@ class MainActivity : AppCompatActivity() {
         navController = (supportFragmentManager
             .findFragmentById(binding.navHostFragmentMain.id) as NavHostFragment)
             .navController
-        binding.bnvMain.setupWithNavController(navController)
     }
 }

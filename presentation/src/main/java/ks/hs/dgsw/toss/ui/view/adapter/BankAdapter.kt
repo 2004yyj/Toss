@@ -19,6 +19,7 @@ class BankAdapter: ListAdapter<Bank, BankAdapter.ViewHolder>(diffUtil) {
             binding.btnSelectBankItemBank.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("bankName", bank.name)
+                bundle.putInt("bankCode", bank.code)
                 it.findNavController().navigate(R.id.action_selectAccountFragment_to_setAccountNumberFragment, bundle)
             }
         }
