@@ -7,6 +7,6 @@ data class AccountData(
     val account: String,
     val name: String,
     val money: Int,
-    val send: List<String?>?,
-    val receive: List<String?>?
+    val send: List<TransferHistoryData>?,
+    val receive: List<TransferHistoryData>?
 )
