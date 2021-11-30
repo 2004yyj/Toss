@@ -8,9 +8,9 @@ import javax.inject.Inject
 class GetAccountByAccountNumberUseCase @Inject constructor(
     private val accountRepository: AccountRepository
 ): ParamsUseCase<GetAccountByAccountNumberUseCase.Params, Account>() {
-    data class Params(val account: String)
+    data class Params(val bankCode: Int, val account: String)
 
     override suspend fun buildParamsUseCase(params: Params): Account {
-        return accountRepository.getAccountByAccountNumber(params.account)
+        return accountRepository.getAccountByAccountNumber(params.bankCode, params.account)
     }
 }

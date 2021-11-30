@@ -64,11 +64,12 @@ class SetMoneyFragment : Fragment() {
     }
 
     private fun init() {
+        viewModel.bankCode = requireActivity().intent.getIntExtra("bankCode", 0)
         viewModel.receiverAccountId = requireActivity().intent.getStringExtra("receiverAccountNumber") ?: ""
         viewModel.senderAccountId = requireActivity().intent.getStringExtra("senderAccountNumber") ?: requireArguments().getString("senderAccountNumber") ?: ""
 
         viewModel.getMyAccount(viewModel.senderAccountId)
-        viewModel.getAccount(viewModel.receiverAccountId)
+        viewModel.getAccount(viewModel.bankCode, viewModel.receiverAccountId)
         binding.etMoneyNumberSetMoney.setOnFocusChangeListener { v, hasFocus ->
             if(hasFocus) {
                 val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -89,7 +90,7 @@ class SetMoneyFragment : Fragment() {
             binding.tvSenderAccountNameSetMoney.text = String.format("내 %s 계좌에서", senderAccount.name)
             binding.tvSenderAccountNumberSetMoney.text = viewModel.senderAccountId
             isGetReceiverSuccess.observe(viewLifecycleOwner) { receiverAccount ->
-                binding.tvReceiverNameSetMoney.text = String.format("%s 님에게", receiverAccount.user?.name)
+                binding.tvReceiverNameSetMoney.text = String.format("%s 님에게", receiverAccount.userId)
                 binding.tvReceiverAccountNumberSetMoney.text =
                     "${requireActivity().intent.getStringExtra("bankName")} ${receiverAccount.account}"
             }

@@ -20,6 +20,7 @@ class SetMoneyViewModel @Inject constructor(
     private val _isGetSenderSuccess = MutableLiveData<Account>()
     val isGetSenderSuccess: LiveData<Account> = _isGetSenderSuccess
 
+    var bankCode = 0
     var senderAccountId = ""
     var receiverAccountId = ""
     val money = MutableLiveData<Int>()
@@ -46,16 +47,16 @@ class SetMoneyViewModel @Inject constructor(
         money.value = 0
     }
 
-    fun getAccount(accountNumber: String) {
+    fun getAccount(bankCode: Int, accountNumber: String) {
         viewModelScope.launch {
-            val params = GetAccountByAccountNumberUseCase.Params(accountNumber)
+            val params = GetAccountByAccountNumberUseCase.Params(bankCode, accountNumber)
             _isGetReceiverSuccess.value = getAccountByAccountNumberUseCase.buildParamsUseCase(params)
         }
     }
 
     fun getMyAccount(accountNumber: String) {
         viewModelScope.launch {
-            val params = GetAccountByAccountNumberUseCase.Params(accountNumber)
+            val params = GetAccountByAccountNumberUseCase.Params(2, accountNumber)
             _isGetSenderSuccess.value = getAccountByAccountNumberUseCase.buildParamsUseCase(params)
         }
     }

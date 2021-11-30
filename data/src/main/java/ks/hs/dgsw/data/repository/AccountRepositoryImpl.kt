@@ -23,7 +23,7 @@ class AccountRepositoryImpl @Inject constructor(
         return accountDataSource.getAccountsByPhoneNumber(phone)
     }
 
-    override suspend fun getAccountByAccountNumber(account: String): Account {
-        return accountDataSource.getAccountByAccountNumber(account)
+    override suspend fun getAccountByAccountNumber(bankCode: Int, account: String): Account {
+        return accountDataSource.getAccountByAccountNumber(bankCode, account)
     }
 }

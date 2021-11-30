@@ -5,10 +5,7 @@ import ks.hs.dgsw.data.entity.PostAccountResponseData
 import ks.hs.dgsw.data.entity.BaseAccountData
 import ks.hs.dgsw.domain.entity.request.PostAccount
 import ks.hs.dgsw.domain.entity.response.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AccountService {
     @POST("/account")
@@ -24,8 +21,9 @@ interface AccountService {
         @Path("phone") phone: String
     ): retrofit2.Response<Response<BaseAccountData>>
 
-    @GET("/account/{account}")
+    @GET("/account/other2/{bank}")
     suspend fun getAccountByAccountNumber(
-        @Path("account") account: String
+        @Path("bank") bank: Int,
+        @Query("account") account: String
     ): retrofit2.Response<Response<AccountData>>
 }

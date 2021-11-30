@@ -24,7 +24,7 @@ class AccountDataSource @Inject constructor(
         return remote.getAccountsByPhoneNumber(phone).toEntity()
     }
 
-    suspend fun getAccountByAccountNumber(account: String): Account {
-        return remote.getAccountByAccountNumber(account).toEntity()
+    suspend fun getAccountByAccountNumber(bankCode: Int, account: String): Account {
+        return remote.getAccountByAccountNumber(bankCode, account).toEntity()
     }
 }

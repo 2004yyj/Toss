@@ -9,5 +9,5 @@ interface AccountRepository {
     suspend fun postAccount(postAccount: PostAccount): PostAccountResponse
     suspend fun getAccountsByToken(): BaseAccount
     suspend fun getAccountsByPhoneNumber(phone: String): BaseAccount
-    suspend fun getAccountByAccountNumber(account: String): Account
+    suspend fun getAccountByAccountNumber(bankCode: Int, account: String): Account
 }
