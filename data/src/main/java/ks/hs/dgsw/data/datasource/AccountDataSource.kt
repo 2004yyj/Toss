@@ -7,6 +7,7 @@ import ks.hs.dgsw.domain.entity.dto.Account
 import ks.hs.dgsw.domain.entity.dto.PostAccountResponse
 import ks.hs.dgsw.domain.entity.dto.BaseAccount
 import ks.hs.dgsw.domain.entity.request.PostAccount
+import ks.hs.dgsw.domain.entity.request.PostAddOtherAccount
 import javax.inject.Inject
 
 class AccountDataSource @Inject constructor(
@@ -24,7 +25,19 @@ class AccountDataSource @Inject constructor(
         return remote.getAccountsByPhoneNumber(phone).toEntity()
     }
 
-    suspend fun getAccountByAccountNumber(bankCode: Int, account: String): Account {
-        return remote.getAccountByAccountNumber(bankCode, account).toEntity()
+    suspend fun getAccountByAccountNumber(account: String): Account {
+        return remote.getAccountByAccountNumber(account).toEntity()
+    }
+
+    suspend fun postAddOtherAccount(postAddOtherAccount: PostAddOtherAccount): String {
+        return remote.postAddOtherAccount(postAddOtherAccount)
+    }
+
+    suspend fun getOtherAccountForBank(bank: Int, account: String): Account {
+        return remote.getOtherAccountForBank(bank, account).toEntity()
+    }
+
+    suspend fun getOtherAccounts(birth: String, name: String): BaseAccount {
+        return remote.getOtherAccounts(birth, name).toEntity()
     }
 }

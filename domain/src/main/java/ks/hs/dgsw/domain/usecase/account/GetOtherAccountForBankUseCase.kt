@@ -5,12 +5,15 @@ import ks.hs.dgsw.domain.entity.dto.Account
 import ks.hs.dgsw.domain.repository.AccountRepository
 import javax.inject.Inject
 
-class GetAccountByAccountNumberUseCase @Inject constructor(
+class GetOtherAccountForBankUseCase @Inject constructor(
     private val accountRepository: AccountRepository
-): ParamsUseCase<GetAccountByAccountNumberUseCase.Params, Account>() {
-    data class Params(val account: String)
-
+): ParamsUseCase<GetOtherAccountForBankUseCase.Params, Account>() {
     override suspend fun buildParamsUseCase(params: Params): Account {
-        return accountRepository.getAccountByAccountNumber(params.account)
+        return accountRepository.getOtherAccountForBank(params.bank, params.account)
     }
+
+    data class Params(
+        val bank: Int,
+        val account: String
+    )
 }

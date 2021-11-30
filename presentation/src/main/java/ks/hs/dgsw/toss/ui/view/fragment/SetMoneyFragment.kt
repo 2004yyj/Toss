@@ -68,7 +68,7 @@ class SetMoneyFragment : Fragment() {
         viewModel.receiverAccountId = requireActivity().intent.getStringExtra("receiverAccountNumber") ?: ""
         viewModel.senderAccountId = requireActivity().intent.getStringExtra("senderAccountNumber") ?: requireArguments().getString("senderAccountNumber") ?: ""
 
-        viewModel.getMyAccount(viewModel.senderAccountId)
+        viewModel.getMyAccount(viewModel.bankCode, viewModel.senderAccountId)
         viewModel.getAccount(viewModel.bankCode, viewModel.receiverAccountId)
         binding.etMoneyNumberSetMoney.setOnFocusChangeListener { v, hasFocus ->
             if(hasFocus) {

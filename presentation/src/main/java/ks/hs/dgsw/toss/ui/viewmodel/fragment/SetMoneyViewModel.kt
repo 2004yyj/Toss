@@ -8,11 +8,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ks.hs.dgsw.domain.entity.dto.Account
 import ks.hs.dgsw.domain.usecase.account.GetAccountByAccountNumberUseCase
+import ks.hs.dgsw.domain.usecase.account.GetOtherAccountForBankUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class SetMoneyViewModel @Inject constructor(
-    private val getAccountByAccountNumberUseCase: GetAccountByAccountNumberUseCase
+    private val getOtherAccountForBankUseCase: GetOtherAccountForBankUseCase
 ): ViewModel() {
     private val _isGetReceiverSuccess = MutableLiveData<Account>()
     val isGetReceiverSuccess: LiveData<Account> = _isGetReceiverSuccess
@@ -49,15 +50,15 @@ class SetMoneyViewModel @Inject constructor(
 
     fun getAccount(bankCode: Int, accountNumber: String) {
         viewModelScope.launch {
-            val params = GetAccountByAccountNumberUseCase.Params(bankCode, accountNumber)
-            _isGetReceiverSuccess.value = getAccountByAccountNumberUseCase.buildParamsUseCase(params)
+            val params = GetOtherAccountForBankUseCase.Params(bankCode, accountNumber)
+            _isGetReceiverSuccess.value = getOtherAccountForBankUseCase.buildParamsUseCase(params)
         }
     }
 
-    fun getMyAccount(accountNumber: String) {
+    fun getMyAccount(bankCode: Int, accountNumber: String) {
         viewModelScope.launch {
-            val params = GetAccountByAccountNumberUseCase.Params(2, accountNumber)
-            _isGetSenderSuccess.value = getAccountByAccountNumberUseCase.buildParamsUseCase(params)
+            val params = GetOtherAccountForBankUseCase.Params(bankCode, accountNumber)
+            _isGetSenderSuccess.value = getOtherAccountForBankUseCase.buildParamsUseCase(params)
         }
     }
 }
