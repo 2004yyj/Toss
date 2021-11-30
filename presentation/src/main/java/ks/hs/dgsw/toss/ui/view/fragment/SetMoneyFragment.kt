@@ -74,6 +74,9 @@ class SetMoneyFragment : Fragment() {
                 imm.hideSoftInputFromWindow(binding.etMoneyNumberSetMoney.windowToken, 0)
             }
         }
+        binding.toolbarSetMoney.setNavigationOnClickListener {
+            requireActivity().finish()
+        }
     }
 
     private fun observe() = with(viewModel) {

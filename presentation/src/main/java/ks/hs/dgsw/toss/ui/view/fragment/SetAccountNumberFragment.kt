@@ -34,6 +34,7 @@ class SetAccountNumberFragment : Fragment() {
 
         init()
         listener()
+        observe()
     }
 
     override fun onResume() {
@@ -50,6 +51,25 @@ class SetAccountNumberFragment : Fragment() {
         })
     }
 
+    private fun observe() = with(viewModel) {
+        val bankCode = requireArguments().getInt("bankCode")
+
+        accountNumber.observe(viewLifecycleOwner) {
+            if (it.length >= 3) {
+                val isBankCodeAuthenticated = bankAuth(bankCode, it)
+                binding.tilAccountNumberSetAccountNumber.error =
+                    "${bankName.value} 은행의 유효한 계좌 번호를 입력해 주십시오."
+                binding.tilAccountNumberSetAccountNumber.isErrorEnabled =
+                    !isBankCodeAuthenticated
+                binding.btnSubmitSetAccountNumber.isEnabled =
+                    isBankCodeAuthenticated
+            } else {
+                binding.btnSubmitSetAccountNumber.isEnabled = false
+                binding.tilAccountNumberSetAccountNumber.isErrorEnabled = false
+            }
+        }
+    }
+
     private fun listener() = with(binding) {
         btnSelectBankSetAccountNumber.setOnClickListener {
             findNavController().navigateUp()
@@ -62,12 +82,16 @@ class SetAccountNumberFragment : Fragment() {
             val bankCode = requireArguments().getInt("bankCode")
 
             if (receiverAccountNumber.length == 13) {
-                val intent = Intent(context, SendMoneyActivity::class.java)
-                intent.putExtra("receiverAccountNumber", receiverAccountNumber)
-                intent.putExtra("senderAccountNumber", senderAccountNumber)
-                intent.putExtra("bankName", bankName)
-                intent.putExtra("bankCode", bankCode)
-                startActivity(intent)
+                if (bankAuth(bankCode, receiverAccountNumber)) {
+                    val intent = Intent(context, SendMoneyActivity::class.java)
+                    intent.putExtra("receiverAccountNumber", receiverAccountNumber)
+                    intent.putExtra("senderAccountNumber", senderAccountNumber)
+                    intent.putExtra("bankName", bankName)
+                    intent.putExtra("bankCode", bankCode)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(context, "$bankName 은행의 유효한 계좌 번호를 입력해 주십시오.", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(context, "계좌 양식에 맞게 입력해 주세요.", Toast.LENGTH_SHORT).show()
             }
@@ -76,6 +100,11 @@ class SetAccountNumberFragment : Fragment() {
 
     private fun init() = with(viewModel) {
         bankName.value = requireArguments().getString("bankName")
+    }
+
+    private fun bankAuth(selectedBankCode: Int, accountNumber: String): Boolean {
+        val accountNumberBankCode = accountNumber.subSequence(0, 3).toString().toInt()
+        return selectedBankCode == accountNumberBankCode
     }
 
 }

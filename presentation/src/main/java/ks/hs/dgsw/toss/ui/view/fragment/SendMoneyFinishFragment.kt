@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentSendMoneyFinishBinding
 
@@ -33,5 +34,9 @@ class SendMoneyFinishFragment : Fragment() {
         binding.btnSendMoneyFinish.setOnClickListener {
             requireActivity().finish()
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(this.isVisible) {
+            override fun handleOnBackPressed() {}
+        })
     }
 }
