@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_send_money"
-    app:startDestination="@id/setMoneyFragment">
+    app:startDestination="@id/setSenderAccountFragment">
 
     <fragment
-        android:id="@+id/setAccountFragment"
+        android:id="@+id/setSenderAccountFragment"
         android:name="ks.hs.dgsw.toss.ui.view.fragment.SetSenderAccountFragment"
-        android:label="AccountPasswordFragment"
+        android:label="SetSenderAccountFragment"
         tools:layout="@layout/fragment_set_sender_account">
         <action
-            android:id="@+id/action_setAccountFragment_to_setMoneyFragment"
+            android:id="@+id/action_setSenderAccountFragment_to_setMoneyFragment"
             app:destination="@id/setMoneyFragment" />
     </fragment>
 

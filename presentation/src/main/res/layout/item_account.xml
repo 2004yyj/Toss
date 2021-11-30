@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_view_my_account_balance_account"
+            android:id="@+id/btn_item_account"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?selectableItemBackground"

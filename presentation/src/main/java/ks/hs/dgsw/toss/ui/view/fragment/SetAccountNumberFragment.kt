@@ -84,8 +84,8 @@ class SetAccountNumberFragment : Fragment() {
             if (receiverAccountNumber.length == 13) {
                 if (bankAuth(bankCode, receiverAccountNumber)) {
                     val intent = Intent(context, SendMoneyActivity::class.java)
-                    intent.putExtra("receiverAccountNumber", receiverAccountNumber)
                     intent.putExtra("senderAccountNumber", senderAccountNumber)
+                    intent.putExtra("receiverAccountNumber", receiverAccountNumber)
                     intent.putExtra("bankName", bankName)
                     intent.putExtra("bankCode", bankCode)
                     startActivity(intent)

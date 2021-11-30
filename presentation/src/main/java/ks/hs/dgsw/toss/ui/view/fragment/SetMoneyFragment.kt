@@ -3,6 +3,7 @@ package ks.hs.dgsw.toss.ui.view.fragment
 import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,16 +46,14 @@ class SetMoneyFragment : Fragment() {
 
     private fun listener() = with(binding) {
         btnSubmitSetMoney.setOnClickListener {
-            val receiverAccountId = requireActivity().intent.getStringExtra("receiverAccountNumber") ?: ""
-            val senderAccountId = requireActivity().intent.getStringExtra("senderAccountNumber") ?: requireArguments().getString("senderAccountNumber") ?: ""
             val money = viewModel.money.value ?: 0
 
             if (money != 0) {
                 val bundle = bundleOf(
-                    "receiverAccountId" to receiverAccountId,
+                    "receiverAccountId" to viewModel.receiverAccountId,
                     "receiverAccountUserName" to viewModel.isGetReceiverSuccess.value?.user?.name,
                     "receiverBankName" to (requireActivity().intent.getStringExtra("bankName") ?: ""),
-                    "senderAccountId" to senderAccountId,
+                    "senderAccountId" to viewModel.senderAccountId,
                     "senderAccountName" to viewModel.isGetSenderSuccess.value?.name,
                     "money" to money
                 )
@@ -65,9 +64,11 @@ class SetMoneyFragment : Fragment() {
     }
 
     private fun init() {
-        viewModel.getMyAccount(requireActivity().intent.getStringExtra("senderAccountNumber") ?: "")
-        viewModel.getAccount(requireActivity().intent.getStringExtra("receiverAccountNumber") ?: "")
-        viewModel
+        viewModel.receiverAccountId = requireActivity().intent.getStringExtra("receiverAccountNumber") ?: ""
+        viewModel.senderAccountId = requireActivity().intent.getStringExtra("senderAccountNumber") ?: requireArguments().getString("senderAccountNumber") ?: ""
+
+        viewModel.getMyAccount(viewModel.senderAccountId)
+        viewModel.getAccount(viewModel.receiverAccountId)
         binding.etMoneyNumberSetMoney.setOnFocusChangeListener { v, hasFocus ->
             if(hasFocus) {
                 val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -75,14 +76,18 @@ class SetMoneyFragment : Fragment() {
             }
         }
         binding.toolbarSetMoney.setNavigationOnClickListener {
-            requireActivity().finish()
+            if (findNavController().previousBackStackEntry == null) {
+                requireActivity().finish()
+            } else {
+                findNavController().navigateUp()
+            }
         }
     }
 
     private fun observe() = with(viewModel) {
         isGetSenderSuccess.observe(viewLifecycleOwner) { senderAccount ->
             binding.tvSenderAccountNameSetMoney.text = String.format("내 %s 계좌에서", senderAccount.name)
-            binding.tvSenderAccountNumberSetMoney.text = requireActivity().intent.getStringExtra("senderAccountNumber") ?: ""
+            binding.tvSenderAccountNumberSetMoney.text = viewModel.senderAccountId
             isGetReceiverSuccess.observe(viewLifecycleOwner) { receiverAccount ->
                 binding.tvReceiverNameSetMoney.text = String.format("%s 님에게", receiverAccount.user?.name)
                 binding.tvReceiverAccountNumberSetMoney.text =

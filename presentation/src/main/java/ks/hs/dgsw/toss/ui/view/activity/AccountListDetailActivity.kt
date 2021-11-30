@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ActivityAccountBinding
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
+import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter.Companion.REMIT_BUTTON_VISIBLE
 import ks.hs.dgsw.toss.ui.viewmodel.activity.AccountListDetailViewModel
 
 @AndroidEntryPoint
@@ -36,7 +37,7 @@ class AccountListDetailActivity : AppCompatActivity() {
     }
 
     private fun init() = with(binding) {
-        accountAdapter = AccountAdapter()
+        accountAdapter = AccountAdapter(REMIT_BUTTON_VISIBLE) {}
         rvAccountList.adapter = accountAdapter
 
         viewModel.getAccounts()

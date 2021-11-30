@@ -7,8 +7,9 @@ fun AccountData.toEntity(): Account {
     return Account(
         this.idx,
         this.user?.toEntity(),
-        this.userId,
         this.account,
+        this.accountType,
+        this.bank,
         this.name,
         this.money,
         this.send?.map {
@@ -24,8 +25,9 @@ fun Account.toData(): AccountData {
     return AccountData(
         this.idx,
         this.user?.toData(),
-        this.userId,
         this.account,
+        this.accountType,
+        this.bank,
         this.name,
         this.money,
         this.send?.map {

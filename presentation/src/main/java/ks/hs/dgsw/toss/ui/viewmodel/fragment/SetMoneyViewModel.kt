@@ -20,6 +20,8 @@ class SetMoneyViewModel @Inject constructor(
     private val _isGetSenderSuccess = MutableLiveData<Account>()
     val isGetSenderSuccess: LiveData<Account> = _isGetSenderSuccess
 
+    var senderAccountId = ""
+    var receiverAccountId = ""
     val money = MutableLiveData<Int>()
 
     fun setMoney(value: String) {

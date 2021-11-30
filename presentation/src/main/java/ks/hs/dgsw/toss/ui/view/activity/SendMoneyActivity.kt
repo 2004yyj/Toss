@@ -24,10 +24,9 @@ class SendMoneyActivity : AppCompatActivity() {
             .navController
 
         val accountNumber = intent.getStringExtra("senderAccountNumber")
-
-        if (accountNumber == null) {
+        if (accountNumber != null) {
             val curGraph = navController.graph
-            curGraph.startDestination = R.id.setAccountFragment
+            curGraph.startDestination = R.id.setMoneyFragment
             navController.graph = curGraph
         }
     }

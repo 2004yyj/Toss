@@ -18,6 +18,7 @@ import ks.hs.dgsw.toss.ui.view.activity.AddAccountActivity
 import ks.hs.dgsw.toss.ui.view.activity.ConnectAccountActivity
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
+import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter.Companion.REMIT_BUTTON_VISIBLE
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
 import ks.hs.dgsw.toss.ui.view.util.PreferenceHelper.loginToken
 import ks.hs.dgsw.toss.ui.viewmodel.fragment.HomeViewModel
@@ -128,7 +129,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerView() = with(binding) {
-        accountAdapter = AccountAdapter()
+        accountAdapter = AccountAdapter(REMIT_BUTTON_VISIBLE) {
+
+        }
         rvSummarizedAccountList.adapter = accountAdapter
     }
 

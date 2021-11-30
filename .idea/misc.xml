@@ -74,7 +74,7 @@
         <entry key="presentation/src/main/res/layout/fragment_set_account_number.xml" value="0.209106239460371" />
         <entry key="presentation/src/main/res/layout/fragment_set_money.xml" value="0.33" />
         <entry key="presentation/src/main/res/layout/fragment_set_pin.xml" value="0.25" />
-        <entry key="presentation/src/main/res/layout/fragment_set_sender_account.xml" value="0.1661600810536981" />
+        <entry key="presentation/src/main/res/layout/fragment_set_sender_account.xml" value="0.33" />
         <entry key="presentation/src/main/res/layout/fragment_sign_up.xml" value="0.2509057971014493" />
         <entry key="presentation/src/main/res/layout/fragment_sign_up_first.xml" value="0.196875" />
         <entry key="presentation/src/main/res/layout/fragment_sign_up_important_info.xml" value="0.335" />

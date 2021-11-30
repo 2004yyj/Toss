@@ -11,16 +11,15 @@ import ks.hs.dgsw.domain.entity.dto.Bank
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ItemBankBinding
 
-class BankAdapter: ListAdapter<Bank, BankAdapter.ViewHolder>(diffUtil) {
+class BankAdapter(
+    private val onClickBankItem: (Bank) -> Unit
+): ListAdapter<Bank, BankAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val binding: ItemBankBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(bank: Bank) {
             binding.bank = bank
             binding.btnSelectBankItemBank.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("bankName", bank.name)
-                bundle.putInt("bankCode", bank.code)
-                it.findNavController().navigate(R.id.action_selectAccountFragment_to_setAccountNumberFragment, bundle)
+                onClickBankItem.invoke(bank)
             }
         }
     }
