@@ -11,12 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
+import ks.hs.dgsw.domain.entity.dto.TransferHistory
+import ks.hs.dgsw.domain.entity.dto.TransferHistoryComparatorDescending
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentHomeBinding
-import ks.hs.dgsw.toss.ui.view.activity.AccountListDetailActivity
-import ks.hs.dgsw.toss.ui.view.activity.AddAccountActivity
-import ks.hs.dgsw.toss.ui.view.activity.ConnectAccountActivity
-import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
+import ks.hs.dgsw.toss.ui.view.activity.*
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter
 import ks.hs.dgsw.toss.ui.view.adapter.AccountAdapter.Companion.REMIT_BUTTON_VISIBLE
 import ks.hs.dgsw.toss.ui.view.util.EventObserver
@@ -130,7 +129,16 @@ class HomeFragment : Fragment() {
 
     private fun initRecyclerView() = with(binding) {
         accountAdapter = AccountAdapter(REMIT_BUTTON_VISIBLE) {
-
+            val intent = Intent(context, AccountDetailActivity::class.java)
+            val transferHistoryList = ArrayList<TransferHistory>()
+            if (it.send != null && it.receive != null) {
+                transferHistoryList.addAll(it.send!!)
+                transferHistoryList.addAll(it.receive!!)
+                transferHistoryList.sortWith(TransferHistoryComparatorDescending())
+            }
+            intent.putExtra("transferHistoryList", transferHistoryList)
+            intent.putExtra("accountId", it.account)
+            startActivity(intent)
         }
         rvSummarizedAccountList.adapter = accountAdapter
     }

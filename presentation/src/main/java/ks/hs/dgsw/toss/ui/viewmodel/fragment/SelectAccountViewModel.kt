@@ -15,7 +15,7 @@ class SelectAccountViewModel: ViewModel() {
 
     fun getBanks() {
         bankList.value!!.clear()
-        bankList.value!!.addAll(arrayListOf(Bank("토스", 2), Bank("신한은행", 0), Bank("카카오뱅크", 1)))
+        bankList.value!!.addAll(arrayListOf(Bank("토스", 2), Bank("신한은행", 3), Bank("카카오뱅크", 1)))
     }
 
     fun remitPage() {

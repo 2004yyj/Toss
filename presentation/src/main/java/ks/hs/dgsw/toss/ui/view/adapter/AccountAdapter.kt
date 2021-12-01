@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ks.hs.dgsw.domain.entity.dto.Account
+import ks.hs.dgsw.domain.entity.dto.TransferHistory
+import ks.hs.dgsw.domain.entity.dto.TransferHistoryComparatorDescending
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.ItemAccountBinding
 import ks.hs.dgsw.toss.ui.view.activity.RemitActivity
@@ -27,7 +29,15 @@ class AccountAdapter(
             btnRemitAccount.setOnClickListener {
                 with(it.context as AppCompatActivity) {
                     val intent = Intent(this, RemitActivity::class.java)
+                    val transferHistoryList = ArrayList<TransferHistory>()
+                    if (account.send != null && account.receive != null) {
+                        transferHistoryList.addAll(account.send!!)
+                        transferHistoryList.addAll(account.receive!!)
+                        transferHistoryList.sortWith(TransferHistoryComparatorDescending())
+                    }
+                    intent.putExtra("transferHistoryList", transferHistoryList)
                     intent.putExtra("senderAccountNumber", account.account)
+
                     startActivity(intent)
                     overridePendingTransition(
                         R.anim.slide_in_right,
