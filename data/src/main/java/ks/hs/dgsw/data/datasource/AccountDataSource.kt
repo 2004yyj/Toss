@@ -37,7 +37,9 @@ class AccountDataSource @Inject constructor(
         return remote.getOtherAccountForBank(bank, account).toEntity()
     }
 
-    suspend fun getOtherAccounts(birth: String, name: String): BaseAccount {
-        return remote.getOtherAccounts(birth, name).toEntity()
+    suspend fun getOtherAccounts(birth: String, name: String): List<Account> {
+        return remote.getOtherAccounts(birth, name).map {
+            it.toEntity()
+        }
     }
 }

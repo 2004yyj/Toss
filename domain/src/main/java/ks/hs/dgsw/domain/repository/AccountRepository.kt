@@ -13,5 +13,5 @@ interface AccountRepository {
     suspend fun getAccountByAccountNumber(account: String): Account
     suspend fun postAddOtherAccount(postAddOtherAccount: PostAddOtherAccount): String
     suspend fun getOtherAccountForBank(bank: Int, account: String): Account
-    suspend fun getOtherAccounts(birth: String, name: String): BaseAccount
+    suspend fun getOtherAccounts(birth: String, name: String): List<Account>
 }

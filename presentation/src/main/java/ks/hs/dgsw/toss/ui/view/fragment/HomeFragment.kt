@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
 
         btnConnectAccount.setOnClickListener {
             with(requireActivity()) {
-                val intent = Intent(this, ConnectAccountActivity::class.java)
+                val intent = Intent(this, AddOtherBankAccountActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(
                     R.anim.slide_in_right,

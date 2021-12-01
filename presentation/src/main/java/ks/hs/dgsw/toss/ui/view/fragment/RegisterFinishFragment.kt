@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,5 +40,18 @@ class RegisterFinishFragment : Fragment() {
         btnSetPinFinish.setOnClickListener {
             navController.navigate(R.id.action_registerFinishFragment_to_setPinFragment, requireArguments())
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (findNavController().currentDestination?.arguments?.isNotEmpty() == true) {
+                    finishActivity()
+                }
+            }
+        })
+    }
+
+    private fun finishActivity() {
+        requireActivity().finish()
+        requireActivity().overridePendingTransition(R.anim.pop_slide_in_left, R.anim.pop_slide_out_right)
     }
 }

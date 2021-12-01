@@ -36,7 +36,7 @@ class AccountRemote @Inject constructor(
         return getResponse(service.getOtherAccountForBank(bank, account))
     }
 
-    suspend fun getOtherAccounts(birth: String, name: String): BaseAccountData {
+    suspend fun getOtherAccounts(birth: String, name: String): List<AccountData> {
         return getResponse(service.getOtherAccounts(birth, name))
     }
 }

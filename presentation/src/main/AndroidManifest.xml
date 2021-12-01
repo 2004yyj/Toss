@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Toss"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.view.activity.AddOtherBankAccountActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.view.activity.AccountDetailActivity"
             android:exported="true" />
         <activity

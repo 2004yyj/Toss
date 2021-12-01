@@ -78,7 +78,8 @@ class AccountListDetailActivity : AppCompatActivity() {
         }
 
         btnConnectAccount.setOnClickListener {
-            finishActivity()
+            val intent = Intent(this@AccountListDetailActivity, AddOtherBankAccountActivity::class.java)
+            startActivity(intent)
         }
     }
 

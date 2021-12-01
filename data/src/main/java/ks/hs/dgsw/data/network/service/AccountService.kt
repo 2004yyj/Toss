@@ -42,5 +42,5 @@ interface AccountService {
     suspend fun getOtherAccounts(
         @Query("birth") birth: String,
         @Query("name") name: String
-    ): retrofit2.Response<Response<BaseAccountData>>
+    ): retrofit2.Response<Response<List<AccountData>>>
 }

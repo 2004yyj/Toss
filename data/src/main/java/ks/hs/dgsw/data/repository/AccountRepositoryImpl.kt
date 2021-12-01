@@ -36,7 +36,7 @@ class AccountRepositoryImpl @Inject constructor(
         return accountDataSource.getOtherAccountForBank(bank, account)
     }
 
-    override suspend fun getOtherAccounts(birth: String, name: String): BaseAccount {
+    override suspend fun getOtherAccounts(birth: String, name: String): List<Account> {
         return accountDataSource.getOtherAccounts(birth, name)
     }
 }
