@@ -16,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getMyInfoUseCase: GetMyInfoUseCase,
+    private val getAccountsByTokenUseCase: GetAccountsByTokenUseCase
 ): ViewModel() {
     val name = MutableLiveData<String>()
     val accountList = MutableLiveData<ArrayList<Account>>()
@@ -30,10 +31,11 @@ class HomeViewModel @Inject constructor(
     fun getUserInfo() {
         viewModelScope.launch {
             try {
+                val accountList = getAccountsByTokenUseCase.buildUseCase().accounts
                 getMyInfoUseCase.buildUseCase().apply {
                     this@HomeViewModel.name.value = name
                     this@HomeViewModel.profileImage.value = profileImage
-                    if (account != null) this@HomeViewModel.accountList.value = ArrayList(account!!.toMutableList())
+                    this@HomeViewModel.accountList.value = ArrayList(accountList)
                 }
             } catch (e: Throwable) {
                 _isFailure.value = Event(e.message?:"")

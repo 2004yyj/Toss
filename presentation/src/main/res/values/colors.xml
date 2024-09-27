@@ -8,9 +8,11 @@
     <color name="toss_dark_color">#FF333a47</color>
     <color name="black">#000000</color>
     <color name="main">#4482eb</color>
+    <color name="main_white">#DBE9FF</color>
     <color name="main_dark">#3464B6</color>
     <color name="dark_grey">#606265</color>
     <color name="medium_grey">#FFc1c4c8</color>
     <color name="white_grey">#D9DDE1</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text_grey">#757575</color>
 </resources>

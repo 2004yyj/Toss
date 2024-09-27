@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import ks.hs.dgsw.toss.R
 import ks.hs.dgsw.toss.databinding.FragmentSelectAccountBinding
@@ -61,13 +62,17 @@ class SelectAccountFragment : Fragment() {
     }
 
     private fun initRecyclerView() = with(binding) {
-        bankAdapter = BankAdapter()
+        bankAdapter = BankAdapter { bank ->
+            val bundle = Bundle()
+            bundle.putString("bankName", bank.name)
+            bundle.putInt("bankCode", bank.code)
+            findNavController().navigate(R.id.action_selectAccountFragment_to_setAccountNumberFragment, bundle)
+        }
         rvBankListSelectAccount.adapter = bankAdapter
         rvBankListSelectAccount.addItemDecoration(GridLayoutSpacingDecoration(requireActivity(), 3))
     }
 
     private fun init() = with(viewModel) {
-        accountNumber.value = arguments?.getString("accountNumber")
         getBanks()
     }
 

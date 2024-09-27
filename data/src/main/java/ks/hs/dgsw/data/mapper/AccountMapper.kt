@@ -9,10 +9,16 @@ fun AccountData.toEntity(): Account {
         this.user?.toEntity(),
         this.userId,
         this.account,
+        this.accountType,
+        this.bank,
         this.name,
         this.money,
-        this.send,
-        this.receive
+        this.send?.map {
+            it.toEntity()
+        },
+        this.receive?.map {
+            it.toEntity()
+        }
     )
 }
 
@@ -22,9 +28,15 @@ fun Account.toData(): AccountData {
         this.user?.toData(),
         this.userId,
         this.account,
+        this.accountType,
+        this.bank,
         this.name,
         this.money,
-        this.send,
-        this.receive
+        this.send?.map {
+            it.toData()
+        },
+        this.receive?.map {
+            it.toData()
+        }
     )
 }

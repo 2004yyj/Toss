@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_other_bank_account"
+    app:startDestination="@id/addOtherBankAccountFirstFragment">
+    <fragment
+        android:id="@+id/addOtherBankAccountFirstFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.AddOtherBankAccountFirstFragment"
+        android:label="fragment_add_other_bank_account_first"
+        tools:layout="@layout/fragment_add_other_bank_account_first" >
+        <action
+            android:id="@+id/action_addOtherBankAccountFirstFragment_to_addOtherBankAccountSecondFragment"
+            app:destination="@id/addOtherBankAccountSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addOtherBankAccountSecondFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.AddOtherBankAccountSecondFragment"
+        android:label="fragment_add_other_bank_first_account"
+        tools:layout="@layout/fragment_add_other_bank_account_second">
+        <action
+            android:id="@+id/action_addOtherBankAccountSecondFragment_to_addOtherBankAccountFinishFragment"
+            app:destination="@id/addOtherBankAccountFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addOtherBankAccountFinishFragment"
+        android:name="ks.hs.dgsw.toss.ui.view.fragment.AddOtherBankAccountFinishFragment"
+        android:label="fragment_add_other_bank_account_finish"
+        tools:layout="@layout/fragment_add_other_bank_account_finish" />
+</navigation>
